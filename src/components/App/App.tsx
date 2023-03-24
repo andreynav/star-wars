@@ -19,6 +19,7 @@ export const App = () => {
         {/*<Route path="/planets/:name" element={<Planets />} />*/}
         {/*<Route path="/starships/:name" element={<Starships />} />*/}
         {/*<Route path="/vehicles/:name" element={<Vehicles />} />*/}
+        <Route path="/films/" element={<Films error={error} setError={setError} />} />
         <Route path="/films/:name" element={<Films error={error} setError={setError} />} />
         {/*<Route path="/*" element={<NotFound />} />*/}
       </Routes>
