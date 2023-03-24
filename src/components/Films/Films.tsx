@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { swAPI } from '../../api/api'
 import { FilmT } from '../../types/types'
+import { Container } from '../Container/Container'
 
 export const Films = ({ error, setError }: any) => {
   const [filmsList, setFilmsList] = useState<FilmT[]>([])
@@ -28,83 +29,80 @@ export const Films = ({ error, setError }: any) => {
   }
 
   return (
-    <>
+    <Container>
       {error ? (
         <div className="error">{error.message}</div>
       ) : (
-        <>
-          <div className="App">STAR WARS</div>
-          <StyledCardList>
-            {filmsList.map((film) => {
-              return (
-                <StyledFilmCard key={film.title}>
-                  <div>
-                    <b>Title:</b> {film.title}
-                  </div>
-                  <div>
-                    <b>Episode:</b> {film.episode_id}
-                  </div>
-                  <div>
-                    <b>Director:</b> {film.director}
-                  </div>
-                  <div>
-                    <b>Producer:</b> {film.producer}
-                  </div>
-                  <div>
-                    <b>Film created:</b> {film.created}
-                  </div>
-                  <div>
-                    <b>Film edited:</b> {film.edited}
-                  </div>
-                  <div>
-                    <b>Film released:</b> {film.release_date}
-                  </div>
-                  <div>
-                    <b>Opening crawl:</b> {film.opening_crawl}
-                  </div>
-                  <div>
-                    <b>Planets:</b>{' '}
-                    <a href={film.planets[0]} target="_blank" rel="noopener noreferrer">
-                      {film.planets[0]}
-                    </a>
-                  </div>
-                  <div>
-                    <b>Characters:</b>{' '}
-                    <a href={film.characters[0]} target="_blank" rel="noopener noreferrer">
-                      {film.characters[0]}
-                    </a>
-                  </div>
-                  <div>
-                    <b>Species:</b>{' '}
-                    <a href={film.species[0]} target="_blank" rel="noopener noreferrer">
-                      {film.species[0]}
-                    </a>
-                  </div>
-                  <div>
-                    <b>Starships:</b>{' '}
-                    <a href={film.starships[0]} target="_blank" rel="noopener noreferrer">
-                      {film.starships[0]}
-                    </a>
-                  </div>
-                  <div>
-                    <b>Vehicles:</b>{' '}
-                    <a href={film.vehicles[0]} target="_blank" rel="noopener noreferrer">
-                      {film.vehicles[0]}
-                    </a>
-                  </div>
-                  <div>
-                    <b>Url:</b>{' '}
-                    <a href={film.url} target="_blank" rel="noopener noreferrer">
-                      {film.url}
-                    </a>
-                  </div>
-                </StyledFilmCard>
-              )
-            })}
-          </StyledCardList>
-        </>
+        <StyledCardList>
+          {filmsList.map((film) => {
+            return (
+              <StyledFilmCard key={film.title}>
+                <div>
+                  <b>Title:</b> {film.title}
+                </div>
+                <div>
+                  <b>Episode:</b> {film.episode_id}
+                </div>
+                <div>
+                  <b>Director:</b> {film.director}
+                </div>
+                <div>
+                  <b>Producer:</b> {film.producer}
+                </div>
+                <div>
+                  <b>Film created:</b> {film.created}
+                </div>
+                <div>
+                  <b>Film edited:</b> {film.edited}
+                </div>
+                <div>
+                  <b>Film released:</b> {film.release_date}
+                </div>
+                <div>
+                  <b>Opening crawl:</b> {film.opening_crawl}
+                </div>
+                <div>
+                  <b>Planets:</b>{' '}
+                  <a href={film.planets[0]} target="_blank" rel="noopener noreferrer">
+                    {film.planets[0]}
+                  </a>
+                </div>
+                <div>
+                  <b>Characters:</b>{' '}
+                  <a href={film.characters[0]} target="_blank" rel="noopener noreferrer">
+                    {film.characters[0]}
+                  </a>
+                </div>
+                <div>
+                  <b>Species:</b>{' '}
+                  <a href={film.species[0]} target="_blank" rel="noopener noreferrer">
+                    {film.species[0]}
+                  </a>
+                </div>
+                <div>
+                  <b>Starships:</b>{' '}
+                  <a href={film.starships[0]} target="_blank" rel="noopener noreferrer">
+                    {film.starships[0]}
+                  </a>
+                </div>
+                <div>
+                  <b>Vehicles:</b>{' '}
+                  <a href={film.vehicles[0]} target="_blank" rel="noopener noreferrer">
+                    {film.vehicles[0]}
+                  </a>
+                </div>
+                <div>
+                  <b>Url:</b>{' '}
+                  <a href={film.url} target="_blank" rel="noopener noreferrer">
+                    {film.url}
+                  </a>
+                </div>
+              </StyledFilmCard>
+            )
+          })}
+        </StyledCardList>
       )}
-    </>
+    </Container>
   )
 }
 
@@ -113,6 +111,7 @@ const StyledCardList = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 2rem;
   padding-bottom: 2rem;
+  padding-top: 2rem;
 
   @media (max-width: 767px) {
     grid-template-columns: repeat(2, 1fr);
