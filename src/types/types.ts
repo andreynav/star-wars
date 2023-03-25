@@ -21,3 +21,19 @@ export type FilmsListT = {
   previous: string
   results: FilmT[]
 }
+
+export type StyledToggleT = {
+  width?: number
+  height?: number
+}
+
+export type ToggleProps = {
+  onChange: () => void
+  width?: number
+  height?: number
+}
+
+export type StyledToggleSpanT = {
+  isToggled: boolean
+  indent?: number
+} & StyledToggleT

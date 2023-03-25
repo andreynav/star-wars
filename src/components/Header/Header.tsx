@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { starWars } from '../../assets'
 import { Container } from '../Container/Container'
 import { Navigation } from '../Nvigation/Navigation'
 import { Search } from '../Search/Search'
+import { StyledNavLink } from '../StyledNavLink/StyledNavLink'
 import { Toggle } from '../Toggle/Toggle'
 
 export const Header = () => {
@@ -31,20 +31,15 @@ export const Header = () => {
           </Container>
         </LogoWrapper>
         <ModeSwitcher>
-          <Toggle onChange={onSwitchTheme} width={96} height={48} />
+          <Container>
+            <Toggle onChange={onSwitchTheme} width={96} height={48} />
+          </Container>
         </ModeSwitcher>
       </TopHeader>
       <Navigation />
     </StyledHeaderContainer>
   )
 }
-
-// TODO: move to separate component
-const StyledNavLink = styled(NavLink)`
-  text-decoration: none;
-  color: inherit;
-  justify-self: center;
-`
 
 const StyledHeaderContainer = styled.div`
   display: grid;
@@ -83,5 +78,8 @@ const ModeSwitcher = styled.div`
   cursor: pointer;
   text-transform: capitalize;
   align-items: center;
-  justify-items: center;
+
+  & div {
+    justify-items: center;
+  }
 `
