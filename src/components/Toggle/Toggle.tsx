@@ -2,22 +2,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 
 import { babyYodaBlack, darthVaderBlack } from '../../assets'
-
-type StyledToggleT = {
-  width?: number
-  height?: number
-}
-
-type ToggleProps = {
-  onChange: () => void
-  width?: number
-  height?: number
-}
-
-type StyledToggleSpanT = {
-  isToggled: boolean
-  indent?: number
-} & StyledToggleT
+import { StyledToggleSpanT, StyledToggleT, ToggleProps } from '../../types/types'
 
 export const Toggle = ({ onChange, width, height }: ToggleProps) => {
   const [isToggled, setIsToggled] = useState(true)

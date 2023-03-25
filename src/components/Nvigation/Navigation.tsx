@@ -1,5 +1,6 @@
-import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+
+import { StyledNavLink } from '../StyledNavLink/StyledNavLink'
 
 export const Navigation = () => {
   return (
@@ -73,10 +74,4 @@ const NavigationWrapper = styled.div`
       border-left: none;
     }
   }
-`
-
-const StyledNavLink = styled(NavLink)`
-  text-decoration: none;
-  color: inherit;
-  justify-self: center;
 `
