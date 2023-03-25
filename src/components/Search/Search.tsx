@@ -29,6 +29,7 @@ const InputContainer = styled.label`
   box-shadow: var(--shadow);
   margin-bottom: 0;
   padding: 1rem;
+  height: 48px;
   cursor: pointer;
 
   @media (max-width: 767px) {
@@ -42,7 +43,7 @@ const InputContainer = styled.label`
 
 const Input = styled.input.attrs({
   type: 'text',
-  placeholder: 'Search Star Wars'
+  placeholder: 'Search in Galaxy'
 })`
   display: grid;
   color: var(--colors-text);

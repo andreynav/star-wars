@@ -6,6 +6,7 @@ import { starWars } from '../../assets'
 import { Container } from '../Container/Container'
 import { Navigation } from '../Nvigation/Navigation'
 import { Search } from '../Search/Search'
+import { Toggle } from '../Toggle/Toggle'
 
 export const Header = () => {
   const [theme, setTheme] = useState('light')
@@ -29,11 +30,8 @@ export const Header = () => {
             </StyledNavLink>
           </Container>
         </LogoWrapper>
-        <ModeSwitcher onClick={onSwitchTheme}>
-          {/*{theme === 'light' ? <IoMoonOutline size={'14px'} /> : <IoMoon size={'14px'} />}*/}
-          <div style={{ marginLeft: '0.75rem' }}>
-            <Container>{theme} theme</Container>
-          </div>
+        <ModeSwitcher>
+          <Toggle onChange={onSwitchTheme} width={96} height={48} />
         </ModeSwitcher>
       </TopHeader>
       <Navigation />
@@ -79,10 +77,11 @@ const Logo = styled.img`
 
 const ModeSwitcher = styled.div`
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto;
   color: var(--colors-text);
   font-size: var(--fs-sm);
   cursor: pointer;
   text-transform: capitalize;
   align-items: center;
+  justify-items: center;
 `
