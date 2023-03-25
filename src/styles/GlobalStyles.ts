@@ -24,6 +24,7 @@ export const GlobalStyles = createGlobalStyle`
     --colors-bg: hsl(207, 26%, 17%);
     --colors-ui-base: hsl(209, 23%, 22%);
     --colors-placeholder: hsl(0,0%,50%);
+    --color-toggle: #fff;
 
     --shadow: rgba(245, 245, 245, 0.2) 0 0 8px;
   }
@@ -32,6 +33,7 @@ export const GlobalStyles = createGlobalStyle`
     --colors-bg: hsl(0, 0%, 98%);
     --colors-ui-base: hsl(0, 0%, 100%);
     --colors-placeholder: hsl(0, 0%, 41%);
+    --color-toggle: transparent;
 
     --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
