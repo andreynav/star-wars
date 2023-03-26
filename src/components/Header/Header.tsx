@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import { starWars } from '../../assets'
-import { Container } from '../Container/Container'
-import { Navigation } from '../Nvigation/Navigation'
+import { Navigation } from '../Navigation/Navigation'
 import { Search } from '../Search/Search'
 import { StyledNavLink } from '../StyledNavLink/StyledNavLink'
 import { Toggle } from '../Toggle/Toggle'
@@ -22,19 +21,17 @@ export const Header = () => {
   return (
     <StyledHeaderContainer>
       <TopHeader>
-        <Search />
+        <SearchWrapper>
+          <Search />
+        </SearchWrapper>
         <LogoWrapper>
-          <Container>
-            <StyledNavLink to={`/`}>
-              <Logo src={starWars} alt={'logo'} />
-            </StyledNavLink>
-          </Container>
+          <StyledNavLink to={`/`}>
+            <Logo src={starWars} alt={'logo'} />
+          </StyledNavLink>
         </LogoWrapper>
-        <ModeSwitcher>
-          <Container>
-            <Toggle onChange={onSwitchTheme} width={96} height={48} />
-          </Container>
-        </ModeSwitcher>
+        <ThemeSwitcher>
+          <Toggle onChange={onSwitchTheme} width={96} height={48} />
+        </ThemeSwitcher>
       </TopHeader>
       <Navigation />
     </StyledHeaderContainer>
@@ -49,10 +46,41 @@ const StyledHeaderContainer = styled.div`
 
 const TopHeader = styled.div`
   display: grid;
+  grid-gap: 1rem;
   grid-template-columns: 0.5fr 1fr 0.5fr;
-  justify-content: space-between;
   align-items: center;
-  padding: 2rem 0;
+  padding: 1rem;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+
+    & div:nth-child(1) {
+      grid-area: 2 / 1/ 3 / 2;
+    }
+
+    & div:nth-child(2) {
+      grid-area: 1 / 1/ 2 / 3;
+    }
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+
+    //& div:nth-child(1) {
+    //  grid-area: 2 / 1/ 3 / 1;
+    //}
+    //
+    //& div:nth-child(2) {
+    //  grid-area: 1 / 1/ 2 / 2;
+    //}
+  }
+`
+
+const SearchWrapper = styled.div`
+  display: grid;
+  justify-content: stretch;
 `
 
 const LogoWrapper = styled.div`
@@ -66,11 +94,19 @@ const LogoWrapper = styled.div`
 const Logo = styled.img`
   display: grid;
   border-radius: var(--radii) var(--radii) 0 0;
-  width: 100%;
-  height: 128px;
+  min-width: 300px;
+  height: 96px;
+
+  @media (max-width: 767px) {
+    height: 64px;
+  }
+
+  @media (max-width: 480px) {
+    height: 64px;
+  }
 `
 
-const ModeSwitcher = styled.div`
+const ThemeSwitcher = styled.div`
   display: grid;
   grid-template-columns: auto;
   color: var(--colors-text);
@@ -80,6 +116,6 @@ const ModeSwitcher = styled.div`
   align-items: center;
 
   & div {
-    justify-items: center;
+    justify-items: end;
   }
 `
