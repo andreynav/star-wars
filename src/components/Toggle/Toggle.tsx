@@ -58,9 +58,10 @@ const ToggleSpan = styled.span<StyledToggleSpanT>`
   right: 0;
   bottom: 0;
   background: transparent;
-  border: 1px solid var(--colors-placeholder);
+  //border: 1px solid var(--colors-placeholder);
   transition: 0.3s;
   border-radius: ${({ height = 32 }) => `${height / 2}px`};
+  box-shadow: var(--shadow);
 
   &:before {
     position: absolute;
@@ -71,6 +72,7 @@ const ToggleSpan = styled.span<StyledToggleSpanT>`
     bottom: ${({ indent = 3 }) => `${indent}px`};
     background-color: var(--color-toggle);
     background-image: url(${({ isToggled }) => (isToggled ? babyYodaBlack : darthVaderBlack)});
+    box-shadow: var(--shadow);
     background-size: contain;
     border-radius: 50%;
     transition: 0.6s;

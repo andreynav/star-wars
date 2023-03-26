@@ -6,22 +6,22 @@ export const Navigation = () => {
   return (
     <NavigationWrapper>
       <div>
-        <StyledNavLink to={`/people/`}>People</StyledNavLink>
+        <StyledNavLink to={`/people/`}>PEOPLE</StyledNavLink>
       </div>
       <div>
-        <StyledNavLink to={`/species/`}>Species</StyledNavLink>
+        <StyledNavLink to={`/species/`}>SPECIES</StyledNavLink>
       </div>
       <div>
-        <StyledNavLink to={`/planets/`}>Planets</StyledNavLink>
+        <StyledNavLink to={`/planets/`}>PLANETS</StyledNavLink>
       </div>
       <div>
-        <StyledNavLink to={`/starships/`}>Starships</StyledNavLink>
+        <StyledNavLink to={`/starships/`}>STARSHIPS</StyledNavLink>
       </div>
       <div>
-        <StyledNavLink to={`/vehicles/`}>Vehicles</StyledNavLink>
+        <StyledNavLink to={`/vehicles/`}>VEHICLES</StyledNavLink>
       </div>
       <div>
-        <StyledNavLink to={`/films/`}>Films</StyledNavLink>
+        <StyledNavLink to={`/films/`}>FILMS</StyledNavLink>
       </div>
     </NavigationWrapper>
   )
@@ -49,6 +49,11 @@ const NavigationWrapper = styled.div`
     border-right: none;
   }
 
+  & div:nth-child(5),
+  & div:nth-child(6) {
+    border-bottom: none;
+  }
+
   @media (max-width: 767px) {
     grid-template-columns: repeat(3, 1fr);
 
@@ -65,13 +70,18 @@ const NavigationWrapper = styled.div`
   }
 
   @media (max-width: 480px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
 
     & div {
       display: grid;
       height: 32px;
       border-right: none;
-      border-left: none;
+    }
+
+    & div:nth-child(1),
+    & div:nth-child(3),
+    & div:nth-child(5) {
+      border-right: 1px solid grey;
     }
   }
 `
