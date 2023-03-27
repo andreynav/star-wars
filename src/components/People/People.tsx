@@ -29,6 +29,8 @@ export const People = ({ error, setError }: any) => {
     if (page === 1) {
       return index + 1
     } else if (page === 2) {
+      // API error in numbering
+      if (index > 5) return index + 12
       return index + 11
     } else {
       return index + page * 10 - 10 + 2
