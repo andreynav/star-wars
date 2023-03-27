@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { Films } from '../Films/Films'
 import { Header } from '../Header/Header'
 import { Home } from '../Home/Home'
+import { People } from '../People/People'
 
 export const App = () => {
   const [error, setError] = useState<{ message: string; status?: number } | null>(null)
@@ -14,10 +15,15 @@ export const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/*<Route path="/people/:name" element={<People />} />*/}
+        <Route path="/people/" element={<People error={error} setError={setError} />} />
+        <Route path="/people/:name" element={<People error={error} setError={setError} />} />
+        {/*<Route path="/species/" element={<Species />} />*/}
         {/*<Route path="/species/:name" element={<Species />} />*/}
+        {/*<Route path="/planets/" element={<Planets />} />*/}
         {/*<Route path="/planets/:name" element={<Planets />} />*/}
+        {/*<Route path="/starships/" element={<Starships />} />*/}
         {/*<Route path="/starships/:name" element={<Starships />} />*/}
+        {/*<Route path="/vehicles/" element={<Vehicles />} />*/}
         {/*<Route path="/vehicles/:name" element={<Vehicles />} />*/}
         <Route path="/films/" element={<Films error={error} setError={setError} />} />
         <Route path="/films/:name" element={<Films error={error} setError={setError} />} />
