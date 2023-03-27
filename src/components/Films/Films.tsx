@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import { swAPI } from '../../api/api'
+import { swAPI, swapiImgFilms } from '../../api/api'
 import { FilmT } from '../../types/types'
 import { Container } from '../Container/Container'
 
@@ -13,7 +13,8 @@ export const Films = ({ error, setError }: any) => {
       try {
         const data = await swAPI.getAllFilms()
         setError(null)
-        setFilmsList(sortedFilmsList(data.results))
+        // setFilmsList(sortedFilmsList(data.results))
+        setFilmsList(data.results)
       } catch (error: any) {
         setError({ message: error.message })
       }
@@ -22,11 +23,11 @@ export const Films = ({ error, setError }: any) => {
     fetchFilmsList().then()
   }, [])
 
-  const sortedFilmsList = (list: FilmT[]) => {
-    return list.sort(function (a: FilmT, b: FilmT) {
-      return a.episode_id - b.episode_id
-    })
-  }
+  // const sortedFilmsList = (list: FilmT[]) => {
+  //   return list.sort(function (a: FilmT, b: FilmT) {
+  //     return a.episode_id - b.episode_id
+  //   })
+  // }
 
   return (
     <Container>
@@ -34,9 +35,10 @@ export const Films = ({ error, setError }: any) => {
         <div className="error">{error.message}</div>
       ) : (
         <StyledCardList>
-          {filmsList.map((film) => {
+          {filmsList.map((film, index) => {
             return (
               <StyledFilmCard key={film.title}>
+                <Image src={`${swapiImgFilms}${index + 1}.jpg`} alt={'poster'} />
                 <div>
                   <b>Title:</b> {film.title}
                 </div>
@@ -49,12 +51,12 @@ export const Films = ({ error, setError }: any) => {
                 <div>
                   <b>Producer:</b> {film.producer}
                 </div>
-                <div>
-                  <b>Film created:</b> {film.created}
-                </div>
-                <div>
-                  <b>Film edited:</b> {film.edited}
-                </div>
+                {/*<div>*/}
+                {/*  <b>Film created:</b> {film.created}*/}
+                {/*</div>*/}
+                {/*<div>*/}
+                {/*  <b>Film edited:</b> {film.edited}*/}
+                {/*</div>*/}
                 <div>
                   <b>Film released:</b> {film.release_date}
                 </div>
@@ -120,6 +122,13 @@ const StyledCardList = styled.div`
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
   }
+`
+
+const Image = styled.img`
+  display: grid;
+  border-radius: var(--radii) var(--radii) 0 0;
+  width: 400px;
+  height: 500px;
 `
 
 const StyledFilmCard = styled.div`
