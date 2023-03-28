@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { apiImgPeople, swAPI } from '../../api/api'
 import { PersonT } from '../../types/types'
+import { getPersonImageIndex } from '../../utils/getPersonImageIndex'
 import { CardContainer } from '../CardContainer/CardContainer'
 import { CardListContainer } from '../CardListContainer/CardListContainer'
 import { Container } from '../Container/Container'
@@ -27,18 +28,6 @@ export const People = ({ error, setError }: any) => {
     fetchPeopleList().then()
   }, [page])
 
-  const getPeopleImageIndex = (index: number) => {
-    if (page === 1) {
-      return index + 1
-    } else if (page === 2) {
-      // API error in numbering
-      if (index > 5) return index + 12
-      return index + 11
-    } else {
-      return index + page * 10 - 10 + 2
-    }
-  }
-
   return (
     <Container>
       {error ? (
@@ -57,7 +46,7 @@ export const People = ({ error, setError }: any) => {
               return (
                 <CardContainer key={person.name}>
                   <ImageContainer
-                    src={`${apiImgPeople}${getPeopleImageIndex(index)}.jpg`}
+                    src={`${apiImgPeople}${getPersonImageIndex(page, index)}.jpg`}
                     alt={'poster'}
                   />
                   <div>
