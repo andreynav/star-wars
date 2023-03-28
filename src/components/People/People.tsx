@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
-import styled from 'styled-components'
 
-import { swAPI, swapiImgPeople } from '../../api/api'
+import { apiImgPeople, swAPI } from '../../api/api'
 import { PersonT } from '../../types/types'
+import { CardContainer } from '../CardContainer/CardContainer'
+import { CardListContainer } from '../CardListContainer/CardListContainer'
 import { Container } from '../Container/Container'
+import { ImageContainer } from '../ImageContainer/ImageContainer'
 
 export const People = ({ error, setError }: any) => {
   const [peopleList, setPeopleList] = useState<PersonT[]>([])
@@ -25,7 +27,7 @@ export const People = ({ error, setError }: any) => {
     fetchPeopleList().then()
   }, [page])
 
-  const imageIndex = (index: number) => {
+  const getPeopleImageIndex = (index: number) => {
     if (page === 1) {
       return index + 1
     } else if (page === 2) {
@@ -50,64 +52,23 @@ export const People = ({ error, setError }: any) => {
           >
             page {page}
           </button>
-          <StyledCardList>
+          <CardListContainer>
             {peopleList.map((person, index) => {
               return (
-                <StyledPeopleCard key={person.name}>
-                  <Image src={`${swapiImgPeople}${imageIndex(index)}.jpg`} alt={'poster'} />
+                <CardContainer key={person.name}>
+                  <ImageContainer
+                    src={`${apiImgPeople}${getPeopleImageIndex(index)}.jpg`}
+                    alt={'poster'}
+                  />
                   <div>
                     <b>Title:</b> {person.name}
                   </div>
-                </StyledPeopleCard>
+                </CardContainer>
               )
             })}
-          </StyledCardList>
+          </CardListContainer>
         </>
       )}
     </Container>
   )
 }
-
-const StyledCardList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 2rem;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
-
-  @media (max-width: 767px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-  }
-`
-
-const StyledPeopleCard = styled.div`
-  display: grid;
-  border-radius: var(--radii);
-  box-shadow: var(--shadow);
-  cursor: pointer;
-  height: 100%;
-  //width: 300px;
-  padding: 1rem 2rem;
-  border: 1px solid grey;
-
-  & div b {
-    font-weight: var(--fw-normal);
-  }
-
-  & a:link,
-  a:visited {
-    text-decoration: none;
-    color: var(--colors-link);
-  }
-`
-
-const Image = styled.img`
-  display: grid;
-  border-radius: var(--radii) var(--radii) 0 0;
-  width: 400px;
-  height: 500px;
-`

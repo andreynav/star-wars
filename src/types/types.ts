@@ -63,3 +63,8 @@ export type StyledToggleSpanT = {
   isToggled: boolean
   indent?: number
 } & StyledToggleT
+
+export type ImageContainerT = {
+  src: string
+  alt: string
+}

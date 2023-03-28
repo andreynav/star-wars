@@ -7,9 +7,9 @@ const swapi = axios.create({
   withCredentials: false
 })
 
-export const swapiImgFilms = 'https://starwars-visualguide.com/assets/img/films/'
-export const swapiImgPeople = 'https://starwars-visualguide.com/assets/img/characters/'
-export const swapiImgPlanets = 'https://starwars-visualguide.com/assets/img/planets/'
+export const apiImgFilms = 'https://starwars-visualguide.com/assets/img/films/'
+export const apiImgPeople = 'https://starwars-visualguide.com/assets/img/characters/'
+export const apiImgPlanets = 'https://starwars-visualguide.com/assets/img/planets/'
 
 export const swAPI = {
   getAllPeople: (pageNumber = 1) => {

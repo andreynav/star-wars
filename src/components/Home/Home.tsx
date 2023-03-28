@@ -1,3 +1,9 @@
+import { Container } from '../Container/Container'
+
 export const Home = () => {
-  return <div>A long time ago in a galaxy far, far away....</div>
+  return (
+    <Container>
+      <div>A long time ago in a galaxy far, far away....</div>
+    </Container>
+  )
 }
