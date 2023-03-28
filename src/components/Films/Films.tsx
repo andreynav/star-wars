@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
-import styled from 'styled-components'
 
-import { swAPI, swapiImgFilms } from '../../api/api'
+import { apiImgFilms, swAPI } from '../../api/api'
 import { FilmT } from '../../types/types'
+import { CardContainer } from '../CardContainer/CardContainer'
+import { CardListContainer } from '../CardListContainer/CardListContainer'
 import { Container } from '../Container/Container'
+import { ImageContainer } from '../ImageContainer/ImageContainer'
 
 export const Films = ({ error, setError }: any) => {
   const [filmsList, setFilmsList] = useState<FilmT[]>([])
@@ -34,11 +36,11 @@ export const Films = ({ error, setError }: any) => {
       {error ? (
         <div className="error">{error.message}</div>
       ) : (
-        <StyledCardList>
+        <CardListContainer>
           {filmsList.map((film, index) => {
             return (
-              <StyledFilmCard key={film.title}>
-                <Image src={`${swapiImgFilms}${index + 1}.jpg`} alt={'poster'} />
+              <CardContainer key={film.title}>
+                <ImageContainer src={`${apiImgFilms}${index + 1}.jpg`} alt={'poster'} />
                 <div>
                   <b>Title:</b> {film.title}
                 </div>
@@ -51,12 +53,6 @@ export const Films = ({ error, setError }: any) => {
                 <div>
                   <b>Producer:</b> {film.producer}
                 </div>
-                {/*<div>*/}
-                {/*  <b>Film created:</b> {film.created}*/}
-                {/*</div>*/}
-                {/*<div>*/}
-                {/*  <b>Film edited:</b> {film.edited}*/}
-                {/*</div>*/}
                 <div>
                   <b>Film released:</b> {film.release_date}
                 </div>
@@ -99,55 +95,11 @@ export const Films = ({ error, setError }: any) => {
                     {film.url}
                   </a>
                 </div>
-              </StyledFilmCard>
+              </CardContainer>
             )
           })}
-        </StyledCardList>
+        </CardListContainer>
       )}
     </Container>
   )
 }
-
-const StyledCardList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 2rem;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
-
-  @media (max-width: 767px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-  }
-`
-
-const Image = styled.img`
-  display: grid;
-  border-radius: var(--radii) var(--radii) 0 0;
-  width: 400px;
-  height: 500px;
-`
-
-const StyledFilmCard = styled.div`
-  display: grid;
-  border-radius: var(--radii);
-  box-shadow: var(--shadow);
-  cursor: pointer;
-  height: 100%;
-  //width: 300px;
-  padding: 1rem 2rem;
-  border: 1px solid grey;
-
-  & div b {
-    font-weight: var(--fw-normal);
-  }
-
-  & a:link,
-  a:visited {
-    text-decoration: none;
-    color: var(--colors-link);
-  }
-`
