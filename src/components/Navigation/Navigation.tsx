@@ -38,9 +38,12 @@ const NavigationWrapper = styled.div`
   cursor: pointer;
   align-self: center;
 
+  & ${StyledNavLink} {
+    height: 48px;
+  }
+
   & div {
     display: grid;
-    height: 48px;
     align-content: center;
     border-right: 1px solid grey;
   }
@@ -57,9 +60,12 @@ const NavigationWrapper = styled.div`
   @media (max-width: 767px) {
     grid-template-columns: repeat(3, 1fr);
 
+    & ${StyledNavLink} {
+      height: 32px;
+    }
+
     & div {
       display: grid;
-      height: 32px;
       border-bottom: 1px solid grey;
     }
 
@@ -72,9 +78,12 @@ const NavigationWrapper = styled.div`
   @media (max-width: 480px) {
     grid-template-columns: 1fr 1fr;
 
+    & ${StyledNavLink} {
+      height: 32px;
+    }
+
     & div {
       display: grid;
-      height: 32px;
       border-right: none;
     }
 
