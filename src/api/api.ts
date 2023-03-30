@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { FilmsListT, PeopleListT } from '../types/types'
+import { FilmsListT, PeopleListT, PersonT } from '../types/types'
 
 const swapi = axios.create({
   baseURL: 'https://swapi.dev/api/',
@@ -14,6 +14,9 @@ export const apiImgPlanets = 'https://starwars-visualguide.com/assets/img/planet
 export const swAPI = {
   getAllPeople: (pageNumber = 1) => {
     return swapi.get<PeopleListT>(`/people/?page=${pageNumber}`).then((response) => response.data)
+  },
+  getPerson: (id: number) => {
+    return swapi.get<PersonT>(`/people/${id}/`).then((response) => response.data)
   },
   getAllFilms: () => {
     return swapi.get<FilmsListT>('films/').then((response) => response.data)
