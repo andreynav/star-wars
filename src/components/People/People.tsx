@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { apiImgPeople, swAPI } from '../../api/api'
 import { PersonT } from '../../types/types'
+import { getIdFromUrl } from '../../utils/getIdFromUrl'
 import { getPersonImageIndex } from '../../utils/getPersonImageIndex'
 import { CardContainer } from '../CardContainer/CardContainer'
 import { CardListContainer } from '../CardListContainer/CardListContainer'
@@ -29,6 +30,8 @@ export const People = ({ error, setError }: any) => {
     fetchPeopleList().then()
   }, [page])
 
+  console.log(getIdFromUrl('https://swapi.dev/api/people/9/'))
+
   return (
     <Container>
       {error ? (
@@ -45,7 +48,7 @@ export const People = ({ error, setError }: any) => {
           <CardListContainer>
             {peopleList.map((person, index) => {
               return (
-                <StyledNavLink to={`/country/${id}`}>
+                <StyledNavLink to={`/people/${getIdFromUrl(person.url)}`}>
                   <CardContainer key={person.name}>
                     <ImageContainer
                       src={`${apiImgPeople}${getPersonImageIndex(page, index)}.jpg`}
