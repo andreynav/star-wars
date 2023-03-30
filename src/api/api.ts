@@ -15,7 +15,7 @@ export const swAPI = {
   getAllPeople: (pageNumber = 1) => {
     return swapi.get<PeopleListT>(`/people/?page=${pageNumber}`).then((response) => response.data)
   },
-  getPerson: (id: number) => {
+  getPerson: (id: string) => {
     return swapi.get<PersonT>(`/people/${id}/`).then((response) => response.data)
   },
   getAllFilms: () => {

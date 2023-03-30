@@ -6,6 +6,7 @@ import { Films } from '../Films/Films'
 import { Header } from '../Header/Header'
 import { Home } from '../Home/Home'
 import { People } from '../People/People'
+import { Person } from '../People/Person'
 
 export const App = () => {
   const [error, setError] = useState<{ message: string; status?: number } | null>(null)
@@ -16,7 +17,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/people/" element={<People error={error} setError={setError} />} />
-        <Route path="/people/:id" element={<People error={error} setError={setError} />} />
+        <Route path="/people/:id" element={<Person error={error} setError={setError} />} />
         {/*<Route path="/species/" element={<Species />} />*/}
         {/*<Route path="/species/:name" element={<Species />} />*/}
         {/*<Route path="/planets/" element={<Planets />} />*/}
