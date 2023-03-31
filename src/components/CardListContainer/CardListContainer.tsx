@@ -7,7 +7,7 @@ export const CardListContainer = ({ children }: PropsWithChildren) => {
 
 const StyledCardListContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 2rem;
   padding-bottom: 2rem;
   padding-top: 2rem;
