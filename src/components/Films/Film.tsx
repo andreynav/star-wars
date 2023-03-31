@@ -7,7 +7,7 @@ import { getIdFromUrl } from '../../utils/getIdFromUrl'
 import { CardContainer } from '../CardContainer/CardContainer'
 import { CardListContainer } from '../CardListContainer/CardListContainer'
 import { Container } from '../Container/Container'
-import { ImageContainer } from '../ImageContainer/ImageContainer'
+import { CardImage } from '../ImageContainer/ImageContainer'
 
 export const Film = ({ error, setError }: any) => {
   const { id } = useParams<{ id: string }>()
@@ -38,7 +38,7 @@ export const Film = ({ error, setError }: any) => {
       ) : (
         <CardListContainer>
           <CardContainer key={film?.title}>
-            <ImageContainer src={`${apiImgFilms}${getIdFromUrl(film.url)}.jpg`} alt={'poster'} />
+            <CardImage src={`${apiImgFilms}${getIdFromUrl(film.url)}.jpg`} alt={'poster'} />
             <div>
               <b>Title:</b> {film?.title}
             </div>

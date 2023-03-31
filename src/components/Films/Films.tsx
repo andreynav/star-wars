@@ -3,11 +3,9 @@ import { useEffect, useState } from 'react'
 import { apiImgFilms, swAPI } from '../../api/api'
 import { FilmT } from '../../types/types'
 import { getIdFromUrl } from '../../utils/getIdFromUrl'
-import { CardContainer } from '../CardContainer/CardContainer'
+import { Card } from '../Card/Card'
 import { CardListContainer } from '../CardListContainer/CardListContainer'
 import { Container } from '../Container/Container'
-import { ImageContainer } from '../ImageContainer/ImageContainer'
-import { StyledNavLink } from '../StyledNavLink/StyledNavLink'
 
 export const Films = ({ error, setError }: any) => {
   const [filmsList, setFilmsList] = useState<FilmT[] | null>(null)
@@ -43,17 +41,12 @@ export const Films = ({ error, setError }: any) => {
         <CardListContainer>
           {filmsList.map((film) => {
             return (
-              <StyledNavLink key={film.title} to={`/films/${getIdFromUrl(film.url)}`}>
-                <CardContainer>
-                  <ImageContainer
-                    src={`${apiImgFilms}${getIdFromUrl(film.url)}.jpg`}
-                    alt={'poster'}
-                  />
-                  <div>
-                    <b>Title:</b> {film.title}
-                  </div>
-                </CardContainer>
-              </StyledNavLink>
+              <Card
+                key={film.title}
+                category={film}
+                toNavigate={`/films/${getIdFromUrl(film.url)}`}
+                src={`${apiImgFilms}${getIdFromUrl(film.url)}.jpg`}
+              />
             )
           })}
         </CardListContainer>

@@ -64,7 +64,13 @@ export type StyledToggleSpanT = {
   indent?: number
 } & StyledToggleT
 
-export type ImageContainerT = {
+export type CardImageT = {
   src: string
   alt: string
+}
+
+export type CardT = {
+  src: string
+  toNavigate: string
+  category: FilmT | PersonT
 }

@@ -6,7 +6,7 @@ import { PersonT } from '../../types/types'
 import { CardContainer } from '../CardContainer/CardContainer'
 import { CardListContainer } from '../CardListContainer/CardListContainer'
 import { Container } from '../Container/Container'
-import { ImageContainer } from '../ImageContainer/ImageContainer'
+import { CardImage } from '../ImageContainer/ImageContainer'
 
 export const Person = ({ error, setError }: any) => {
   const { id } = useParams<{ id: string }>()
@@ -38,7 +38,7 @@ export const Person = ({ error, setError }: any) => {
         <>
           <CardListContainer>
             <CardContainer key={person?.name}>
-              <ImageContainer src={`${apiImgPeople}${id}.jpg`} alt={'poster'} />
+              <CardImage src={`${apiImgPeople}${id}.jpg`} alt={'poster'} />
               <div>
                 <b>Title:</b> {person?.name}
               </div>
