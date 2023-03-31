@@ -42,15 +42,14 @@ const CardTitle = styled.div`
   background: rgb(0, 0, 0);
   background: rgba(0, 0, 0, 0.8);
   color: var(--color-title-text);
-  font-size: var(--fs-lg);
+  font-size: var(--fs-md);
   font-weight: bold;
   text-align: center;
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: 0 0 var(--radii) var(--radii);
 
   @media (max-width: 767px) {
     font-size: var(--fs-md);
-    padding: 1rem;
   }
 
   @media (max-width: 480px) {
