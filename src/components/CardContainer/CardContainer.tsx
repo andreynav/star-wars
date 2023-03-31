@@ -7,12 +7,12 @@ export const CardContainer = ({ children }: PropsWithChildren) => {
 
 const StyledCardContainer = styled.div`
   display: grid;
-  border-radius: var(--radii);
-  box-shadow: var(--shadow);
-  cursor: pointer;
   height: 100%;
-  padding: 1rem 2rem;
-  border: 1px solid var(--colors-placeholder);
+  padding: 0.3rem;
+  border: 1px dotted var(--color-title-text);
+  border-radius: 0.8rem;
+  box-shadow: var(--card-shadow);
+  cursor: pointer;
 
   & div b {
     font-weight: var(--fw-normal);

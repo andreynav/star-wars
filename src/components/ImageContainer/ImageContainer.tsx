@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
-import { ImageContainerT } from '../../types/types'
+import { CardImageT } from '../../types/types'
 
-export const ImageContainer = ({ src, alt }: ImageContainerT) => {
-  return <StyledImageContainer src={src} alt={alt} />
+export const CardImage = ({ src, alt }: CardImageT) => {
+  return <StyledCardImage src={src} alt={alt} />
 }
 
-const StyledImageContainer = styled.img`
+const StyledCardImage = styled.img`
   display: grid;
-  border-radius: var(--radii) var(--radii) 0 0;
+  border-radius: var(--radii);
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;

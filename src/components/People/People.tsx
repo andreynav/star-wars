@@ -3,11 +3,9 @@ import { useEffect, useState } from 'react'
 import { apiImgPeople, swAPI } from '../../api/api'
 import { PersonT } from '../../types/types'
 import { getIdFromUrl } from '../../utils/getIdFromUrl'
-import { CardContainer } from '../CardContainer/CardContainer'
+import { Card } from '../Card/Card'
 import { CardListContainer } from '../CardListContainer/CardListContainer'
 import { Container } from '../Container/Container'
-import { ImageContainer } from '../ImageContainer/ImageContainer'
-import { StyledNavLink } from '../StyledNavLink/StyledNavLink'
 
 export const People = ({ error, setError }: any) => {
   const [peopleList, setPeopleList] = useState<PersonT[] | null>(null)
@@ -47,17 +45,12 @@ export const People = ({ error, setError }: any) => {
           <CardListContainer>
             {peopleList.map((person) => {
               return (
-                <StyledNavLink key={person.name} to={`/people/${getIdFromUrl(person.url)}`}>
-                  <CardContainer>
-                    <ImageContainer
-                      src={`${apiImgPeople}${getIdFromUrl(person.url)}.jpg`}
-                      alt={'poster'}
-                    />
-                    <div>
-                      <b>Title:</b> {person.name}
-                    </div>
-                  </CardContainer>
-                </StyledNavLink>
+                <Card
+                  key={person.name}
+                  category={person}
+                  toNavigate={`/people/${getIdFromUrl(person.url)}`}
+                  src={`${apiImgPeople}${getIdFromUrl(person.url)}.jpg`}
+                />
               )
             })}
           </CardListContainer>

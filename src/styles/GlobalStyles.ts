@@ -20,22 +20,27 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body[data-theme='dark'] {
-    --colors-text: hsl(0, 0%, 100%); //#ffffff
-    --colors-bg: hsl(207, 26%, 17%);
+    --colors-text: hsl(0, 0%, 100%);
+    --color-title-text: red;
+    --colors-bg: #202C37;
     --colors-ui-base: hsl(209, 23%, 22%);
     --colors-placeholder: hsl(0,0%,50%);
     --color-toggle: #fff;
 
     --shadow: rgba(245, 245, 245, 0.2) 0 0 8px;
+    --card-shadow: 5px -4px 17px 9px rgba(238, 59, 8, 0.3);
   }
+  
   body[data-theme='light'] {
     --colors-text: #111517;
-    --colors-bg: hsl(0, 0%, 98%);
+    --color-title-text: blue;
+    --colors-bg: #fafafa;
     --colors-ui-base: hsl(0, 0%, 100%);
     --colors-placeholder: hsl(0, 0%, 41%);
     --color-toggle: transparent;
 
     --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    --card-shadow: 5px -4px 17px 9px rgba(8, 96, 238, 0.3);
   }
   
   html, body {

@@ -58,7 +58,6 @@ const ToggleSpan = styled.span<StyledToggleSpanT>`
   right: 0;
   bottom: 0;
   background: transparent;
-  //border: 1px solid var(--colors-placeholder);
   transition: 0.3s;
   border-radius: ${({ height = 32 }) => `${height / 2}px`};
   box-shadow: var(--shadow);
