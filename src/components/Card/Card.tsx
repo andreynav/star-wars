@@ -48,10 +48,6 @@ const CardTitle = styled.div`
   padding: 1rem;
   border-radius: 0 0 var(--radii) var(--radii);
 
-  @media (max-width: 767px) {
-    font-size: var(--fs-md);
-  }
-
   @media (max-width: 480px) {
     font-size: var(--fs-lg);
   }
