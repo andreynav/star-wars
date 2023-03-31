@@ -11,8 +11,6 @@ import { ImageContainer } from '../ImageContainer/ImageContainer'
 export const Person = ({ error, setError }: any) => {
   const { id } = useParams<{ id: string }>()
   const [person, setPerson] = useState<PersonT | null>(null)
-  // const [page, setPage] = useState(1)
-  // const [next, SetNext] = useState(false)
 
   useEffect(() => {
     const fetchPerson = async () => {
@@ -22,7 +20,6 @@ export const Person = ({ error, setError }: any) => {
           setError(null)
           setPerson(data)
         }
-        // SetNext(!!data.next)
       } catch (error: any) {
         setError({ message: error.message })
       }
@@ -91,12 +88,6 @@ export const Person = ({ error, setError }: any) => {
                 <b>Vehicles:</b>{' '}
                 <a href={person?.vehicles[0]} target="_blank" rel="noopener noreferrer">
                   {person?.vehicles[0]}
-                </a>
-              </div>
-              <div>
-                <b>Url:</b>{' '}
-                <a href={person.url} target="_blank" rel="noopener noreferrer">
-                  {person.url}
                 </a>
               </div>
             </CardContainer>
