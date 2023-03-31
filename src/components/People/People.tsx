@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import { apiImgPeople, swAPI } from '../../api/api'
 import { PersonT } from '../../types/types'
 import { getIdFromUrl } from '../../utils/getIdFromUrl'
-import { getPersonImageIndex } from '../../utils/getPersonImageIndex'
 import { CardContainer } from '../CardContainer/CardContainer'
 import { CardListContainer } from '../CardListContainer/CardListContainer'
 import { Container } from '../Container/Container'
@@ -11,7 +10,7 @@ import { ImageContainer } from '../ImageContainer/ImageContainer'
 import { StyledNavLink } from '../StyledNavLink/StyledNavLink'
 
 export const People = ({ error, setError }: any) => {
-  const [peopleList, setPeopleList] = useState<PersonT[]>([])
+  const [peopleList, setPeopleList] = useState<PersonT[] | null>(null)
   const [page, setPage] = useState(1)
   const [next, SetNext] = useState(false)
 
@@ -30,6 +29,8 @@ export const People = ({ error, setError }: any) => {
     fetchPeopleList().then()
   }, [page])
 
+  if (!peopleList) return <div>loading...</div>
+
   return (
     <Container>
       {error ? (
@@ -44,12 +45,12 @@ export const People = ({ error, setError }: any) => {
             page {page}
           </button>
           <CardListContainer>
-            {peopleList.map((person, index) => {
+            {peopleList.map((person) => {
               return (
                 <StyledNavLink key={person.name} to={`/people/${getIdFromUrl(person.url)}`}>
                   <CardContainer>
                     <ImageContainer
-                      src={`${apiImgPeople}${getPersonImageIndex(page, index)}.jpg`}
+                      src={`${apiImgPeople}${getIdFromUrl(person.url)}.jpg`}
                       alt={'poster'}
                     />
                     <div>

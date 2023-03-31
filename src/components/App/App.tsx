@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
 
+import { Film } from '../Films/Film'
 import { Films } from '../Films/Films'
 import { Header } from '../Header/Header'
 import { Home } from '../Home/Home'
@@ -27,7 +28,7 @@ export const App = () => {
         {/*<Route path="/vehicles/" element={<Vehicles />} />*/}
         {/*<Route path="/vehicles/:name" element={<Vehicles />} />*/}
         <Route path="/films/" element={<Films error={error} setError={setError} />} />
-        <Route path="/films/:name" element={<Films error={error} setError={setError} />} />
+        <Route path="/films/:id" element={<Film error={error} setError={setError} />} />
         {/*<Route path="/*" element={<NotFound />} />*/}
       </Routes>
     </StyledApp>

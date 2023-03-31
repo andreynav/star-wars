@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react'
 
 import { apiImgFilms, swAPI } from '../../api/api'
 import { FilmT } from '../../types/types'
+import { getIdFromUrl } from '../../utils/getIdFromUrl'
 import { CardContainer } from '../CardContainer/CardContainer'
 import { CardListContainer } from '../CardListContainer/CardListContainer'
 import { Container } from '../Container/Container'
 import { ImageContainer } from '../ImageContainer/ImageContainer'
+import { StyledNavLink } from '../StyledNavLink/StyledNavLink'
 
 export const Films = ({ error, setError }: any) => {
-  const [filmsList, setFilmsList] = useState<FilmT[]>([])
+  const [filmsList, setFilmsList] = useState<FilmT[] | null>(null)
 
   useEffect(() => {
     const fetchFilmsList = async () => {
@@ -31,71 +33,27 @@ export const Films = ({ error, setError }: any) => {
   //   })
   // }
 
+  if (!filmsList) return <div>loading...</div>
+
   return (
     <Container>
       {error ? (
         <div className="error">{error.message}</div>
       ) : (
         <CardListContainer>
-          {filmsList.map((film, index) => {
+          {filmsList.map((film) => {
             return (
-              <CardContainer key={film.title}>
-                <ImageContainer src={`${apiImgFilms}${index + 1}.jpg`} alt={'poster'} />
-                <div>
-                  <b>Title:</b> {film.title}
-                </div>
-                <div>
-                  <b>Episode:</b> {film.episode_id}
-                </div>
-                <div>
-                  <b>Director:</b> {film.director}
-                </div>
-                <div>
-                  <b>Producer:</b> {film.producer}
-                </div>
-                <div>
-                  <b>Film released:</b> {film.release_date}
-                </div>
-                <div>
-                  <b>Opening crawl:</b> {film.opening_crawl}
-                </div>
-                <div>
-                  <b>Planets:</b>{' '}
-                  <a href={film.planets[0]} target="_blank" rel="noopener noreferrer">
-                    {film.planets[0]}
-                  </a>
-                </div>
-                <div>
-                  <b>Characters:</b>{' '}
-                  <a href={film.characters[0]} target="_blank" rel="noopener noreferrer">
-                    {film.characters[0]}
-                  </a>
-                </div>
-                <div>
-                  <b>Species:</b>{' '}
-                  <a href={film.species[0]} target="_blank" rel="noopener noreferrer">
-                    {film.species[0]}
-                  </a>
-                </div>
-                <div>
-                  <b>Starships:</b>{' '}
-                  <a href={film.starships[0]} target="_blank" rel="noopener noreferrer">
-                    {film.starships[0]}
-                  </a>
-                </div>
-                <div>
-                  <b>Vehicles:</b>{' '}
-                  <a href={film.vehicles[0]} target="_blank" rel="noopener noreferrer">
-                    {film.vehicles[0]}
-                  </a>
-                </div>
-                <div>
-                  <b>Url:</b>{' '}
-                  <a href={film.url} target="_blank" rel="noopener noreferrer">
-                    {film.url}
-                  </a>
-                </div>
-              </CardContainer>
+              <StyledNavLink key={film.title} to={`/films/${getIdFromUrl(film.url)}`}>
+                <CardContainer>
+                  <ImageContainer
+                    src={`${apiImgFilms}${getIdFromUrl(film.url)}.jpg`}
+                    alt={'poster'}
+                  />
+                  <div>
+                    <b>Title:</b> {film.title}
+                  </div>
+                </CardContainer>
+              </StyledNavLink>
             )
           })}
         </CardListContainer>
