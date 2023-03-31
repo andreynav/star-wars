@@ -74,3 +74,8 @@ export type CardT = {
   toNavigate: string
   category: FilmT | PersonT
 }
+
+export type DetailedCardSectionT = {
+  title: string
+  data: string
+}

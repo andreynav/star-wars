@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import styled from 'styled-components'
 
 import { apiImgPeople, swAPI } from '../../api/api'
 import { PersonT } from '../../types/types'
-import { CardContainer } from '../CardContainer/CardContainer'
-import { CardListContainer } from '../CardListContainer/CardListContainer'
 import { Container } from '../Container/Container'
+import { DetailedCardContainer } from '../DetailedCardContainer/DetailedCardContainer'
+import { DetailedCardSection } from '../DetailedCardSection/DetailedCardSection'
 import { CardImage } from '../ImageContainer/ImageContainer'
 
 export const Person = ({ error, setError }: any) => {
@@ -35,12 +36,12 @@ export const Person = ({ error, setError }: any) => {
       {error ? (
         <div className="error">{error.message}</div>
       ) : (
-        <>
-          <CardListContainer>
-            <CardContainer key={person?.name}>
-              <CardImage src={`${apiImgPeople}${id}.jpg`} alt={'poster'} />
+        <DetailedCardContainer>
+          <TopContainer>
+            <CardImage src={`${apiImgPeople}${id}.jpg`} alt={'poster'} />
+            <CardInfo>
               <div>
-                <b>Title:</b> {person?.name}
+                <b>Name:</b> {person?.name}
               </div>
               <div>
                 <b>Gender:</b> {person?.gender}
@@ -66,34 +67,48 @@ export const Person = ({ error, setError }: any) => {
               <div>
                 <b>Home world:</b> {person?.homeworld}
               </div>
-              <div>
-                <b>Films:</b>{' '}
-                <a href={person?.films[0]} target="_blank" rel="noopener noreferrer">
-                  {person?.films[0]}
-                </a>
-              </div>
-              <div>
-                <b>Species:</b>{' '}
-                <a href={person?.species[0]} target="_blank" rel="noopener noreferrer">
-                  {person?.species[0]}
-                </a>
-              </div>
-              <div>
-                <b>Starships:</b>{' '}
-                <a href={person?.starships[0]} target="_blank" rel="noopener noreferrer">
-                  {person?.starships[0]}
-                </a>
-              </div>
-              <div>
-                <b>Vehicles:</b>{' '}
-                <a href={person?.vehicles[0]} target="_blank" rel="noopener noreferrer">
-                  {person?.vehicles[0]}
-                </a>
-              </div>
-            </CardContainer>
-          </CardListContainer>
-        </>
+            </CardInfo>
+          </TopContainer>
+          <BottomContainer>
+            <DetailedCardSection title={'Related films'} data={person?.films[0]} />
+            <DetailedCardSection title={'Related species'} data={person?.species[0]} />
+            <DetailedCardSection title={'Related starships'} data={person?.starships[0]} />
+            <DetailedCardSection title={'Related vehicles'} data={person?.vehicles[0]} />
+          </BottomContainer>
+        </DetailedCardContainer>
       )}
     </Container>
   )
 }
+
+const TopContainer = styled.div`
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
+`
+
+const CardInfo = styled.div`
+  padding: 1rem;
+
+  & div {
+    padding: 0.5rem 0;
+  }
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    padding: 1rem 0;
+  }
+`
+
+const BottomContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    padding: 1rem 0;
+  }
+`
