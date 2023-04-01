@@ -7,7 +7,7 @@ const swapi = axios.create({
   withCredentials: false
 })
 
-const imageBaseApi = 'https://starwars-visualguide.com/assets/img/'
+export const imageBaseApi = 'https://starwars-visualguide.com/assets/img/'
 
 export const apiImgFilms = `${imageBaseApi}films/`
 export const apiImgPeople = `${imageBaseApi}characters/`

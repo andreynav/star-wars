@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
+import { imageBaseApi } from '../../api/api'
+import { getCategoryFromUrl } from '../../utils/getCategoryFromUrl'
+import { getIdFromUrl } from '../../utils/getIdFromUrl'
+import { Card } from '../Card/Card'
+
 export const DetailedCardSection = ({ title, data }: any) => {
   return (
     <Section>
@@ -8,9 +13,11 @@ export const DetailedCardSection = ({ title, data }: any) => {
         data.map((item: string) => {
           return (
             <SectionItem key={item}>
-              <a href={item} target="_blank" rel="noopener noreferrer">
-                {item}
-              </a>
+              <Card
+                category={getCategoryFromUrl(item)!}
+                toNavigate={`/${getCategoryFromUrl(item)}/${getIdFromUrl(item)}`}
+                src={`${imageBaseApi}${getCategoryFromUrl(item)}/${getIdFromUrl(item)}.jpg`}
+              />
             </SectionItem>
           )
         })
@@ -35,4 +42,5 @@ const Section = styled.div`
 const SectionItem = styled.div`
   display: grid;
   padding: 1rem 0;
+  background-color: var(--colors-ui-base);
 `

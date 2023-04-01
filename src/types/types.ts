@@ -72,7 +72,7 @@ export type CardImageT = {
 export type CardT = {
   src: string
   toNavigate: string
-  category: FilmT | PersonT
+  category: FilmT | PersonT | string
 }
 
 export type DetailedCardSectionT = {

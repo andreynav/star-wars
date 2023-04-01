@@ -76,7 +76,7 @@ export const Film = ({ error, setError }: any) => {
 
 const TopContainer = styled.div`
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto auto;
 
   @media (max-width: 767px) {
     grid-template-columns: 1fr;
@@ -98,7 +98,7 @@ const CardInfo = styled.div`
 
 const BottomContainer = styled.div`
   display: grid;
-  grid-gap: 1rem;
+  grid-gap: 2rem;
   grid-template-columns: 1fr 1fr 1fr;
 
   @media (max-width: 767px) {
