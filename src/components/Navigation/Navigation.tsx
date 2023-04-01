@@ -2,27 +2,18 @@ import styled from 'styled-components'
 
 import { StyledNavLink } from '../StyledNavLink/StyledNavLink'
 
+const navigationItems = ['people', 'species', 'planets', 'starships', 'vehicles', 'films']
+
 export const Navigation = () => {
   return (
     <NavigationWrapper>
-      <div>
-        <StyledNavLink to={`/people/`}>PEOPLE</StyledNavLink>
-      </div>
-      <div>
-        <StyledNavLink to={`/species/`}>SPECIES</StyledNavLink>
-      </div>
-      <div>
-        <StyledNavLink to={`/planets/`}>PLANETS</StyledNavLink>
-      </div>
-      <div>
-        <StyledNavLink to={`/starships/`}>STARSHIPS</StyledNavLink>
-      </div>
-      <div>
-        <StyledNavLink to={`/vehicles/`}>VEHICLES</StyledNavLink>
-      </div>
-      <div>
-        <StyledNavLink to={`/films/`}>FILMS</StyledNavLink>
-      </div>
+      {navigationItems.map((item) => {
+        return (
+          <div key={item}>
+            <StyledNavLink to={`/${item}/`}>{item.toUpperCase()}</StyledNavLink>
+          </div>
+        )
+      })}
     </NavigationWrapper>
   )
 }

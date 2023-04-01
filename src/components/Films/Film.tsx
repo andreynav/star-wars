@@ -62,11 +62,11 @@ export const Film = ({ error, setError }: any) => {
             </CardInfo>
           </TopContainer>
           <BottomContainer>
-            <DetailedCardSection title={'Related planets'} data={film?.planets[0]} />
-            <DetailedCardSection title={'Related characters'} data={film.characters[0]} />
-            <DetailedCardSection title={'Related species'} data={film?.species[0]} />
-            <DetailedCardSection title={'Related starships'} data={film?.starships[0]} />
-            <DetailedCardSection title={'Related vehicles'} data={film?.vehicles[0]} />
+            <DetailedCardSection title={'Related planets'} data={film?.planets} />
+            <DetailedCardSection title={'Related characters'} data={film.characters} />
+            <DetailedCardSection title={'Related species'} data={film?.species} />
+            <DetailedCardSection title={'Related starships'} data={film?.starships} />
+            <DetailedCardSection title={'Related vehicles'} data={film?.vehicles} />
           </BottomContainer>
         </DetailedCardContainer>
       )}
