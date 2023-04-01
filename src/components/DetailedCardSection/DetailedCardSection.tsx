@@ -4,26 +4,35 @@ export const DetailedCardSection = ({ title, data }: any) => {
   return (
     <Section>
       <div>{title}</div>
-      <div>
-        <a href={data} target="_blank" rel="noopener noreferrer">
-          {data ? data : 'There is no such information in the Jedi archives'}
-        </a>
-      </div>
+      {data.length > 0 ? (
+        data.map((item: string) => {
+          return (
+            <SectionItem key={item}>
+              <a href={item} target="_blank" rel="noopener noreferrer">
+                {item}
+              </a>
+            </SectionItem>
+          )
+        })
+      ) : (
+        <SectionItem>There is no data in the Jedi archives</SectionItem>
+      )}
     </Section>
   )
 }
 
 const Section = styled.div`
   display: grid;
-  grid-template-rows: auto 1fr;
+  align-content: start;
 
   & div:nth-child(1) {
     font-weight: bold;
+    line-height: 2rem;
+    border-bottom: 1px solid grey;
   }
+`
 
-  & div:nth-child(2) {
-    display: grid;
-    padding: 1rem 0;
-    align-content: center;
-  }
+const SectionItem = styled.div`
+  display: grid;
+  padding: 1rem 0;
 `
