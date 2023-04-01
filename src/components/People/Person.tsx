@@ -70,10 +70,10 @@ export const Person = ({ error, setError }: any) => {
             </CardInfo>
           </TopContainer>
           <BottomContainer>
-            <DetailedCardSection title={'Related films'} data={person?.films[0]} />
-            <DetailedCardSection title={'Related species'} data={person?.species[0]} />
-            <DetailedCardSection title={'Related starships'} data={person?.starships[0]} />
-            <DetailedCardSection title={'Related vehicles'} data={person?.vehicles[0]} />
+            <DetailedCardSection title={'Related films'} data={person?.films} />
+            <DetailedCardSection title={'Related species'} data={person?.species} />
+            <DetailedCardSection title={'Related starships'} data={person?.starships} />
+            <DetailedCardSection title={'Related vehicles'} data={person?.vehicles} />
           </BottomContainer>
         </DetailedCardContainer>
       )}
