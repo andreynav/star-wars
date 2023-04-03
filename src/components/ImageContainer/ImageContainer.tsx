@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 
-import { noData } from '../../assets'
+import { noImgData } from '../../assets'
 import { CardImageT } from '../../types/types'
 
 export const CardImage = ({ src, alt }: CardImageT) => {
   const [imgSrc, setImgSrc] = useState(src)
 
   const handleImageError = () => {
-    setImgSrc(noData)
+    setImgSrc(noImgData)
   }
 
   return <StyledCardImage src={imgSrc} alt={alt} onError={handleImageError} />
