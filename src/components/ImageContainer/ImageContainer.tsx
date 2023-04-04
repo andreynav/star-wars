@@ -17,7 +17,10 @@ export const CardImage = ({ src, alt }: CardImageT) => {
 const StyledCardImage = styled.img`
   display: grid;
   border-radius: var(--radii);
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+
+  @media (max-width: 480px) {
+    width: 416px;
+    height: 560px;
+  }
 `

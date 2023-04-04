@@ -48,7 +48,7 @@ const NavigationWrapper = styled.div`
     border-bottom: none;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
 
     & ${StyledNavLink} {

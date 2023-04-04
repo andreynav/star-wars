@@ -78,7 +78,7 @@ const TopContainer = styled.div`
   display: grid;
   grid-template-columns: auto auto;
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
 `
@@ -90,7 +90,7 @@ const CardInfo = styled.div`
     padding: 0.5rem 0;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
     padding: 1rem 0;
   }
@@ -101,7 +101,7 @@ const BottomContainer = styled.div`
   grid-gap: 2rem;
   grid-template-columns: 1fr 1fr 1fr;
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
     padding: 1rem 0;
   }

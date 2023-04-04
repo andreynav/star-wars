@@ -46,7 +46,7 @@ const ToggleInput = styled.input<StyledToggleT>`
   }
 
   &:checked + span:before {
-    transform: translateX(${({ width = 64 }) => `${width / 2}px`});
+    transform: translateX(${({ width = 32 }) => `${width / 2}px`});
   }
 `
 
@@ -60,7 +60,7 @@ const ToggleSpan = styled.span<StyledToggleSpanT>`
   background: transparent;
   transition: 0.3s;
   border-radius: ${({ height = 32 }) => `${height / 2}px`};
-  box-shadow: var(--shadow);
+  border: 1px solid var(--colors-placeholder);
 
   &:before {
     position: absolute;
