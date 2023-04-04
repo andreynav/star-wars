@@ -12,7 +12,7 @@ const StyledCardListContainer = styled.div`
   padding-bottom: 2rem;
   padding-top: 2rem;
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
 

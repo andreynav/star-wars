@@ -30,7 +30,7 @@ export const Header = () => {
           </StyledNavLink>
         </LogoWrapper>
         <ThemeSwitcher>
-          <Toggle onChange={onSwitchTheme} width={96} height={48} />
+          <Toggle onChange={onSwitchTheme} width={64} />
         </ThemeSwitcher>
       </TopHeader>
       <Navigation />
@@ -46,12 +46,12 @@ const StyledHeaderContainer = styled.div`
 
 const TopHeader = styled.div`
   display: grid;
-  grid-gap: 1rem;
+  grid-gap: 1rem 2rem;
   grid-template-columns: 0.5fr 1fr 0.5fr;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 2rem;
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
 
@@ -67,14 +67,6 @@ const TopHeader = styled.div`
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
-
-    //& div:nth-child(1) {
-    //  grid-area: 2 / 1/ 3 / 1;
-    //}
-    //
-    //& div:nth-child(2) {
-    //  grid-area: 1 / 1/ 2 / 2;
-    //}
   }
 `
 
@@ -95,9 +87,9 @@ const Logo = styled.img`
   display: grid;
   border-radius: var(--radii) var(--radii) 0 0;
   min-width: 300px;
-  height: 96px;
+  height: 80px;
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     height: 64px;
   }
 

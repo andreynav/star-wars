@@ -6,21 +6,27 @@ import { getIdFromUrl } from '../../utils/getIdFromUrl'
 import { Card } from '../Card/Card'
 
 export const DetailedCardSection = ({ title, data }: any) => {
+  const thumbnails = (
+    <ThumbnailContainer>
+      {data.map((item: string) => {
+        return (
+          <SectionItem key={item}>
+            <Card
+              category={getCategoryFromUrl(item)!}
+              toNavigate={`/${getCategoryFromUrl(item)}/${getIdFromUrl(item)}`}
+              src={`${imageBaseApi}${getCategoryFromUrl(item)}/${getIdFromUrl(item)}.jpg`}
+            />
+          </SectionItem>
+        )
+      })}
+    </ThumbnailContainer>
+  )
+
   return (
     <Section>
       <div>{title}</div>
       {data.length > 0 ? (
-        data.map((item: string) => {
-          return (
-            <SectionItem key={item}>
-              <Card
-                category={getCategoryFromUrl(item)!}
-                toNavigate={`/${getCategoryFromUrl(item)}/${getIdFromUrl(item)}`}
-                src={`${imageBaseApi}${getCategoryFromUrl(item)}/${getIdFromUrl(item)}.jpg`}
-              />
-            </SectionItem>
-          )
-        })
+        thumbnails
       ) : (
         <SectionItem>There is no data in the Jedi archives</SectionItem>
       )}
@@ -35,12 +41,15 @@ const Section = styled.div`
   & div:nth-child(1) {
     font-weight: bold;
     line-height: 2rem;
-    border-bottom: 1px solid grey;
   }
 `
 
 const SectionItem = styled.div`
   display: grid;
-  padding: 1rem 0;
-  background-color: var(--colors-ui-base);
+`
+
+const ThumbnailContainer = styled.div`
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
 `

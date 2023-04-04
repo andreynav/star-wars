@@ -20,10 +20,10 @@ const InputContainer = styled.label`
   display: grid;
   align-items: center;
   background-color: var(--colors-ui-base);
-  box-shadow: var(--shadow);
+  border: 1px solid var(--colors-placeholder);
   margin-bottom: 0;
   padding: 1rem;
-  height: 48px;
+  height: 2rem;
   align-content: center;
   border-radius: 24px;
   cursor: pointer;
