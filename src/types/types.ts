@@ -74,8 +74,12 @@ export type CardT = {
   toNavigate: string
   category: FilmT | PersonT | string
 }
-
 export type DetailedCardSectionT = {
   title: string
-  data: string
+  data: string[]
+}
+
+export type ShowMoreT = {
+  onClick: () => void
+  nameIsShow?: boolean
 }
