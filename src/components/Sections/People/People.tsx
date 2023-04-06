@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 
-import { apiImgPeople, swAPI } from '../../api/api'
-import { PersonT } from '../../types/types'
-import { getIdFromUrl } from '../../utils/getIdFromUrl'
-import { Card } from '../Card/Card'
-import { CardListContainer } from '../CardListContainer/CardListContainer'
-import { Container } from '../Container/Container'
+import { apiImgPeople, swAPI } from '../../../api/api'
+import { PersonT } from '../../../types/types'
+import { getIdFromUrl } from '../../../utils/getIdFromUrl'
+import { Card } from '../../Card/Card'
+import { CardListContainer } from '../../common/CardListContainer/CardListContainer'
+import { Container } from '../../common/Container/Container'
 
 export const People = ({ error, setError }: any) => {
   const [peopleList, setPeopleList] = useState<PersonT[] | null>(null)

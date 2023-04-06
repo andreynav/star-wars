@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 
-import { noImgData } from '../../assets'
-import { CardImageT } from '../../types/types'
+import { noImgData } from '../../../assets'
+import { CardImageT } from '../../../types/types'
 
 export const CardImage = ({ src, alt }: CardImageT) => {
   const [imgSrc, setImgSrc] = useState(src)

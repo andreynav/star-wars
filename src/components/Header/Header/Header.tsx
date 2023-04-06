@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import { starWars } from '../../assets'
+import { starWars } from '../../../assets'
+import { StyledNavLink } from '../../common/StyledNavLink/StyledNavLink'
 import { Navigation } from '../Navigation/Navigation'
 import { Search } from '../Search/Search'
-import { StyledNavLink } from '../StyledNavLink/StyledNavLink'
 import { Toggle } from '../Toggle/Toggle'
 
 export const Header = () => {

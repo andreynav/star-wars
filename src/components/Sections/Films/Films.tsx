@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 
-import { apiImgFilms, swAPI } from '../../api/api'
-import { FilmT } from '../../types/types'
-import { getIdFromUrl } from '../../utils/getIdFromUrl'
-import { Card } from '../Card/Card'
-import { CardListContainer } from '../CardListContainer/CardListContainer'
-import { Container } from '../Container/Container'
+import { apiImgFilms, swAPI } from '../../../api/api'
+import { FilmT } from '../../../types/types'
+import { getIdFromUrl } from '../../../utils/getIdFromUrl'
+import { Card } from '../../Card/Card'
+import { CardListContainer } from '../../common/CardListContainer/CardListContainer'
+import { Container } from '../../common/Container/Container'
 
 export const Films = ({ error, setError }: any) => {
   const [filmsList, setFilmsList] = useState<FilmT[] | null>(null)

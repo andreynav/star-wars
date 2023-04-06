@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 
-import { imageBaseApi } from '../../api/api'
-import { DetailedCardSectionT } from '../../types/types'
-import { getCategoryFromUrl } from '../../utils/getCategoryFromUrl'
-import { getIdFromUrl } from '../../utils/getIdFromUrl'
-import { Card } from '../Card/Card'
+import { imageBaseApi } from '../../../api/api'
+import { DetailedCardSectionT } from '../../../types/types'
+import { getCategoryFromUrl } from '../../../utils/getCategoryFromUrl'
+import { getIdFromUrl } from '../../../utils/getIdFromUrl'
+import { Card } from '../../Card/Card'
 import { ShowMore } from '../ShowMore/ShowMore'
 
 export const DetailedCardSection = ({ title, data }: DetailedCardSectionT) => {
@@ -16,10 +16,10 @@ export const DetailedCardSection = ({ title, data }: DetailedCardSectionT) => {
 
   const getThumbnails = (data: any, sliceArgs: any) => {
     return (
-      <ThumbnailContainer>
+      <ThumbnailContainer className={'thumbContainer'}>
         {data.slice(...sliceArgs).map((item: string) => {
           return (
-            <SectionItem key={item}>
+            <SectionItem key={item} className={'sectionItem'}>
               <Card
                 category={getCategoryFromUrl(item)!}
                 toNavigate={`/${getCategoryFromUrl(item)}/${getIdFromUrl(item)}`}
@@ -37,17 +37,19 @@ export const DetailedCardSection = ({ title, data }: DetailedCardSectionT) => {
       <SectionTitle>{title}</SectionTitle>
       {data.length > 0 ? (
         <>
-          <TopContainer>
+          <TopContainer className={'top'}>
             {getThumbnails(data, [0, 3])}
             {isShowMoreVisible && <ShowMore onClick={toggleShowMore} nameIsShow />}
           </TopContainer>
-          <BottomContainer>
+          <BottomContainer className={'bottom'}>
             {!isShowMoreVisible && getThumbnails(data, [3])}
-            {!isShowMoreVisible && data.length !== 3 && <ShowMore onClick={toggleShowMore} />}
+            {!isShowMoreVisible && data.length > 3 && <ShowMore onClick={toggleShowMore} />}
           </BottomContainer>
         </>
       ) : (
-        <SectionItem>There is no data in the Jedi archives</SectionItem>
+        <SectionItem>
+          <SectionItemNoData>There is no data in the Jedi archives</SectionItemNoData>
+        </SectionItem>
       )}
     </Section>
   )
@@ -74,6 +76,12 @@ const BottomContainer = styled.div`
 
 const SectionItem = styled.div`
   display: grid;
+`
+
+const SectionItemNoData = styled.div`
+  display: grid;
+  grid-gap: 1rem;
+  padding-top: 1rem;
 `
 
 const ThumbnailContainer = styled.div`

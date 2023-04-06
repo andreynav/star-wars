@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { apiImgPeople, swAPI } from '../../api/api'
-import { PersonT } from '../../types/types'
-import { Container } from '../Container/Container'
-import { DetailedCardContainer } from '../DetailedCardContainer/DetailedCardContainer'
-import { DetailedCardSection } from '../DetailedCardSection/DetailedCardSection'
-import { CardImage } from '../ImageContainer/ImageContainer'
+import { apiImgPeople, swAPI } from '../../../api/api'
+import { PersonT } from '../../../types/types'
+import { DetailedCardContainer } from '../../DetailedCard/DetailedCardContainer/DetailedCardContainer'
+import { DetailedCardContainerBottom } from '../../DetailedCard/DetailedCardContainerBottom/DetailedCardContainerBottom'
+import { DetailedCardContainerTop } from '../../DetailedCard/DetailedCardContainerTop/DetailedCardContainerTop'
+import { CardImage } from '../../common/CardImage/CardImage'
+import { Container } from '../../common/Container/Container'
 
 export const Person = ({ error, setError }: any) => {
   const { id } = useParams<{ id: string }>()
@@ -31,13 +32,19 @@ export const Person = ({ error, setError }: any) => {
 
   if (!person) return <div>loading...</div>
 
+  const bottomDataProps = ['films', 'species', 'starships', 'vehicles']
+  const bottomData = bottomDataProps.map((prop) => {
+    const data = person[prop]
+    return { title: `Related ${prop}`, data: Array.isArray(data) ? data : undefined }
+  })
+
   return (
     <Container>
       {error ? (
         <div className="error">{error.message}</div>
       ) : (
         <DetailedCardContainer>
-          <TopContainer>
+          <DetailedCardContainerTop>
             <CardImage src={`${apiImgPeople}${id}.jpg`} alt={'poster'} />
             <CardInfo>
               <div>
@@ -68,27 +75,13 @@ export const Person = ({ error, setError }: any) => {
                 <b>Home world:</b> {person?.homeworld}
               </div>
             </CardInfo>
-          </TopContainer>
-          <BottomContainer>
-            <DetailedCardSection title={'Related films'} data={person?.films} />
-            <DetailedCardSection title={'Related species'} data={person?.species} />
-            <DetailedCardSection title={'Related starships'} data={person?.starships} />
-            <DetailedCardSection title={'Related vehicles'} data={person?.vehicles} />
-          </BottomContainer>
+          </DetailedCardContainerTop>
+          <DetailedCardContainerBottom bottomData={bottomData} />
         </DetailedCardContainer>
       )}
     </Container>
   )
 }
-
-const TopContainer = styled.div`
-  display: grid;
-  grid-template-columns: auto auto;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`
 
 const CardInfo = styled.div`
   padding: 1rem;
@@ -96,17 +89,6 @@ const CardInfo = styled.div`
   & div {
     padding: 0.5rem 0;
   }
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    padding: 1rem 0;
-  }
-`
-
-const BottomContainer = styled.div`
-  display: grid;
-  grid-gap: 2rem;
-  grid-template-columns: 1fr 1fr 1fr;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;

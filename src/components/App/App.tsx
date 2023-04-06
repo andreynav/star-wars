@@ -2,12 +2,12 @@ import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { Film } from '../Films/Film'
-import { Films } from '../Films/Films'
-import { Header } from '../Header/Header'
+import { Header } from '../Header/Header/Header'
 import { Home } from '../Home/Home'
-import { People } from '../People/People'
-import { Person } from '../People/Person'
+import { Film } from '../Sections/Films/Film'
+import { Films } from '../Sections/Films/Films'
+import { People } from '../Sections/People/People'
+import { Person } from '../Sections/People/Person'
 
 export const App = () => {
   const [error, setError] = useState<{ message: string; status?: number } | null>(null)
