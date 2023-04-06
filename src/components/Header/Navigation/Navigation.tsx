@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { StyledNavLink } from '../StyledNavLink/StyledNavLink'
+import { StyledNavLink } from '../../common/StyledNavLink/StyledNavLink'
 
 const navigationItems = ['people', 'species', 'planets', 'starships', 'vehicles', 'films']
 

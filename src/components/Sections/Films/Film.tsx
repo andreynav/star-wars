@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { apiImgFilms, swAPI } from '../../api/api'
-import { FilmT } from '../../types/types'
-import { getIdFromUrl } from '../../utils/getIdFromUrl'
-import { Container } from '../Container/Container'
-import { DetailedCardContainer } from '../DetailedCardContainer/DetailedCardContainer'
-import { DetailedCardSection } from '../DetailedCardSection/DetailedCardSection'
-import { CardImage } from '../ImageContainer/ImageContainer'
+import { apiImgFilms, swAPI } from '../../../api/api'
+import { CategoryT, FilmT } from '../../../types/types'
+import { getIdFromUrl } from '../../../utils/getIdFromUrl'
+import { DetailedCardContainer } from '../../DetailedCard/DetailedCardContainer/DetailedCardContainer'
+import { DetailedCardContainerBottom } from '../../DetailedCard/DetailedCardContainerBottom/DetailedCardContainerBottom'
+import { DetailedCardContainerTop } from '../../DetailedCard/DetailedCardContainerTop/DetailedCardContainerTop'
+// import { DetailedCardSection } from '../../DetailedCard/DetailedCardSection/DetailedCardSection'
+import { CardImage } from '../../common/CardImage/CardImage'
+import { Container } from '../../common/Container/Container'
 
 export const Film = ({ error, setError }: any) => {
   const { id } = useParams<{ id: string }>()
@@ -32,13 +34,19 @@ export const Film = ({ error, setError }: any) => {
 
   if (!film) return <div>loading...</div>
 
+  const bottomDataProps = ['planets', 'characters', 'species', 'starships', 'vehicles']
+  const bottomData = bottomDataProps.map((prop) => {
+    const data = film[prop as keyof CategoryT]
+    return { title: `Related ${prop}`, data: Array.isArray(data) ? data : undefined }
+  })
+
   return (
     <Container>
       {error ? (
         <div className="error">{error.message}</div>
       ) : (
         <DetailedCardContainer>
-          <TopContainer>
+          <DetailedCardContainerTop>
             <CardImage src={`${apiImgFilms}${getIdFromUrl(film.url)}.jpg`} alt={'poster'} />
             <CardInfo>
               <div>
@@ -60,28 +68,13 @@ export const Film = ({ error, setError }: any) => {
                 <b>Opening crawl:</b> {film?.opening_crawl}
               </div>
             </CardInfo>
-          </TopContainer>
-          <BottomContainer>
-            <DetailedCardSection title={'Related planets'} data={film?.planets} />
-            <DetailedCardSection title={'Related characters'} data={film.characters} />
-            <DetailedCardSection title={'Related species'} data={film?.species} />
-            <DetailedCardSection title={'Related starships'} data={film?.starships} />
-            <DetailedCardSection title={'Related vehicles'} data={film?.vehicles} />
-          </BottomContainer>
+          </DetailedCardContainerTop>
+          <DetailedCardContainerBottom bottomData={bottomData} />
         </DetailedCardContainer>
       )}
     </Container>
   )
 }
-
-const TopContainer = styled.div`
-  display: grid;
-  grid-template-columns: auto auto;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`
 
 const CardInfo = styled.div`
   padding: 1rem;
@@ -89,17 +82,6 @@ const CardInfo = styled.div`
   & div {
     padding: 0.5rem 0;
   }
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    padding: 1rem 0;
-  }
-`
-
-const BottomContainer = styled.div`
-  display: grid;
-  grid-gap: 2rem;
-  grid-template-columns: 1fr 1fr 1fr;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;

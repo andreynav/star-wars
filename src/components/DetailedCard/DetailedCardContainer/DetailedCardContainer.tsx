@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 
 export const DetailedCardContainer = ({ children }: PropsWithChildren) => {
-  return <StyledDetailedCardContainer className={'green'}>{children}</StyledDetailedCardContainer>
+  return <StyledDetailedCardContainer>{children}</StyledDetailedCardContainer>
 }
 
 const StyledDetailedCardContainer = styled.div`

@@ -1,18 +1,18 @@
 import styled from 'styled-components'
 
 import { CardT } from '../../types/types'
-import { CardContainer } from '../CardContainer/CardContainer'
-import { CardImage } from '../ImageContainer/ImageContainer'
-import { StyledNavLink } from '../StyledNavLink/StyledNavLink'
+import { CardContainer } from '../common/CardContainer/CardContainer'
+import { CardImage } from '../common/CardImage/CardImage'
+import { StyledNavLink } from '../common/StyledNavLink/StyledNavLink'
 
 export const Card = ({ src, category, toNavigate }: CardT) => {
   let categoryTitle = ''
   switch (typeof category) {
     case 'object':
       if ('title' in category) {
-        categoryTitle = category.title
+        categoryTitle = category.title as string
       } else if ('name' in category) {
-        categoryTitle = category.name
+        categoryTitle = category.name as string
       }
       break
   }

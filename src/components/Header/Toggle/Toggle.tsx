@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 
-import { babyYodaBlack, darthVaderBlack } from '../../assets'
-import { StyledToggleSpanT, StyledToggleT, ToggleProps } from '../../types/types'
+import { babyYodaBlack, darthVaderBlack } from '../../../assets'
+import { StyledToggleSpanT, StyledToggleT, ToggleProps } from '../../../types/types'
 
 export const Toggle = ({ onChange, width, height }: ToggleProps) => {
   const [isToggled, setIsToggled] = useState(true)

@@ -39,6 +39,7 @@ export type PersonT = {
   url: string
   created: string
   edited: string
+  [key: string]: string | string[]
 }
 
 export type PeopleListT = {
@@ -69,10 +70,12 @@ export type CardImageT = {
   alt: string
 }
 
+export type CategoryT = FilmT | PersonT
+
 export type CardT = {
   src: string
   toNavigate: string
-  category: FilmT | PersonT | string
+  category: CategoryT | string
 }
 export type DetailedCardSectionT = {
   title: string
@@ -82,4 +85,13 @@ export type DetailedCardSectionT = {
 export type ShowMoreT = {
   onClick: () => void
   nameIsShow?: boolean
+}
+
+export type DetailedCardContainerBottomT = {
+  title: string
+  data: string[] | undefined
+}
+
+export type BottomDataT = {
+  bottomData: DetailedCardContainerBottomT[]
 }
