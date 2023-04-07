@@ -19,8 +19,8 @@ export const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/people/" element={<People error={error} setError={setError} />} />
         <Route path="/people/:id" element={<Person error={error} setError={setError} />} />
-        {/*<Route path="/species/" element={<Species />} />*/}
-        {/*<Route path="/species/:name" element={<Species />} />*/}
+        <Route path="/species/" element={<Species error={error} setError={setError} />} />
+        <Route path="/species/:id" element={<SpeciesOne error={error} setError={setError} />} />
         {/*<Route path="/planets/" element={<Planets />} />*/}
         {/*<Route path="/planets/:name" element={<Planets />} />*/}
         {/*<Route path="/starships/" element={<Starships />} />*/}
