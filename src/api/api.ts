@@ -11,6 +11,7 @@ export const imageBaseApi = 'https://starwars-visualguide.com/assets/img/'
 
 export const apiImgFilms = `${imageBaseApi}films/`
 export const apiImgPeople = `${imageBaseApi}characters/`
+export const apiImgSpecies = `${imageBaseApi}species/`
 export const apiImgPlanets = `${imageBaseApi}planets/`
 
 export const swAPI = {

@@ -8,6 +8,8 @@ import { Film } from '../Sections/Films/Film'
 import { Films } from '../Sections/Films/Films'
 import { People } from '../Sections/People/People'
 import { Person } from '../Sections/People/Person'
+import { Species } from '../Sections/Species/Species'
+import { SpeciesOne } from '../Sections/Species/SpeciesOne'
 
 export const App = () => {
   const [error, setError] = useState<{ message: string; status?: number } | null>(null)
