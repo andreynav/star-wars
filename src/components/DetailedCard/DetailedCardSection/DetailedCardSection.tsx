@@ -13,6 +13,7 @@ export const DetailedCardSection = ({ title, data }: DetailedCardSectionT) => {
   const toggleShowMore = () => {
     setIsShowMoreVisible(!isShowMoreVisible)
   }
+  console.log(data)
 
   const getThumbnails = (data: any, sliceArgs: any) => {
     return (

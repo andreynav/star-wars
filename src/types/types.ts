@@ -95,7 +95,7 @@ export type CardImageT = {
   alt: string
 }
 
-export type CategoryT = FilmT | PersonT
+export type CategoryT = FilmT | PersonT | SpeciesOneT
 
 export type CardT = {
   src: string
