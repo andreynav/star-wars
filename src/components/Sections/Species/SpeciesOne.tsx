@@ -35,7 +35,8 @@ export const SpeciesOne = ({ error, setError }: any) => {
   const bottomDataProps = ['people', 'films']
   const bottomData = bottomDataProps.map((prop) => {
     const data = speciesOne[prop as keyof CategoryT]
-    return { title: `Related ${prop}`, data: Array.isArray(data) ? data : undefined }
+    const title = prop === 'people' ? 'characters' : prop
+    return { title: `Related ${title}`, data: Array.isArray(data) ? data : undefined }
   })
 
   return (

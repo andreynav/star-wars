@@ -8,9 +8,10 @@ export const Navigation = () => {
   return (
     <NavigationWrapper>
       {navigationItems.map((item) => {
+        const itemTitle = item === 'people' ? 'characters' : item
         return (
           <div key={item}>
-            <StyledNavLink to={`/${item}/`}>{item.toUpperCase()}</StyledNavLink>
+            <StyledNavLink to={`/${item}/`}>{itemTitle.toUpperCase()}</StyledNavLink>
           </div>
         )
       })}
