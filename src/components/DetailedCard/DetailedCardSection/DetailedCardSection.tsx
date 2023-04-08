@@ -13,18 +13,19 @@ export const DetailedCardSection = ({ title, data }: DetailedCardSectionT) => {
   const toggleShowMore = () => {
     setIsShowMoreVisible(!isShowMoreVisible)
   }
-  console.log(data)
 
   const getThumbnails = (data: any, sliceArgs: any) => {
     return (
       <ThumbnailContainer className={'thumbContainer'}>
         {data.slice(...sliceArgs).map((item: string) => {
+          const imgCategory = getCategoryFromUrl(item)
+          const imgPathCategory = imgCategory === 'people' ? 'characters' : imgCategory
           return (
             <SectionItem key={item} className={'sectionItem'}>
               <Card
                 category={getCategoryFromUrl(item)!}
                 toNavigate={`/${getCategoryFromUrl(item)}/${getIdFromUrl(item)}`}
-                src={`${imageBaseApi}${getCategoryFromUrl(item)}/${getIdFromUrl(item)}.jpg`}
+                src={`${imageBaseApi}${imgPathCategory}/${getIdFromUrl(item)}.jpg`}
               />
             </SectionItem>
           )
