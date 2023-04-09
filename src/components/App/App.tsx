@@ -18,11 +18,11 @@ export const App = () => {
         <Route path="/people/:id" element={<Person />} />
         <Route path="/species/" element={<SectionList category="species" />} />
         <Route path="/species/:id" element={<SpeciesOne />} />
-        {/*<Route path="/planets/" element={<Planets />} />*/}
+        <Route path="/planets/" element={<SectionList category="planets" />} />
         {/*<Route path="/planets/:name" element={<Planets />} />*/}
-        {/*<Route path="/starships/" element={<Starships />} />*/}
+        <Route path="/starships/" element={<SectionList category="starships" />} />
         {/*<Route path="/starships/:name" element={<Starships />} />*/}
-        {/*<Route path="/vehicles/" element={<Vehicles />} />*/}
+        <Route path="/vehicles/" element={<SectionList category="vehicles" />} />
         {/*<Route path="/vehicles/:name" element={<Vehicles />} />*/}
         <Route path="/films/" element={<SectionList category="films" />} />
         <Route path="/films/:id" element={<Film />} />
