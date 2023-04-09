@@ -1,12 +1,6 @@
 import axios from 'axios'
 
-import {
-  CategoryResponseT,
-  FilmT, // FilmsListT,
-  // PeopleListT,
-  PersonT, // SpeciesListT,
-  SpeciesOneT
-} from '../types/types'
+import { CategoryResponseT, FilmT, PersonT, SpeciesOneT } from '../types/types'
 import { getIdFromUrl } from '../utils/getIdFromUrl'
 
 const swapi = axios.create({
@@ -16,10 +10,12 @@ const swapi = axios.create({
 
 export const imageBaseApi = 'https://starwars-visualguide.com/assets/img/'
 
-export const apiImgFilms = `${imageBaseApi}films/`
 export const apiImgPeople = `${imageBaseApi}characters/`
 export const apiImgSpecies = `${imageBaseApi}species/`
 export const apiImgPlanets = `${imageBaseApi}planets/`
+export const apiImgStarships = `${imageBaseApi}starships/`
+export const apiImgVehicles = `${imageBaseApi}vehicles/`
+export const apiImgFilms = `${imageBaseApi}films/`
 
 export const getImageCategoryPath = (category: string) => {
   let path: string | null = null
@@ -29,6 +25,15 @@ export const getImageCategoryPath = (category: string) => {
       break
     case 'species':
       path = apiImgSpecies
+      break
+    case 'planets':
+      path = apiImgPlanets
+      break
+    case 'starships':
+      path = apiImgStarships
+      break
+    case 'vehicles':
+      path = apiImgVehicles
       break
     case 'films':
       path = apiImgFilms
