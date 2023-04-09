@@ -10,8 +10,9 @@ import { DetailedCardContainerTop } from '../../DetailedCard/DetailedCardContain
 import { CardImage } from '../../common/CardImage/CardImage'
 import { Container } from '../../common/Container/Container'
 
-export const SpeciesOne = ({ error, setError }: any) => {
+export const SpeciesOne = () => {
   const { id } = useParams<{ id: string }>()
+  const [error, setError] = useState<{ message: string; status?: number } | null>(null)
   const [speciesOne, setSpeciesOne] = useState<SpeciesOneT | null>(null)
 
   useEffect(() => {
