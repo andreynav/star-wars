@@ -1,36 +1,31 @@
-import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { Header } from '../Header/Header/Header'
 import { Home } from '../Home/Home'
 import { Film } from '../Sections/Films/Film'
-import { Films } from '../Sections/Films/Films'
-import { People } from '../Sections/People/People'
 import { Person } from '../Sections/People/Person'
-import { Species } from '../Sections/Species/Species'
+import { SectionList } from '../Sections/SectionList/SectionList'
 import { SpeciesOne } from '../Sections/Species/SpeciesOne'
 
 export const App = () => {
-  const [error, setError] = useState<{ message: string; status?: number } | null>(null)
-
   return (
     <StyledApp>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/people/" element={<People error={error} setError={setError} />} />
-        <Route path="/people/:id" element={<Person error={error} setError={setError} />} />
-        <Route path="/species/" element={<Species error={error} setError={setError} />} />
-        <Route path="/species/:id" element={<SpeciesOne error={error} setError={setError} />} />
+        <Route path="/people/" element={<SectionList category="people" />} />
+        <Route path="/people/:id" element={<Person />} />
+        <Route path="/species/" element={<SectionList category="species" />} />
+        <Route path="/species/:id" element={<SpeciesOne />} />
         {/*<Route path="/planets/" element={<Planets />} />*/}
         {/*<Route path="/planets/:name" element={<Planets />} />*/}
         {/*<Route path="/starships/" element={<Starships />} />*/}
         {/*<Route path="/starships/:name" element={<Starships />} />*/}
         {/*<Route path="/vehicles/" element={<Vehicles />} />*/}
         {/*<Route path="/vehicles/:name" element={<Vehicles />} />*/}
-        <Route path="/films/" element={<Films error={error} setError={setError} />} />
-        <Route path="/films/:id" element={<Film error={error} setError={setError} />} />
+        <Route path="/films/" element={<SectionList category="films" />} />
+        <Route path="/films/:id" element={<Film />} />
         {/*<Route path="/*" element={<NotFound />} />*/}
       </Routes>
     </StyledApp>

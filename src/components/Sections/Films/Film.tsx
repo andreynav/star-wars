@@ -8,12 +8,12 @@ import { getIdFromUrl } from '../../../utils/getIdFromUrl'
 import { DetailedCardContainer } from '../../DetailedCard/DetailedCardContainer/DetailedCardContainer'
 import { DetailedCardContainerBottom } from '../../DetailedCard/DetailedCardContainerBottom/DetailedCardContainerBottom'
 import { DetailedCardContainerTop } from '../../DetailedCard/DetailedCardContainerTop/DetailedCardContainerTop'
-// import { DetailedCardSection } from '../../DetailedCard/DetailedCardSection/DetailedCardSection'
 import { CardImage } from '../../common/CardImage/CardImage'
 import { Container } from '../../common/Container/Container'
 
-export const Film = ({ error, setError }: any) => {
+export const Film = () => {
   const { id } = useParams<{ id: string }>()
+  const [error, setError] = useState<{ message: string; status?: number } | null>(null)
   const [film, setFilm] = useState<FilmT | null>(null)
 
   useEffect(() => {

@@ -20,6 +20,7 @@ export type FilmsListT = {
   next: string
   previous: string
   results: FilmT[]
+  images: string[]
 }
 
 export type PersonT = {
@@ -47,6 +48,7 @@ export type PeopleListT = {
   next: string
   previous: string
   results: PersonT[]
+  images: string[]
 }
 
 export type SpeciesOneT = {
@@ -72,6 +74,7 @@ export type SpeciesListT = {
   next: string
   previous: string
   results: SpeciesOneT[]
+  images: string[]
 }
 
 export type StyledToggleT = {
@@ -91,14 +94,15 @@ export type StyledToggleSpanT = {
 } & StyledToggleT
 
 export type CardImageT = {
-  src: string
+  src?: string
   alt: string
 }
 
 export type CategoryT = FilmT | PersonT | SpeciesOneT
+export type CategoryResponseT = FilmsListT | PeopleListT | SpeciesListT
 
 export type CardT = {
-  src: string
+  src?: string
   toNavigate: string
   category: CategoryT | string
 }
