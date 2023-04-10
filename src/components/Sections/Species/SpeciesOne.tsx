@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { apiImgSpecies, swAPI } from '../../../api/api'
+import { Categories, apiImgSpecies, swAPI } from '../../../api/api'
 import { CategoryT, SpeciesOneT } from '../../../types/types'
 import { DetailedCardContainer } from '../../DetailedCard/DetailedCardContainer/DetailedCardContainer'
 import { DetailedCardContainerBottom } from '../../DetailedCard/DetailedCardContainerBottom/DetailedCardContainerBottom'
@@ -19,8 +19,9 @@ export const SpeciesOne = () => {
     const fetchSpeciesOne = async () => {
       try {
         if (id) {
-          const data = await swAPI.getSpeciesOne(id)
+          const data = await swAPI.getCategoryItem(Categories.SPECIES, id)
           setError(null)
+          // @ts-ignore
           setSpeciesOne(data)
         }
       } catch (error: any) {
@@ -33,10 +34,11 @@ export const SpeciesOne = () => {
 
   if (!speciesOne) return <div>loading...</div>
 
-  const bottomDataProps = ['people', 'films']
+  const bottomDataProps = [Categories.PEOPLE, Categories.FILMS]
   const bottomData = bottomDataProps.map((prop) => {
+    // @ts-ignore
     const data = speciesOne[prop as keyof CategoryT]
-    const title = prop === 'people' ? 'characters' : prop
+    const title = prop === Categories.PEOPLE ? Categories.CHARACTERS : prop
     return { title: `Related ${title}`, data: Array.isArray(data) ? data : undefined }
   })
 

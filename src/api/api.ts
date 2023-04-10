@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { CategoryResponseT, FilmT, PersonT, SpeciesOneT } from '../types/types'
+import { CategoryResponseT, CategoryT } from '../types/types'
 import { getIdFromUrl } from '../utils/getIdFromUrl'
 
 const swapi = axios.create({
@@ -8,34 +8,44 @@ const swapi = axios.create({
   withCredentials: false
 })
 
+export enum Categories {
+  PEOPLE = 'people',
+  CHARACTERS = 'characters',
+  SPECIES = 'species',
+  PLANETS = 'planets',
+  STARSHIPS = 'starships',
+  VEHICLES = 'vehicles',
+  FILMS = 'films'
+}
+
 export const imageBaseApi = 'https://starwars-visualguide.com/assets/img/'
 
-export const apiImgPeople = `${imageBaseApi}characters/`
-export const apiImgSpecies = `${imageBaseApi}species/`
-export const apiImgPlanets = `${imageBaseApi}planets/`
-export const apiImgStarships = `${imageBaseApi}starships/`
-export const apiImgVehicles = `${imageBaseApi}vehicles/`
-export const apiImgFilms = `${imageBaseApi}films/`
+export const apiImgPeople = `${imageBaseApi}${Categories.CHARACTERS}/`
+export const apiImgSpecies = `${imageBaseApi}${Categories.SPECIES}/`
+export const apiImgPlanets = `${imageBaseApi}${Categories.PLANETS}/`
+export const apiImgStarships = `${imageBaseApi}${Categories.STARSHIPS}/`
+export const apiImgVehicles = `${imageBaseApi}${Categories.VEHICLES}/`
+export const apiImgFilms = `${imageBaseApi}${Categories.FILMS}/`
 
 export const getImageCategoryPath = (category: string) => {
   let path: string | null = null
   switch (category) {
-    case 'people':
+    case Categories.PEOPLE:
       path = apiImgPeople
       break
-    case 'species':
+    case Categories.SPECIES:
       path = apiImgSpecies
       break
-    case 'planets':
+    case Categories.PLANETS:
       path = apiImgPlanets
       break
-    case 'starships':
+    case Categories.STARSHIPS:
       path = apiImgStarships
       break
-    case 'vehicles':
+    case Categories.VEHICLES:
       path = apiImgVehicles
       break
-    case 'films':
+    case Categories.FILMS:
       path = apiImgFilms
       break
     default:
@@ -56,13 +66,7 @@ export const swAPI = {
         return response.data
       })
   },
-  getPerson: (id: string) => {
-    return swapi.get<PersonT>(`people/${id}/`).then((response) => response.data)
-  },
-  getSpeciesOne: (id: string) => {
-    return swapi.get<SpeciesOneT>(`species/${id}/`).then((response) => response.data)
-  },
-  getFilm: (id: string) => {
-    return swapi.get<FilmT>(`films/${id}/`).then((response) => response.data)
+  getCategoryItem: (category: string, id: string) => {
+    return swapi.get<CategoryT>(`${category}/${id}/`).then((response) => response.data)
   }
 }

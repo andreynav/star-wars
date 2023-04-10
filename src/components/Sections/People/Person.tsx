@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { apiImgPeople, swAPI } from '../../../api/api'
+import { Categories, apiImgPeople, swAPI } from '../../../api/api'
 import { PersonT } from '../../../types/types'
 import { DetailedCardContainer } from '../../DetailedCard/DetailedCardContainer/DetailedCardContainer'
 import { DetailedCardContainerBottom } from '../../DetailedCard/DetailedCardContainerBottom/DetailedCardContainerBottom'
@@ -19,8 +19,9 @@ export const Person = () => {
     const fetchPerson = async () => {
       try {
         if (id) {
-          const data = await swAPI.getPerson(id)
+          const data = await swAPI.getCategoryItem(Categories.PEOPLE, id)
           setError(null)
+          // @ts-ignore
           setPerson(data)
         }
       } catch (error: any) {
@@ -33,7 +34,12 @@ export const Person = () => {
 
   if (!person) return <div>loading...</div>
 
-  const bottomDataProps = ['films', 'species', 'starships', 'vehicles']
+  const bottomDataProps = [
+    Categories.FILMS,
+    Categories.SPECIES,
+    Categories.STARSHIPS,
+    Categories.VEHICLES
+  ]
   const bottomData = bottomDataProps.map((prop) => {
     const data = person[prop]
     return { title: `Related ${prop}`, data: Array.isArray(data) ? data : undefined }

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 
-import { imageBaseApi } from '../../../api/api'
+import { Categories, imageBaseApi } from '../../../api/api'
 import { DetailedCardSectionT } from '../../../types/types'
 import { getCategoryFromUrl } from '../../../utils/getCategoryFromUrl'
 import { getIdFromUrl } from '../../../utils/getIdFromUrl'
@@ -19,7 +19,8 @@ export const DetailedCardSection = ({ title, data }: DetailedCardSectionT) => {
       <ThumbnailContainer className={'thumbContainer'}>
         {data.slice(...sliceArgs).map((item: string) => {
           const imgCategory = getCategoryFromUrl(item)
-          const imgPathCategory = imgCategory === 'people' ? 'characters' : imgCategory
+          const imgPathCategory =
+            imgCategory === Categories.PEOPLE ? Categories.CHARACTERS : imgCategory
           return (
             <SectionItem key={item} className={'sectionItem'}>
               <Card
