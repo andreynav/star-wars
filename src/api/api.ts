@@ -1,12 +1,14 @@
 import axios from 'axios'
 
-import { CategoryResponseT, CategoryT } from '../types/types'
+import { CategoryResponseT, CategoryT, ImagePaths } from '../types/types'
 import { getIdFromUrl } from '../utils/getIdFromUrl'
 
-const swapi = axios.create({
+const swApi = axios.create({
   baseURL: 'https://swapi.dev/api/',
   withCredentials: false
 })
+
+export const imageBaseApi = 'https://starwars-visualguide.com/assets/img/'
 
 export enum Categories {
   PEOPLE = 'people',
@@ -18,48 +20,21 @@ export enum Categories {
   FILMS = 'films'
 }
 
-export const imageBaseApi = 'https://starwars-visualguide.com/assets/img/'
-
-export const apiImgPeople = `${imageBaseApi}${Categories.CHARACTERS}/`
-export const apiImgSpecies = `${imageBaseApi}${Categories.SPECIES}/`
-export const apiImgPlanets = `${imageBaseApi}${Categories.PLANETS}/`
-export const apiImgStarships = `${imageBaseApi}${Categories.STARSHIPS}/`
-export const apiImgVehicles = `${imageBaseApi}${Categories.VEHICLES}/`
-export const apiImgFilms = `${imageBaseApi}${Categories.FILMS}/`
-
-export const getImageCategoryPath = (category: string) => {
-  let path: string | null = null
-  switch (category) {
-    case Categories.PEOPLE:
-      path = apiImgPeople
-      break
-    case Categories.SPECIES:
-      path = apiImgSpecies
-      break
-    case Categories.PLANETS:
-      path = apiImgPlanets
-      break
-    case Categories.STARSHIPS:
-      path = apiImgStarships
-      break
-    case Categories.VEHICLES:
-      path = apiImgVehicles
-      break
-    case Categories.FILMS:
-      path = apiImgFilms
-      break
-    default:
-      console.error('There is no such category')
-  }
-  return path
+export const imagePaths: ImagePaths = {
+  [Categories.PEOPLE]: `${imageBaseApi}${Categories.CHARACTERS}/`,
+  [Categories.SPECIES]: `${imageBaseApi}${Categories.SPECIES}/`,
+  [Categories.PLANETS]: `${imageBaseApi}${Categories.PLANETS}/`,
+  [Categories.STARSHIPS]: `${imageBaseApi}${Categories.STARSHIPS}/`,
+  [Categories.VEHICLES]: `${imageBaseApi}${Categories.VEHICLES}/`,
+  [Categories.FILMS]: `${imageBaseApi}${Categories.FILMS}/`
 }
 
 export const swAPI = {
   getCategoryItemsList: (category: string, pageNumber: number) => {
-    return swapi
+    return swApi
       .get<CategoryResponseT>(`${category}/?page=${pageNumber}`)
       .then(async (response) => {
-        const imgPath = await getImageCategoryPath(category)
+        const imgPath = imagePaths[category as keyof ImagePaths]
         response.data.images = response.data.results.map(
           (item) => `${imgPath}${getIdFromUrl(item.url)}.jpg`
         )
@@ -67,6 +42,6 @@ export const swAPI = {
       })
   },
   getCategoryItem: (category: string, id: string) => {
-    return swapi.get<CategoryT>(`${category}/${id}/`).then((response) => response.data)
+    return swApi.get<CategoryT>(`${category}/${id}/`).then((response) => response.data)
   }
 }
