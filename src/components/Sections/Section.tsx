@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { Categories, getImageCategoryPath, swAPI } from '../../api/api'
-import { CategoryT } from '../../types/types'
+import { Categories, imagePaths, swAPI } from '../../api/api'
+import { CategoryT, ImagePaths } from '../../types/types'
 import { DetailedCardContainer } from '../DetailedCard/DetailedCardContainer/DetailedCardContainer'
 import { DetailedCardContainerBottom } from '../DetailedCard/DetailedCardContainerBottom/DetailedCardContainerBottom'
 import { DetailedCardContainerTop } from '../DetailedCard/DetailedCardContainerTop/DetailedCardContainerTop'
@@ -87,7 +87,10 @@ export const Section = ({ category }: { category: string }) => {
       ) : (
         <DetailedCardContainer>
           <DetailedCardContainerTop>
-            <CardImage src={`${getImageCategoryPath(category)}${id}.jpg`} alt={'poster'} />
+            <CardImage
+              src={`${imagePaths[category as keyof ImagePaths]}${id}.jpg`}
+              alt={'poster'}
+            />
             <CardInfo>
               {/*// @ts-ignore*/}
               {CardInfoCategoryData[category].map((item) => {

@@ -1,3 +1,5 @@
+import { Categories } from '../api/api'
+
 export type FilmT = {
   characters: string[]
   created: string
@@ -100,6 +102,7 @@ export type CardImageT = {
 
 export type CategoryT = FilmT | PersonT | SpeciesOneT
 export type CategoryResponseT = FilmsListT | PeopleListT | SpeciesListT
+export type ImagePaths = Omit<Record<Categories, string>, Categories.CHARACTERS>
 
 export type CardT = {
   src?: string
