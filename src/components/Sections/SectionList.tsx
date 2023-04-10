@@ -1,8 +1,8 @@
-import { useCategoryItems } from '../../../hooks/useCategory'
-import { getIdFromUrl } from '../../../utils/getIdFromUrl'
-import { Card } from '../../Card/Card'
-import { CardListContainer } from '../../common/CardListContainer/CardListContainer'
-import { Container } from '../../common/Container/Container'
+import { useCategoryItems } from '../../hooks/useCategory'
+import { getIdFromUrl } from '../../utils/getIdFromUrl'
+import { Card } from '../Card/Card'
+import { CardListContainer } from '../common/CardListContainer/CardListContainer'
+import { Container } from '../common/Container/Container'
 
 export const SectionList = ({ category }: { category: string }) => {
   const { categoryItems, imagesSrc, error, page, setPage, next, isLoading } =

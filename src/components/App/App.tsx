@@ -5,7 +5,7 @@ import { Header } from '../Header/Header/Header'
 import { Home } from '../Home/Home'
 import { Film } from '../Sections/Films/Film'
 import { Person } from '../Sections/People/Person'
-import { SectionList } from '../Sections/SectionList/SectionList'
+import { SectionList } from '../Sections/SectionList'
 import { SpeciesOne } from '../Sections/Species/SpeciesOne'
 
 export const App = () => {

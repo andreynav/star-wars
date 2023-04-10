@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { apiImgFilms, swAPI } from '../../../api/api'
+import { Categories, apiImgFilms, swAPI } from '../../../api/api'
 import { CategoryT, FilmT } from '../../../types/types'
 import { getIdFromUrl } from '../../../utils/getIdFromUrl'
 import { DetailedCardContainer } from '../../DetailedCard/DetailedCardContainer/DetailedCardContainer'
@@ -20,8 +20,9 @@ export const Film = () => {
     const fetchFilm = async () => {
       try {
         if (id) {
-          const data = await swAPI.getFilm(id)
+          const data = await swAPI.getCategoryItem(Categories.FILMS, id)
           setError(null)
+          // @ts-ignore
           setFilm(data)
         }
       } catch (error: any) {
@@ -34,8 +35,15 @@ export const Film = () => {
 
   if (!film) return <div>loading...</div>
 
-  const bottomDataProps = ['planets', 'characters', 'species', 'starships', 'vehicles']
+  const bottomDataProps = [
+    Categories.PLANETS,
+    Categories.CHARACTERS,
+    Categories.SPECIES,
+    Categories.STARSHIPS,
+    Categories.VEHICLES
+  ]
   const bottomData = bottomDataProps.map((prop) => {
+    // @ts-ignore
     const data = film[prop as keyof CategoryT]
     return { title: `Related ${prop}`, data: Array.isArray(data) ? data : undefined }
   })

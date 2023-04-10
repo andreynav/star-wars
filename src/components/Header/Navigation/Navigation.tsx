@@ -1,14 +1,22 @@
 import styled from 'styled-components'
 
+import { Categories } from '../../../api/api'
 import { StyledNavLink } from '../../common/StyledNavLink/StyledNavLink'
 
-const navigationItems = ['people', 'species', 'planets', 'starships', 'vehicles', 'films']
+const navigationItems = [
+  Categories.PEOPLE,
+  Categories.SPECIES,
+  Categories.PLANETS,
+  Categories.STARSHIPS,
+  Categories.VEHICLES,
+  Categories.FILMS
+]
 
 export const Navigation = () => {
   return (
     <NavigationWrapper>
       {navigationItems.map((item) => {
-        const itemTitle = item === 'people' ? 'characters' : item
+        const itemTitle = item === Categories.PEOPLE ? Categories.CHARACTERS : item
         return (
           <div key={item}>
             <StyledNavLink to={`/${item}/`}>{itemTitle.toUpperCase()}</StyledNavLink>
