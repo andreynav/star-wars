@@ -3,10 +3,8 @@ import styled from 'styled-components'
 
 import { Header } from '../Header/Header/Header'
 import { Home } from '../Home/Home'
-import { Film } from '../Sections/Films/Film'
-import { Person } from '../Sections/People/Person'
+import { Section } from '../Sections/Section'
 import { SectionList } from '../Sections/SectionList'
-import { SpeciesOne } from '../Sections/Species/SpeciesOne'
 
 export const App = () => {
   return (
@@ -15,17 +13,17 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/people/" element={<SectionList category="people" />} />
-        <Route path="/people/:id" element={<Person />} />
+        <Route path="/people/:id" element={<Section category="people" />} />
         <Route path="/species/" element={<SectionList category="species" />} />
-        <Route path="/species/:id" element={<SpeciesOne />} />
+        <Route path="/species/:id" element={<Section category="species" />} />
         <Route path="/planets/" element={<SectionList category="planets" />} />
-        {/*<Route path="/planets/:name" element={<Planets />} />*/}
+        {/*<Route path="/planets/:id" element={<Section category="planets" />} />*/}
         <Route path="/starships/" element={<SectionList category="starships" />} />
-        {/*<Route path="/starships/:name" element={<Starships />} />*/}
+        {/*<Route path="/starships/:id" element={<Section category="starships" />} />*/}
         <Route path="/vehicles/" element={<SectionList category="vehicles" />} />
-        {/*<Route path="/vehicles/:name" element={<Vehicles />} />*/}
+        {/*<Route path="/vehicles/:id" element={<Section category="vehicles" />} />*/}
         <Route path="/films/" element={<SectionList category="films" />} />
-        <Route path="/films/:id" element={<Film />} />
+        <Route path="/films/:id" element={<Section category="films" />} />
         {/*<Route path="/*" element={<NotFound />} />*/}
       </Routes>
     </StyledApp>
