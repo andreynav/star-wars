@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { Categories, imagePaths, swAPI } from '../../api/api'
+import { imagePaths, swAPI } from '../../api/api'
+import { CardInfoCategoryData, bottomDataCategoryProps } from '../../data/data'
 import { CategoryT, ImagePaths } from '../../types/types'
 import { DetailedCardContainer } from '../DetailedCard/DetailedCardContainer/DetailedCardContainer'
 import { DetailedCardContainerBottom } from '../DetailedCard/DetailedCardContainerBottom/DetailedCardContainerBottom'
@@ -34,51 +35,12 @@ export const Section = ({ category }: { category: string }) => {
 
   if (!categoryItem) return <div>loading...</div>
 
-  const bottomDataCategoryProps = {
-    people: [Categories.FILMS, Categories.SPECIES, Categories.STARSHIPS, Categories.VEHICLES],
-    films: [
-      Categories.PLANETS,
-      Categories.CHARACTERS,
-      Categories.SPECIES,
-      Categories.STARSHIPS,
-      Categories.VEHICLES
-    ],
-    species: [Categories.PEOPLE, Categories.FILMS]
-  }
-
   // @ts-ignore
   const bottomData = bottomDataCategoryProps[category].map((prop) => {
     // @ts-ignore
     const data = categoryItem[prop]
     return { title: `Related ${prop}`, data: Array.isArray(data) ? data : undefined }
   })
-
-  const CardInfoCategoryData = {
-    people: [
-      'name',
-      'gender',
-      'birth_year',
-      'eye_color',
-      'hair_color',
-      'height',
-      'mass',
-      'skin_color',
-      'homeworld'
-    ],
-    films: ['title', 'episode_id', 'director', 'producer', 'release_date', 'opening_crawl'],
-    species: [
-      'name',
-      'classification',
-      'language',
-      'designation',
-      'eye_colors',
-      'hair_colors',
-      'average_height',
-      'average_lifespan',
-      'skin_colors',
-      'homeworld'
-    ]
-  }
 
   return (
     <Container>

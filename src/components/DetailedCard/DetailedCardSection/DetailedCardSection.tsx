@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 
-import { Categories, imageBaseApi } from '../../../api/api'
+import { imageBaseApi } from '../../../api/api'
+import { Categories } from '../../../data/data'
 import { DetailedCardSectionT } from '../../../types/types'
 import { getCategoryFromUrl } from '../../../utils/getCategoryFromUrl'
 import { getIdFromUrl } from '../../../utils/getIdFromUrl'

@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+import { Categories } from '../data/data'
 import { CategoryResponseT, CategoryT, ImagePaths } from '../types/types'
 import { getIdFromUrl } from '../utils/getIdFromUrl'
 
@@ -9,16 +10,6 @@ const swApi = axios.create({
 })
 
 export const imageBaseApi = 'https://starwars-visualguide.com/assets/img/'
-
-export enum Categories {
-  PEOPLE = 'people',
-  CHARACTERS = 'characters',
-  SPECIES = 'species',
-  PLANETS = 'planets',
-  STARSHIPS = 'starships',
-  VEHICLES = 'vehicles',
-  FILMS = 'films'
-}
 
 export const imagePaths: ImagePaths = {
   [Categories.PEOPLE]: `${imageBaseApi}${Categories.CHARACTERS}/`,
