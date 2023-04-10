@@ -1,4 +1,4 @@
-import { Categories } from '../api/api'
+import { Categories } from '../data/data'
 
 export type FilmT = {
   characters: string[]

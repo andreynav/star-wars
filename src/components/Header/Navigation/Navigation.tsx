@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Categories } from '../../../api/api'
+import { Categories } from '../../../data/data'
 import { StyledNavLink } from '../../common/StyledNavLink/StyledNavLink'
 
 const navigationItems = [
