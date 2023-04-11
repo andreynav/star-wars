@@ -15,6 +15,7 @@ export type FilmT = {
   title: string
   url: string
   vehicles: string[]
+  image: string
 }
 
 export type FilmsListT = {
@@ -42,7 +43,7 @@ export type PersonT = {
   url: string
   created: string
   edited: string
-  [key: string]: string | string[]
+  image: string
 }
 
 export type PeopleListT = {
@@ -69,6 +70,7 @@ export type SpeciesOneT = {
   url: string
   created: string
   edited: string
+  image: string
 }
 
 export type SpeciesListT = {

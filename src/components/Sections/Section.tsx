@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { imagePaths, swAPI } from '../../api/api'
+import { swAPI } from '../../api/api'
 import { CardInfoCategoryData, bottomDataCategoryProps } from '../../data/data'
-import { CategoryT, ImagePaths } from '../../types/types'
+import { CategoryT } from '../../types/types'
 import { DetailedCardContainer } from '../DetailedCard/DetailedCardContainer/DetailedCardContainer'
 import { DetailedCardContainerBottom } from '../DetailedCard/DetailedCardContainerBottom/DetailedCardContainerBottom'
 import { DetailedCardContainerTop } from '../DetailedCard/DetailedCardContainerTop/DetailedCardContainerTop'
@@ -22,16 +22,14 @@ export const Section = ({ category }: { category: string }) => {
         if (id) {
           const data = await swAPI.getCategoryItem(category, id)
           setError(null)
-          // @ts-ignore
           setCategoryItem(data)
         }
       } catch (error: any) {
         setError({ message: error.message })
       }
     }
-
     fetchCategory().then()
-  }, [])
+  }, [id, category])
 
   if (!categoryItem) return <div>loading...</div>
 
@@ -49,10 +47,7 @@ export const Section = ({ category }: { category: string }) => {
       ) : (
         <DetailedCardContainer>
           <DetailedCardContainerTop>
-            <CardImage
-              src={`${imagePaths[category as keyof ImagePaths]}${id}.jpg`}
-              alt={'poster'}
-            />
+            <CardImage key={categoryItem.image} src={categoryItem.image} alt={'poster'} />
             <CardInfo>
               {/*// @ts-ignore*/}
               {CardInfoCategoryData[category].map((item) => {
