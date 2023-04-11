@@ -33,6 +33,9 @@ export const swAPI = {
       })
   },
   getCategoryItem: (category: string, id: string) => {
-    return swApi.get<CategoryT>(`${category}/${id}/`).then((response) => response.data)
+    return swApi.get<CategoryT>(`${category}/${id}/`).then(async (response) => {
+      response.data.image = `${imagePaths[category as keyof ImagePaths]}${id}.jpg`
+      return response.data
+    })
   }
 }
