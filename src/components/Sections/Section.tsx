@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { swAPI } from '../../api/api'
 import { CardInfoCategoryData, bottomDataCategoryProps } from '../../data/data'
 import { CategoryT } from '../../types/types'
+import { convertToTitleCase } from '../../utils/convertToTitleCase'
 import { DetailedCardContainer } from '../DetailedCard/DetailedCardContainer/DetailedCardContainer'
 import { DetailedCardContainerBottom } from '../DetailedCard/DetailedCardContainerBottom/DetailedCardContainerBottom'
 import { DetailedCardContainerTop } from '../DetailedCard/DetailedCardContainerTop/DetailedCardContainerTop'
@@ -53,8 +54,9 @@ export const Section = ({ category }: { category: string }) => {
               {CardInfoCategoryData[category].map((item) => {
                 return (
                   <div key={item}>
+                    <InfoTitle>{convertToTitleCase(item)}</InfoTitle>
                     {/*// @ts-ignore*/}
-                    <b>{item}:</b> {categoryItem[item] ?? 'n/a'}
+                    <InfoData>{categoryItem[item] ?? 'n/a'}</InfoData>
                   </div>
                 )
               })}
@@ -70,12 +72,17 @@ export const Section = ({ category }: { category: string }) => {
 const CardInfo = styled.div`
   padding: 1rem;
 
-  & div {
-    padding: 0.5rem 0;
-  }
-
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     padding: 1rem 0;
   }
+`
+
+const InfoTitle = styled.div`
+  color: var(--color-data-title);
+  font-size: var(--fs-esm);
+`
+
+const InfoData = styled.div`
+  padding-bottom: 0.5rem;
 `
