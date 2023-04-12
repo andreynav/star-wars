@@ -81,6 +81,19 @@ export type SpeciesListT = {
   images: string[]
 }
 
+export type PlanetsT = {
+  url: string
+  image: string
+}
+export type StarshipsT = {
+  url: string
+  image: string
+}
+export type VehiclesT = {
+  url: string
+  image: string
+}
+
 export type StyledToggleT = {
   width?: number
   height?: number
@@ -102,9 +115,18 @@ export type CardImageT = {
   alt: string
 }
 
-export type CategoryT = FilmT | PersonT | SpeciesOneT
+export type CategoryT = FilmT | PersonT | SpeciesOneT | PlanetsT | StarshipsT | VehiclesT
 export type CategoryResponseT = FilmsListT | PeopleListT | SpeciesListT
 export type ImagePaths = Omit<Record<Categories, string>, Categories.CHARACTERS>
+
+export type EnumCategoriesT =
+  | 'people'
+  | 'characters'
+  | 'species'
+  | 'planets'
+  | 'starships'
+  | 'vehicles'
+  | 'films'
 
 export type CardT = {
   src?: string
