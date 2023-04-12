@@ -82,9 +82,31 @@ export type SpeciesListT = {
 }
 
 export type PlanetsT = {
+  name: string
+  diameter: string
+  rotation_period: string
+  orbital_period: string
+  gravity: string
+  population: string
+  climate: string
+  terrain: string
+  surface_water: string
+  residents: string[]
+  films: string[]
   url: string
+  created: string
+  edited: string
   image: string
 }
+
+export type PlanetsListT = {
+  count: number
+  next: string
+  previous: string
+  results: PlanetsT[]
+  images: string[]
+}
+
 export type StarshipsT = {
   url: string
   image: string
@@ -116,7 +138,7 @@ export type CardImageT = {
 }
 
 export type CategoryT = FilmT | PersonT | SpeciesOneT | PlanetsT | StarshipsT | VehiclesT
-export type CategoryResponseT = FilmsListT | PeopleListT | SpeciesListT
+export type CategoryResponseT = FilmsListT | PeopleListT | SpeciesListT | PlanetsListT
 export type ImagePaths = Omit<Record<Categories, string>, Categories.CHARACTERS>
 
 export type EnumCategoriesT =

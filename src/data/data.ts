@@ -1,5 +1,3 @@
-import { EnumCategoriesT } from '../types/types'
-
 export enum Categories {
   PEOPLE = 'people',
   CHARACTERS = 'characters',
@@ -10,7 +8,7 @@ export enum Categories {
   FILMS = 'films'
 }
 
-export const bottomDataCategoryProps: { [key: string]: EnumCategoriesT[] } = {
+export const bottomDataCategoryProps: { [key: string]: string[] } = {
   [Categories.PEOPLE]: [
     Categories.FILMS,
     Categories.SPECIES,
@@ -18,7 +16,7 @@ export const bottomDataCategoryProps: { [key: string]: EnumCategoriesT[] } = {
     Categories.VEHICLES
   ],
   [Categories.SPECIES]: [Categories.PEOPLE, Categories.FILMS],
-  // [Categories.PLANETS]: [Categories.FILMS],
+  [Categories.PLANETS]: [Categories.FILMS, 'residents'],
   // [Categories.STARSHIPS]: [Categories.FILMS],
   // [Categories.VEHICLES]: [Categories.FILMS],
   [Categories.FILMS]: [
@@ -42,10 +40,6 @@ export const CardInfoCategoryData: { [K in Categories]: string[] } = {
     'skin_color',
     'homeworld'
   ],
-  [Categories.PLANETS]: [],
-  [Categories.CHARACTERS]: [],
-  [Categories.STARSHIPS]: [],
-  [Categories.VEHICLES]: [],
   [Categories.SPECIES]: [
     'name',
     'classification',
@@ -58,6 +52,20 @@ export const CardInfoCategoryData: { [K in Categories]: string[] } = {
     'skin_colors',
     'homeworld'
   ],
+  [Categories.PLANETS]: [
+    'name',
+    'diameter',
+    'population',
+    'climate',
+    'terrain',
+    'surface_water',
+    'rotation_period',
+    'orbital_period',
+    'gravity'
+  ],
+  [Categories.CHARACTERS]: [],
+  [Categories.STARSHIPS]: [],
+  [Categories.VEHICLES]: [],
   [Categories.FILMS]: [
     'title',
     'episode_id',
