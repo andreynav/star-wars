@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import { Categories } from '../data/data'
-import { CategoryResponseT, CategoryT, ImagePaths } from '../types/types'
+import { CategoryT, ImagePaths, SectionListT } from '../types/types'
 import { getIdFromUrl } from '../utils/getIdFromUrl'
 
 const swApi = axios.create({
@@ -23,7 +23,7 @@ export const imagePaths: ImagePaths = {
 export const swAPI = {
   getCategoryItemsList: (category: string, pageNumber: number) => {
     return swApi
-      .get<CategoryResponseT>(`${category}/?page=${pageNumber}`)
+      .get<SectionListT<CategoryT>>(`${category}/?page=${pageNumber}`)
       .then(async (response) => {
         const imgPath = imagePaths[category as keyof ImagePaths]
         response.data.images = response.data.results.map(

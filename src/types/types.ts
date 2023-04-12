@@ -1,29 +1,10 @@
 import { Categories } from '../data/data'
 
-export type FilmT = {
-  characters: string[]
+type CommonSectionPropsT = {
   created: string
-  director: string
   edited: string
-  episode_id: number
-  opening_crawl: string
-  planets: string[]
-  producer: string
-  release_date: string
-  species: string[]
-  starships: string[]
-  title: string
   url: string
-  vehicles: string[]
   image: string
-}
-
-export type FilmsListT = {
-  count: number
-  next: string
-  previous: string
-  results: FilmT[]
-  images: string[]
 }
 
 export type PersonT = {
@@ -40,19 +21,7 @@ export type PersonT = {
   species: string[]
   starships: string[]
   vehicles: string[]
-  url: string
-  created: string
-  edited: string
-  image: string
-}
-
-export type PeopleListT = {
-  count: number
-  next: string
-  previous: string
-  results: PersonT[]
-  images: string[]
-}
+} & CommonSectionPropsT
 
 export type SpeciesOneT = {
   name: string
@@ -67,19 +36,7 @@ export type SpeciesOneT = {
   homeworld: string
   people: string[]
   films: string[]
-  url: string
-  created: string
-  edited: string
-  image: string
-}
-
-export type SpeciesListT = {
-  count: number
-  next: string
-  previous: string
-  results: SpeciesOneT[]
-  images: string[]
-}
+} & CommonSectionPropsT
 
 export type PlanetsT = {
   name: string
@@ -93,27 +50,35 @@ export type PlanetsT = {
   surface_water: string
   residents: string[]
   films: string[]
-  url: string
-  created: string
-  edited: string
-  image: string
-}
+} & CommonSectionPropsT
 
-export type PlanetsListT = {
+export type StarshipsT = {} & CommonSectionPropsT
+
+export type VehiclesT = {} & CommonSectionPropsT
+
+export type FilmT = {
+  title: string
+  characters: string[]
+  director: string
+  episode_id: number
+  opening_crawl: string
+  planets: string[]
+  producer: string
+  release_date: string
+  species: string[]
+  starships: string[]
+  vehicles: string[]
+} & CommonSectionPropsT
+
+export type CategoryT = FilmT | PersonT | SpeciesOneT | PlanetsT | StarshipsT | VehiclesT
+export type ImagePaths = Omit<Record<Categories, string>, Categories.CHARACTERS>
+
+export type SectionListT<T extends CategoryT> = {
   count: number
   next: string
   previous: string
-  results: PlanetsT[]
+  results: T[]
   images: string[]
-}
-
-export type StarshipsT = {
-  url: string
-  image: string
-}
-export type VehiclesT = {
-  url: string
-  image: string
 }
 
 export type StyledToggleT = {
@@ -136,10 +101,6 @@ export type CardImageT = {
   src?: string
   alt: string
 }
-
-export type CategoryT = FilmT | PersonT | SpeciesOneT | PlanetsT | StarshipsT | VehiclesT
-export type CategoryResponseT = FilmsListT | PeopleListT | SpeciesListT | PlanetsListT
-export type ImagePaths = Omit<Record<Categories, string>, Categories.CHARACTERS>
 
 export type EnumCategoriesT =
   | 'people'
