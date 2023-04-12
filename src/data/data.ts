@@ -1,3 +1,5 @@
+import { EnumCategoriesT } from '../types/types'
+
 export enum Categories {
   PEOPLE = 'people',
   CHARACTERS = 'characters',
@@ -8,19 +10,27 @@ export enum Categories {
   FILMS = 'films'
 }
 
-export const bottomDataCategoryProps = {
-  people: [Categories.FILMS, Categories.SPECIES, Categories.STARSHIPS, Categories.VEHICLES],
-  films: [
+export const bottomDataCategoryProps: { [key: string]: EnumCategoriesT[] } = {
+  [Categories.PEOPLE]: [
+    Categories.FILMS,
+    Categories.SPECIES,
+    Categories.STARSHIPS,
+    Categories.VEHICLES
+  ],
+  [Categories.SPECIES]: [Categories.PEOPLE, Categories.FILMS],
+  // [Categories.PLANETS]: [Categories.FILMS],
+  // [Categories.STARSHIPS]: [Categories.FILMS],
+  // [Categories.VEHICLES]: [Categories.FILMS],
+  [Categories.FILMS]: [
     Categories.PLANETS,
     Categories.CHARACTERS,
     Categories.SPECIES,
     Categories.STARSHIPS,
     Categories.VEHICLES
-  ],
-  species: [Categories.PEOPLE, Categories.FILMS]
+  ]
 }
 
-export const CardInfoCategoryData = {
+export const CardInfoCategoryData: { [K in Categories]: string[] } = {
   [Categories.PEOPLE]: [
     'name',
     'gender',
@@ -32,14 +42,10 @@ export const CardInfoCategoryData = {
     'skin_color',
     'homeworld'
   ],
-  [Categories.FILMS]: [
-    'title',
-    'episode_id',
-    'director',
-    'producer',
-    'release_date',
-    'opening_crawl'
-  ],
+  [Categories.PLANETS]: [],
+  [Categories.CHARACTERS]: [],
+  [Categories.STARSHIPS]: [],
+  [Categories.VEHICLES]: [],
   [Categories.SPECIES]: [
     'name',
     'classification',
@@ -51,5 +57,13 @@ export const CardInfoCategoryData = {
     'average_lifespan',
     'skin_colors',
     'homeworld'
+  ],
+  [Categories.FILMS]: [
+    'title',
+    'episode_id',
+    'director',
+    'producer',
+    'release_date',
+    'opening_crawl'
   ]
 }

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { swAPI } from '../../api/api'
 import { CardInfoCategoryData, bottomDataCategoryProps } from '../../data/data'
-import { CategoryT } from '../../types/types'
+import { CategoryT, EnumCategoriesT } from '../../types/types'
 import { convertToTitleCase } from '../../utils/convertToTitleCase'
 import { DetailedCardContainer } from '../DetailedCard/DetailedCardContainer/DetailedCardContainer'
 import { DetailedCardContainerBottom } from '../DetailedCard/DetailedCardContainerBottom/DetailedCardContainerBottom'
@@ -12,7 +12,7 @@ import { DetailedCardContainerTop } from '../DetailedCard/DetailedCardContainerT
 import { CardImage } from '../common/CardImage/CardImage'
 import { Container } from '../common/Container/Container'
 
-export const Section = ({ category }: { category: string }) => {
+export const Section = ({ category }: { category: EnumCategoriesT }) => {
   const { id } = useParams<{ id: string }>()
   const [error, setError] = useState<{ message: string; status?: number } | null>(null)
   const [categoryItem, setCategoryItem] = useState<CategoryT | null>(null)
@@ -34,10 +34,8 @@ export const Section = ({ category }: { category: string }) => {
 
   if (!categoryItem) return <div>loading...</div>
 
-  // @ts-ignore
-  const bottomData = bottomDataCategoryProps[category].map((prop) => {
-    // @ts-ignore
-    const data = categoryItem[prop]
+  const bottomData = bottomDataCategoryProps[category]?.map((prop) => {
+    const data = categoryItem[prop as unknown as keyof CategoryT]
     return { title: `Related ${prop}`, data: Array.isArray(data) ? data : undefined }
   })
 
@@ -50,19 +48,17 @@ export const Section = ({ category }: { category: string }) => {
           <DetailedCardContainerTop>
             <CardImage key={categoryItem.image} src={categoryItem.image} alt={'poster'} />
             <CardInfo>
-              {/*// @ts-ignore*/}
-              {CardInfoCategoryData[category].map((item) => {
+              {CardInfoCategoryData[category].map((item: string) => {
                 return (
-                  <div key={item}>
-                    <InfoTitle>{convertToTitleCase(item)}</InfoTitle>
-                    {/*// @ts-ignore*/}
-                    <InfoData>{categoryItem[item] ?? 'n/a'}</InfoData>
+                  <div key={item as string}>
+                    <InfoTitle>{convertToTitleCase(item as string)}</InfoTitle>
+                    <InfoData>{categoryItem[item as keyof CategoryT] ?? 'n/a'}</InfoData>
                   </div>
                 )
               })}
             </CardInfo>
           </DetailedCardContainerTop>
-          <DetailedCardContainerBottom bottomData={bottomData} />
+          <DetailedCardContainerBottom bottomData={bottomData!} />
         </DetailedCardContainer>
       )}
     </Container>
@@ -84,5 +80,5 @@ const InfoTitle = styled.div`
 `
 
 const InfoData = styled.div`
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
 `

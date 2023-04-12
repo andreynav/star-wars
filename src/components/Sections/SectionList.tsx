@@ -1,10 +1,11 @@
 import { useCategoryItems } from '../../hooks/useCategory'
+import { EnumCategoriesT } from '../../types/types'
 import { getIdFromUrl } from '../../utils/getIdFromUrl'
 import { Card } from '../Card/Card'
 import { CardListContainer } from '../common/CardListContainer/CardListContainer'
 import { Container } from '../common/Container/Container'
 
-export const SectionList = ({ category }: { category: string }) => {
+export const SectionList = ({ category }: { category: EnumCategoriesT }) => {
   const { categoryItems, imagesSrc, error, page, setPage, next, isLoading } =
     useCategoryItems(category)
 
