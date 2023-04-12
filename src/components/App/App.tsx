@@ -17,11 +17,11 @@ export const App = () => {
         <Route path="/species/" element={<SectionList category="species" />} />
         <Route path="/species/:id" element={<Section category="species" />} />
         <Route path="/planets/" element={<SectionList category="planets" />} />
-        {/*<Route path="/planets/:id" element={<Section category="planets" />} />*/}
+        <Route path="/planets/:id" element={<Section category="planets" />} />
         <Route path="/starships/" element={<SectionList category="starships" />} />
-        {/*<Route path="/starships/:id" element={<Section category="starships" />} />*/}
+        <Route path="/starships/:id" element={<Section category="starships" />} />
         <Route path="/vehicles/" element={<SectionList category="vehicles" />} />
-        {/*<Route path="/vehicles/:id" element={<Section category="vehicles" />} />*/}
+        <Route path="/vehicles/:id" element={<Section category="vehicles" />} />
         <Route path="/films/" element={<SectionList category="films" />} />
         <Route path="/films/:id" element={<Section category="films" />} />
         {/*<Route path="/*" element={<NotFound />} />*/}
