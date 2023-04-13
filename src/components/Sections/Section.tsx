@@ -6,6 +6,7 @@ import { swAPI } from '../../api/api'
 import { CardInfoCategoryData, bottomDataCategoryProps } from '../../data/data'
 import { CategoryT, EnumCategoriesT } from '../../types/types'
 import { convertToTitleCase } from '../../utils/convertToTitleCase'
+import { BackButton } from '../Card/BackButton'
 import { DetailedCardContainer } from '../DetailedCard/DetailedCardContainer/DetailedCardContainer'
 import { DetailedCardContainerBottom } from '../DetailedCard/DetailedCardContainerBottom/DetailedCardContainerBottom'
 import { DetailedCardContainerTop } from '../DetailedCard/DetailedCardContainerTop/DetailedCardContainerTop'
@@ -44,22 +45,27 @@ export const Section = ({ category }: { category: EnumCategoriesT }) => {
       {error ? (
         <div className="error">{error.message}</div>
       ) : (
-        <DetailedCardContainer>
-          <DetailedCardContainerTop>
-            <CardImage key={categoryItem.image} src={categoryItem.image} alt={'poster'} />
-            <CardInfo>
-              {CardInfoCategoryData[category].map((item: string) => {
-                return (
-                  <div key={item as string}>
-                    <InfoTitle>{convertToTitleCase(item as string)}</InfoTitle>
-                    <InfoData>{categoryItem[item as keyof CategoryT] ?? 'n/a'}</InfoData>
-                  </div>
-                )
-              })}
-            </CardInfo>
-          </DetailedCardContainerTop>
-          <DetailedCardContainerBottom bottomData={bottomData!} />
-        </DetailedCardContainer>
+        <>
+          <ButtonContainer>
+            <BackButton />
+          </ButtonContainer>
+          <DetailedCardContainer>
+            <DetailedCardContainerTop>
+              <CardImage key={categoryItem.image} src={categoryItem.image} alt={'poster'} />
+              <CardInfo>
+                {CardInfoCategoryData[category].map((item: string) => {
+                  return (
+                    <div key={item as string}>
+                      <InfoTitle>{convertToTitleCase(item as string)}</InfoTitle>
+                      <InfoData>{categoryItem[item as keyof CategoryT] ?? 'n/a'}</InfoData>
+                    </div>
+                  )
+                })}
+              </CardInfo>
+            </DetailedCardContainerTop>
+            <DetailedCardContainerBottom bottomData={bottomData!} />
+          </DetailedCardContainer>
+        </>
       )}
     </Container>
   )
@@ -81,4 +87,8 @@ const InfoTitle = styled.div`
 
 const InfoData = styled.div`
   padding-bottom: 1rem;
+`
+
+const ButtonContainer = styled.div`
+  margin-top: 2rem;
 `
