@@ -1,3 +1,4 @@
+import { IoArrowBack } from 'react-icons/io5'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -7,7 +8,12 @@ export const BackButton = () => {
     navigate(-1)
   }
 
-  return <Button onClick={onNavigate}>Back</Button>
+  return (
+    <Button onClick={onNavigate}>
+      <IoArrowBack />
+      Back
+    </Button>
+  )
 }
 
 const Button = styled.button`
