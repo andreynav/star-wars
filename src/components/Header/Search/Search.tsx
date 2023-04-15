@@ -48,4 +48,8 @@ const Input = styled.input.attrs({
   &::placeholder {
     color: var(--colors-text);
   }
+
+  @media (max-width: 768px) {
+    font-size: var(--fs-sm);
+  }
 `

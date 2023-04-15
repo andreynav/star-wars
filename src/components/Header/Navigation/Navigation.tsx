@@ -52,6 +52,7 @@ const NavigationWrapper = styled.div`
     border-right: none;
   }
 
+  & div:nth-child(4),
   & div:nth-child(5),
   & div:nth-child(6) {
     border-bottom: none;
@@ -59,6 +60,7 @@ const NavigationWrapper = styled.div`
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
+    font-size: var(--fs-sm);
 
     & ${StyledNavLink} {
       height: 32px;
@@ -91,6 +93,10 @@ const NavigationWrapper = styled.div`
     & div:nth-child(3),
     & div:nth-child(5) {
       border-right: 1px solid grey;
+    }
+
+    & div:nth-child(4) {
+      border-bottom: 1px solid grey;
     }
   }
 `
