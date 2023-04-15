@@ -9,8 +9,11 @@ const StyledCardContainer = styled.div`
   display: grid;
   height: 100%;
   border-radius: 0.8rem;
-  box-shadow: var(--card-shadow);
   cursor: pointer;
+
+  &:hover {
+    box-shadow: var(--card-shadow);
+  }
 
   & div b {
     font-weight: var(--fw-normal);

@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react'
+
 import { Categories } from '../data/data'
 
 type CommonSectionPropsT = {
@@ -149,4 +151,11 @@ export type DetailedCardContainerBottomT = {
 
 export type BottomDataT = {
   bottomData: DetailedCardContainerBottomT[]
+}
+
+export type PaginatorT = {
+  next: boolean
+  previous: boolean
+  page: number
+  setPage: Dispatch<SetStateAction<number>>
 }
