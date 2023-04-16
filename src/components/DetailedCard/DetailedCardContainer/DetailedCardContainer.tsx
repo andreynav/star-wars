@@ -9,10 +9,13 @@ const StyledDetailedCardContainer = styled.div`
   display: grid;
   height: 100%;
   padding: 2rem;
-  border: 1px dotted var(--color-title-text);
+  border: 1px solid var(--colors-text);
   border-radius: 0.8rem;
-  box-shadow: var(--card-shadow);
   margin: 2rem 0;
+
+  &:hover {
+    box-shadow: var(--card-shadow);
+  }
 
   & div b {
     font-weight: var(--fw-normal);

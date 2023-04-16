@@ -133,6 +133,7 @@ export type CardT = {
   src?: string
   toNavigate: string
   category: CategoryT | string
+  name?: string
 }
 export type DetailedCardSectionT = {
   title: string

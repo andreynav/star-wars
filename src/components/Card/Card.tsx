@@ -5,7 +5,7 @@ import { CardContainer } from '../common/CardContainer/CardContainer'
 import { CardImage } from '../common/CardImage/CardImage'
 import { StyledNavLink } from '../common/StyledNavLink/StyledNavLink'
 
-export const Card = ({ src, category, toNavigate }: CardT) => {
+export const Card = ({ src, category, toNavigate, name }: CardT) => {
   let categoryTitle = ''
   switch (typeof category) {
     case 'object':
@@ -22,7 +22,7 @@ export const Card = ({ src, category, toNavigate }: CardT) => {
       <CardContainer>
         <ImageContainer>
           <CardImage src={src} alt={categoryTitle} />
-          <CardTitle>{categoryTitle}</CardTitle>
+          <CardTitle>{categoryTitle || name}</CardTitle>
         </ImageContainer>
       </CardContainer>
     </StyledNavLink>
@@ -41,7 +41,7 @@ const CardTitle = styled.div`
   background-clip: border-box;
   background: rgb(0, 0, 0);
   background: rgba(0, 0, 0, 0.8);
-  color: var(--color-title-text);
+  color: #ffffff;
   font-size: var(--fs-md);
   font-weight: bold;
   text-align: center;
