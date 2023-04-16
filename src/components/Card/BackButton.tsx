@@ -24,8 +24,12 @@ const Button = styled.button`
   padding: 0 1rem;
   color: var(--colors-text);
   background-color: var(--colors-ui-base);
-  box-shadow: var(--card-shadow);
+  box-shadow: var(--shadow);
   line-height: 2.5;
   border: none;
   cursor: pointer;
+
+  &:hover {
+    box-shadow: var(--card-shadow);
+  }
 `
