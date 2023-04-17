@@ -28,6 +28,7 @@ export const GlobalStyles = createGlobalStyle`
     --colors-placeholder: hsl(0,0%,50%);
     --color-toggle: #fff;
     --color-data-title: #c8c8ca;
+    --colors-image-border: #FFFFFF;
 
     --shadow: rgba(245, 245, 245, 0.2) 0 0 8px;
     --card-shadow: 5px -4px 17px 9px rgba(238, 59, 8, 0.3);
@@ -41,6 +42,7 @@ export const GlobalStyles = createGlobalStyle`
     --colors-placeholder: hsl(0, 0%, 41%);
     --color-toggle: transparent;
     --color-data-title: #373737;
+    --colors-image-border: #1f2c37;
 
     --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     --card-shadow: 5px -4px 17px 9px rgba(8, 96, 238, 0.3);

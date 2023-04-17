@@ -9,7 +9,7 @@ const StyledCardContainer = styled.div`
   display: grid;
   height: 100%;
   border-radius: 0.8rem;
-  border: 5px solid var(--colors-text);
+  border: 5px solid var(--colors-image-border);
   cursor: pointer;
 
   &:hover {

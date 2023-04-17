@@ -42,13 +42,21 @@ const CardTitle = styled.div`
   background: rgb(0, 0, 0);
   background: rgba(0, 0, 0, 0.8);
   color: #ffffff;
-  font-size: var(--fs-md);
+  font-size: var(--fs-sm);
   font-weight: bold;
   text-align: center;
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 0 0 var(--radii) var(--radii);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
-  @media (max-width: 480px) {
-    font-size: var(--fs-lg);
+  @media (max-width: 1200px) {
+    padding: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: var(--fs-md);
+    padding: 0.5rem;
   }
 `
