@@ -18,9 +18,4 @@ const StyledCardImage = styled.img`
   display: grid;
   border-radius: var(--radii);
   object-fit: cover;
-
-  @media (max-width: 480px) {
-    width: 416px;
-    height: 560px;
-  }
 `
