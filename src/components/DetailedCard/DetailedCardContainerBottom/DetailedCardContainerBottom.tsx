@@ -20,7 +20,7 @@ export const DetailedCardContainerBottom = ({ bottomData }: BottomDataT) => {
 const BottomContainer = styled.div`
   display: grid;
   grid-gap: 2rem 3rem;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
