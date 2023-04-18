@@ -1,7 +1,7 @@
 import { CategoryCardsListT } from '../../types/types'
 import { getIdFromUrl } from '../../utils/getIdFromUrl'
 import { Card } from '../Card/Card'
-import { CardListContainer } from '../common/CardListContainer/CardListContainer'
+import { CardListContainer } from '../common/CardListContainer'
 
 export const CategoryCardsList = ({ categoryItems, imagesSrc, category }: CategoryCardsListT) => {
   return (

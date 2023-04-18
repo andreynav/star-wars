@@ -4,10 +4,10 @@ import { CardInfoCategoryData } from '../../data/data'
 import { CategoryCardT, CategoryT, EnumCategoriesT } from '../../types/types'
 import { convertToTitleCase } from '../../utils/convertToTitleCase'
 import { getBottomData } from '../../utils/getBottomData'
-import { DetailedCardContainer } from '../DetailedCard/DetailedCardContainer/DetailedCardContainer'
-import { DetailedCardContainerBottom } from '../DetailedCard/DetailedCardContainerBottom/DetailedCardContainerBottom'
-import { DetailedCardContainerTop } from '../DetailedCard/DetailedCardContainerTop/DetailedCardContainerTop'
-import { CardImage } from '../common/CardImage/CardImage'
+import { DetailedCardContainer } from '../DetailedCard/DetailedCardContainer'
+import { DetailedCardContainerBottom } from '../DetailedCard/DetailedCardContainerBottom'
+import { DetailedCardContainerTop } from '../DetailedCard/DetailedCardContainerTop'
+import { CardImage } from '../common/CardImage'
 
 export const CategoryCard = ({ categoryItem, category }: CategoryCardT) => {
   const bottomData = getBottomData(categoryItem, category)

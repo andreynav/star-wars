@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { CategoriesList } from '../Categories/CategoriesList'
 import { Category } from '../Categories/Category'
-import { Header } from '../Header/Header/Header'
+import { Header } from '../Header/Header'
 import { Home } from '../Home/Home'
 
 export const App = () => {

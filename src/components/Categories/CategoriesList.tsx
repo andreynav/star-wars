@@ -1,7 +1,7 @@
 import { useCategoryItems } from '../../hooks/useCategoryItems'
 import { EnumCategoriesT } from '../../types/types'
-import { Container } from '../common/Container/Container'
-import { Paginator } from '../common/Paginator/Paginator'
+import { Container } from '../common/Container'
+import { Paginator } from '../common/Paginator'
 import { CategoryCardsList } from './CategoryCardsList'
 
 export const CategoriesList = ({ category }: { category: EnumCategoriesT }) => {

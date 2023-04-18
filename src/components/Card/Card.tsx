@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 import { CardT } from '../../types/types'
-import { CardContainer } from '../common/CardContainer/CardContainer'
-import { CardImage } from '../common/CardImage/CardImage'
-import { StyledNavLink } from '../common/StyledNavLink/StyledNavLink'
+import { CardContainer } from '../common/CardContainer'
+import { CardImage } from '../common/CardImage'
+import { StyledNavLink } from '../common/StyledNavLink'
 
 export const Card = ({ src, category, toNavigate, name }: CardT) => {
   let categoryTitle = ''

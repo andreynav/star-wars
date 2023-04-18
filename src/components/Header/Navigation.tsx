@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-import { Categories } from '../../../data/data'
-import { StyledNavLink } from '../../common/StyledNavLink/StyledNavLink'
+import { Categories } from '../../data/data'
+import { StyledNavLink } from '../common/StyledNavLink'
 
 const navigationItems = [
   Categories.PEOPLE,

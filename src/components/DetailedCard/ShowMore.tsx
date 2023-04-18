@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { ShowMoreT } from '../../../types/types'
+import { ShowMoreT } from '../../types/types'
 
 export const ShowMore = ({ onClick, nameIsShow }: ShowMoreT) => {
   const text = nameIsShow ? 'Show More' : 'Show Less'
