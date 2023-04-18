@@ -1,51 +1,40 @@
 import styled from 'styled-components'
 
-import { CardInfoCategoryData } from '../../data/data'
-import { CategoryCardT, CategoryT, EnumCategoriesT } from '../../types/types'
-import { convertToTitleCase } from '../../utils/convertToTitleCase'
+import { CategoryCardT } from '../../types/types'
 import { getBottomData } from '../../utils/getBottomData'
-import { DetailedCardContainer } from '../DetailedCard/DetailedCardContainer'
 import { DetailedCardContainerBottom } from '../DetailedCard/DetailedCardContainerBottom'
 import { DetailedCardContainerTop } from '../DetailedCard/DetailedCardContainerTop'
-import { CardImage } from '../common/CardImage'
 
 export const CategoryCard = ({ categoryItem, category }: CategoryCardT) => {
   const bottomData = getBottomData(categoryItem, category)
 
   return (
     <DetailedCardContainer>
-      <DetailedCardContainerTop>
-        <CardImage key={categoryItem.image} src={categoryItem.image} alt={'poster'} />
-        <CardInfo>
-          {CardInfoCategoryData[category as EnumCategoriesT].map((item: string) => {
-            return (
-              <div key={item as string}>
-                <InfoTitle>{convertToTitleCase(item as string)}</InfoTitle>
-                <InfoData>{categoryItem[item as keyof CategoryT] ?? 'n/a'}</InfoData>
-              </div>
-            )
-          })}
-        </CardInfo>
-      </DetailedCardContainerTop>
+      <DetailedCardContainerTop categoryItem={categoryItem} category={category} />
       <DetailedCardContainerBottom bottomData={bottomData!} />
     </DetailedCardContainer>
   )
 }
 
-const CardInfo = styled.div`
-  padding: 1rem;
+const DetailedCardContainer = styled.div`
+  display: grid;
+  height: 100%;
+  padding: 2rem;
+  border: 1px solid var(--colors-text);
+  border-radius: 0.8rem;
+  margin: 2rem 0;
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    padding: 1rem 0;
+  &:hover {
+    box-shadow: var(--card-shadow);
   }
-`
 
-const InfoTitle = styled.div`
-  color: var(--color-data-title);
-  font-size: var(--fs-esm);
-`
+  & div b {
+    font-weight: var(--fw-normal);
+  }
 
-const InfoData = styled.div`
-  padding-bottom: 1rem;
+  & a:link,
+  a:visited {
+    text-decoration: none;
+    color: var(--colors-link);
+  }
 `
