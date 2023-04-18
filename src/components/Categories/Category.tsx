@@ -13,7 +13,7 @@ import { DetailedCardContainerTop } from '../DetailedCard/DetailedCardContainerT
 import { CardImage } from '../common/CardImage/CardImage'
 import { Container } from '../common/Container/Container'
 
-export const Section = ({ category }: { category: EnumCategoriesT }) => {
+export const Category = ({ category }: { category: EnumCategoriesT }) => {
   const { id } = useParams<{ id: string }>()
   const [error, setError] = useState<{ message: string; status?: number } | null>(null)
   const [categoryItem, setCategoryItem] = useState<CategoryT | null>(null)
