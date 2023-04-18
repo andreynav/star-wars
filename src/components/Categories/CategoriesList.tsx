@@ -1,4 +1,4 @@
-import { useCategoryItems } from '../../hooks/useCategory'
+import { useCategoryItems } from '../../hooks/useCategoryItems'
 import { EnumCategoriesT } from '../../types/types'
 import { Container } from '../common/Container/Container'
 import { Paginator } from '../common/Paginator/Paginator'

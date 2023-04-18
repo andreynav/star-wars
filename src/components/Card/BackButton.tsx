@@ -9,12 +9,18 @@ export const BackButton = () => {
   }
 
   return (
-    <Button onClick={onNavigate}>
-      <IoArrowBack />
-      Back
-    </Button>
+    <ButtonContainer>
+      <Button onClick={onNavigate}>
+        <IoArrowBack />
+        Back
+      </Button>
+    </ButtonContainer>
   )
 }
+
+const ButtonContainer = styled.div`
+  margin-top: 2rem;
+`
 
 const Button = styled.button`
   display: grid;
