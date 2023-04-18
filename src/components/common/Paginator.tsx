@@ -1,7 +1,7 @@
 import { MouseEvent } from 'react'
 import styled from 'styled-components'
 
-import { PaginatorT } from '../../../types/types'
+import { PaginatorT } from '../../types/types'
 
 export const Paginator = ({ next, previous, page, setPage }: PaginatorT) => {
   const onHandleClick = (event: MouseEvent<HTMLButtonElement>) => {

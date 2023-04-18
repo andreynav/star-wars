@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import { imageBaseApi, swAPI } from '../../../api/api'
-import { Categories } from '../../../data/data'
-import { DetailedCardSectionT } from '../../../types/types'
-import { getCategoryFromUrl } from '../../../utils/getCategoryFromUrl'
-import { getIdFromUrl } from '../../../utils/getIdFromUrl'
-import { Card } from '../../Card/Card'
-import { ShowMore } from '../ShowMore/ShowMore'
+import { imageBaseApi, swAPI } from '../../api/api'
+import { Categories } from '../../data/data'
+import { DetailedCardSectionT } from '../../types/types'
+import { getCategoryFromUrl } from '../../utils/getCategoryFromUrl'
+import { getIdFromUrl } from '../../utils/getIdFromUrl'
+import { Card } from '../Card/Card'
+import { ShowMore } from './ShowMore'
 
 export const DetailedCardSection = ({ title, data }: DetailedCardSectionT) => {
   const [isShowMoreVisible, setIsShowMoreVisible] = useState(data.length > 3)

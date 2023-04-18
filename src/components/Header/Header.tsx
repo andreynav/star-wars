@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import { starWars } from '../../../assets'
-import { StyledNavLink } from '../../common/StyledNavLink/StyledNavLink'
-import { Navigation } from '../Navigation/Navigation'
-import { Search } from '../Search/Search'
-import { Toggle } from '../Toggle/Toggle'
+import { starWars } from '../../assets'
+import { StyledNavLink } from '../common/StyledNavLink'
+import { Navigation } from './Navigation'
+import { Search } from './Search'
+import { Toggle } from './Toggle'
 
 export const Header = () => {
   const [theme, setTheme] = useState('light')

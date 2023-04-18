@@ -1,7 +1,7 @@
 import { useCategory } from '../../hooks/useCategory'
 import { EnumCategoriesT } from '../../types/types'
 import { BackButton } from '../Card/BackButton'
-import { Container } from '../common/Container/Container'
+import { Container } from '../common/Container'
 import { CategoryCard } from './CategoryCard'
 
 export const Category = ({ category }: { category: EnumCategoriesT }) => {

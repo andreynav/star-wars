@@ -1,4 +1,4 @@
-import { Container } from '../common/Container/Container'
+import { Container } from '../common/Container'
 
 export const Home = () => {
   return (
