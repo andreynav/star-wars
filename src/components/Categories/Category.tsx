@@ -1,10 +1,10 @@
 import { useCategory } from '../../hooks/useCategory'
-import { EnumCategoriesT } from '../../types/types'
+import { CategoryPropT } from '../../types/types'
 import { BackButton } from '../Card/BackButton'
 import { Container } from '../common/Container'
 import { CategoryCard } from './CategoryCard'
 
-export const Category = ({ category }: { category: EnumCategoriesT }) => {
+export const Category = ({ category }: CategoryPropT) => {
   const { categoryItem, error } = useCategory(category)
 
   if (!categoryItem) return <div>loading...</div>

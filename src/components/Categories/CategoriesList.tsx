@@ -1,10 +1,10 @@
 import { useCategoryItems } from '../../hooks/useCategoryItems'
-import { EnumCategoriesT } from '../../types/types'
+import { CategoryPropT } from '../../types/types'
 import { Container } from '../common/Container'
 import { Paginator } from '../common/Paginator'
 import { CategoryCardsList } from './CategoryCardsList'
 
-export const CategoriesList = ({ category }: { category: EnumCategoriesT }) => {
+export const CategoriesList = ({ category }: CategoryPropT) => {
   const { categoryItems, imagesSrc, error, page, setPage, next, previous, isLoading } =
     useCategoryItems(category)
   const isPaginatorVisible = next || previous

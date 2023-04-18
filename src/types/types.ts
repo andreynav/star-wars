@@ -131,6 +131,10 @@ export type EnumCategoriesT =
   | 'vehicles'
   | 'films'
 
+export type CategoryPropT = {
+  category: EnumCategoriesT
+}
+
 export type CardT = {
   src?: string
   toNavigate: string

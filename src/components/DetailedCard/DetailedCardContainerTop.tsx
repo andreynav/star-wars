@@ -1,8 +1,16 @@
-import { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 
-export const DetailedCardContainerTop = ({ children }: PropsWithChildren) => {
-  return <TopContainer>{children}</TopContainer>
+import { CategoryCardT } from '../../types/types'
+import { CardImage } from '../common/CardImage'
+import { DetailedCardInfo } from './DetailedCardInfo'
+
+export const DetailedCardContainerTop = ({ categoryItem, category }: CategoryCardT) => {
+  return (
+    <TopContainer>
+      <CardImage key={categoryItem.image} src={categoryItem.image} alt={'poster'} />
+      <DetailedCardInfo categoryItem={categoryItem} category={category} />
+    </TopContainer>
+  )
 }
 
 const TopContainer = styled.div`
