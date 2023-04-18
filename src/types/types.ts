@@ -162,3 +162,9 @@ export type PaginatorT = {
   page: number
   setPage: Dispatch<SetStateAction<number>>
 }
+
+export type CategoryCardsListT = {
+  categoryItems: CategoryT[]
+  imagesSrc: string[] | null
+  category: string
+}

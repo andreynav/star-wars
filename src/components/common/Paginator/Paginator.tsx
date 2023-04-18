@@ -15,18 +15,25 @@ export const Paginator = ({ next, previous, page, setPage }: PaginatorT) => {
       setPage((prevPage) => prevPage - 1)
     }
   }
+
   return (
-    <PaginatorContainer>
-      <button onClick={onHandleClick} disabled={!previous}>
-        PREV
-      </button>
-      <div>PAGE {page}</div>
-      <button onClick={onHandleClick} disabled={!next}>
-        NEXT
-      </button>
-    </PaginatorContainer>
+    <Container>
+      <PaginatorContainer>
+        <button onClick={onHandleClick} disabled={!previous}>
+          PREV
+        </button>
+        <div>PAGE {page}</div>
+        <button onClick={onHandleClick} disabled={!next}>
+          NEXT
+        </button>
+      </PaginatorContainer>
+    </Container>
   )
 }
+const Container = styled.div`
+  display: grid;
+  padding-top: 2rem;
+`
 
 const PaginatorContainer = styled.div`
   display: grid;
