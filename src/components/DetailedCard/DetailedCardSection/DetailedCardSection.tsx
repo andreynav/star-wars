@@ -17,6 +17,12 @@ export const DetailedCardSection = ({ title, data }: DetailedCardSectionT) => {
   const toggleShowMore = () => {
     setIsShowMoreVisible(!isShowMoreVisible)
   }
+  const getNameIndexShift = (sliceArgs: number[]): number => {
+    return sliceArgs[0] === 3 ? 3 : 0
+  }
+  const getImgPathCategory = (category: string) => {
+    return category === Categories.PEOPLE ? Categories.CHARACTERS : category
+  }
 
   useEffect(() => {
     const fetchCategory = async () => {
@@ -26,20 +32,22 @@ export const DetailedCardSection = ({ title, data }: DetailedCardSectionT) => {
           data.map(async (item) => {
             const id = getIdFromUrl(item)
             const itemCategory = getCategoryFromUrl(item)!
-            const dataCat = await swAPI.getCategoryItem(itemCategory, id!)
-            // @ts-ignore
-            return dataCat?.name || dataCat?.title
+            if (!id) return
+            const dataCategory = await swAPI.getCategoryItem(itemCategory, id)
+            return 'name' in dataCategory ? dataCategory.name : dataCategory.title
           })
         )
-        const newCategories = newCategoryItems.reduce((acc, item, index) => {
-          // @ts-ignore
-          const itemCategory = getCategoryFromUrl(data[index])!
-          if (!acc[itemCategory]) {
-            acc[itemCategory] = []
-          }
-          acc[itemCategory].push(item)
-          return acc
-        }, {})
+        const newCategories = newCategoryItems.reduce(
+          (acc: { [key: string]: string[] }, item, index) => {
+            const itemCategory = getCategoryFromUrl(data[index] as string)!
+            if (!acc[itemCategory]) {
+              acc[itemCategory] = []
+            }
+            acc[itemCategory]?.push(item!)
+            return acc
+          },
+          {}
+        )
         setCategoryItems(newCategories)
       } catch (e: any) {
         setIsLoading(false)
@@ -52,24 +60,18 @@ export const DetailedCardSection = ({ title, data }: DetailedCardSectionT) => {
 
   if (isLoading || !categoryItems) return <div>loading...</div>
 
-  const getNameIndexShift = (sliceArgs: any): number => {
-    return sliceArgs[0] === 3 ? 3 : 0
-  }
-
-  const getThumbnails = (data: any, sliceArgs: any) => {
+  const getThumbnails = (data: string[], sliceArgs: number[]) => {
     return (
       <ThumbnailContainer className={'thumbContainer'}>
         {data.slice(...sliceArgs).map((item: string, index: number) => {
           const imgCategory = getCategoryFromUrl(item)
-          const imgPathCategory =
-            imgCategory === Categories.PEOPLE ? Categories.CHARACTERS : imgCategory
+          const imgPathCategory = getImgPathCategory(imgCategory as string)
           const nameIndexShift = getNameIndexShift(sliceArgs)
           return (
             <SectionItem key={item} className={'sectionItem'}>
               <Card
-                // @ts-ignore
-                name={categoryItems?.[getCategoryFromUrl(item)]?.[index + nameIndexShift]}
-                category={getCategoryFromUrl(item)!}
+                name={categoryItems?.[getCategoryFromUrl(item) as string]?.[index + nameIndexShift]}
+                category={getCategoryFromUrl(item) as string}
                 toNavigate={`/${getCategoryFromUrl(item)}/${getIdFromUrl(item)}`}
                 src={`${imageBaseApi}${imgPathCategory}/${getIdFromUrl(item)}.jpg`}
               />
@@ -87,7 +89,6 @@ export const DetailedCardSection = ({ title, data }: DetailedCardSectionT) => {
         <>
           <TopContainer className={'top'}>
             {getThumbnails(data, [0, 3])}
-            {/*{!isShowMoreVisible && getThumbnails(data, [3], 3)}*/}
             {isShowMoreVisible && <ShowMore onClick={toggleShowMore} nameIsShow />}
           </TopContainer>
           <BottomContainer className={'bottom'}>

@@ -72,7 +72,9 @@ export type StarshipsT = {
   pilots: string[]
 } & CommonSectionPropsT
 
-export type VehiclesT = {} & CommonSectionPropsT
+export type VehiclesT = {
+  name: string
+} & CommonSectionPropsT
 
 export type FilmT = {
   title: string
