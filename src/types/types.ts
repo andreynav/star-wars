@@ -168,3 +168,8 @@ export type CategoryCardsListT = {
   imagesSrc: string[] | null
   category: string
 }
+
+export type CategoryCardT = {
+  categoryItem: CategoryT
+  category: string
+}
