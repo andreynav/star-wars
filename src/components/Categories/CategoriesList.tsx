@@ -8,7 +8,7 @@ import { CardListContainer } from '../common/CardListContainer/CardListContainer
 import { Container } from '../common/Container/Container'
 import { Paginator } from '../common/Paginator/Paginator'
 
-export const SectionList = ({ category }: { category: EnumCategoriesT }) => {
+export const CategoriesList = ({ category }: { category: EnumCategoriesT }) => {
   const { categoryItems, imagesSrc, error, page, setPage, next, previous, isLoading } =
     useCategoryItems(category)
 

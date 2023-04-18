@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
 
+import { CategoriesList } from '../Categories/CategoriesList'
+import { Category } from '../Categories/Category'
 import { Header } from '../Header/Header/Header'
 import { Home } from '../Home/Home'
-import { Section } from '../Sections/Section'
-import { SectionList } from '../Sections/SectionList'
 
 export const App = () => {
   return (
@@ -12,18 +12,18 @@ export const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/people/" element={<SectionList category="people" />} />
-        <Route path="/people/:id" element={<Section category="people" />} />
-        <Route path="/species/" element={<SectionList category="species" />} />
-        <Route path="/species/:id" element={<Section category="species" />} />
-        <Route path="/planets/" element={<SectionList category="planets" />} />
-        <Route path="/planets/:id" element={<Section category="planets" />} />
-        <Route path="/starships/" element={<SectionList category="starships" />} />
-        <Route path="/starships/:id" element={<Section category="starships" />} />
-        <Route path="/vehicles/" element={<SectionList category="vehicles" />} />
-        <Route path="/vehicles/:id" element={<Section category="vehicles" />} />
-        <Route path="/films/" element={<SectionList category="films" />} />
-        <Route path="/films/:id" element={<Section category="films" />} />
+        <Route path="/people/" element={<CategoriesList category="people" />} />
+        <Route path="/people/:id" element={<Category category="people" />} />
+        <Route path="/species/" element={<CategoriesList category="species" />} />
+        <Route path="/species/:id" element={<Category category="species" />} />
+        <Route path="/planets/" element={<CategoriesList category="planets" />} />
+        <Route path="/planets/:id" element={<Category category="planets" />} />
+        <Route path="/starships/" element={<CategoriesList category="starships" />} />
+        <Route path="/starships/:id" element={<Category category="starships" />} />
+        <Route path="/vehicles/" element={<CategoriesList category="vehicles" />} />
+        <Route path="/vehicles/:id" element={<Category category="vehicles" />} />
+        <Route path="/films/" element={<CategoriesList category="films" />} />
+        <Route path="/films/:id" element={<Category category="films" />} />
         {/*<Route path="/*" element={<NotFound />} />*/}
       </Routes>
     </StyledApp>
