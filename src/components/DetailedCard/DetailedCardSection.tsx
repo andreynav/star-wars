@@ -1,98 +1,34 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 
-import { imageBaseApi, swAPI } from '../../api/api'
-import { Categories } from '../../data/data'
+import { useDetailedCardSection } from '../../hooks/useDetailedCardSection'
 import { DetailedCardSectionT } from '../../types/types'
-import { getCategoryFromUrl } from '../../utils/getCategoryFromUrl'
-import { getIdFromUrl } from '../../utils/getIdFromUrl'
-import { Card } from '../Card/Card'
+import { ThumbnailsList } from '../Categories/ThumbnailsList'
 import { ShowMore } from './ShowMore'
 
 export const DetailedCardSection = ({ title, data }: DetailedCardSectionT) => {
   const [isShowMoreVisible, setIsShowMoreVisible] = useState(data.length > 3)
+  const { categoryItems, isLoading } = useDetailedCardSection(data)
 
-  const [categoryItems, setCategoryItems] = useState<{ [key: string]: string[] }>({})
-  const [isLoading, setIsLoading] = useState<boolean>(false)
   const toggleShowMore = () => {
     setIsShowMoreVisible(!isShowMoreVisible)
   }
-  const getNameIndexShift = (sliceArgs: number[]): number => {
-    return sliceArgs[0] === 3 ? 3 : 0
-  }
-  const getImgPathCategory = (category: string) => {
-    return category === Categories.PEOPLE ? Categories.CHARACTERS : category
-  }
 
-  useEffect(() => {
-    const fetchCategory = async () => {
-      setIsLoading(true)
-      try {
-        const newCategoryItems = await Promise.all(
-          data.map(async (item) => {
-            const id = getIdFromUrl(item)
-            const itemCategory = getCategoryFromUrl(item)!
-            if (!id) return
-            const dataCategory = await swAPI.getCategoryItem(itemCategory, id)
-            return 'name' in dataCategory ? dataCategory.name : dataCategory.title
-          })
-        )
-        const newCategories = newCategoryItems.reduce(
-          (acc: { [key: string]: string[] }, item, index) => {
-            const itemCategory = getCategoryFromUrl(data[index] as string)!
-            if (!acc[itemCategory]) {
-              acc[itemCategory] = []
-            }
-            acc[itemCategory]?.push(item!)
-            return acc
-          },
-          {}
-        )
-        setCategoryItems(newCategories)
-      } catch (e: any) {
-        setIsLoading(false)
-        console.log(e.message)
-      }
-      setIsLoading(false)
-    }
-    fetchCategory().then()
-  }, [data])
-
-  if (isLoading || !categoryItems) return <div>loading...</div>
-
-  const getThumbnails = (data: string[], sliceArgs: number[]) => {
-    return (
-      <ThumbnailContainer className={'thumbContainer'}>
-        {data.slice(...sliceArgs).map((item: string, index: number) => {
-          const imgCategory = getCategoryFromUrl(item)
-          const imgPathCategory = getImgPathCategory(imgCategory as string)
-          const nameIndexShift = getNameIndexShift(sliceArgs)
-          return (
-            <SectionItem key={item} className={'sectionItem'}>
-              <Card
-                name={categoryItems?.[getCategoryFromUrl(item) as string]?.[index + nameIndexShift]}
-                category={getCategoryFromUrl(item) as string}
-                toNavigate={`/${getCategoryFromUrl(item)}/${getIdFromUrl(item)}`}
-                src={`${imageBaseApi}${imgPathCategory}/${getIdFromUrl(item)}.jpg`}
-              />
-            </SectionItem>
-          )
-        })}
-      </ThumbnailContainer>
-    )
-  }
+  if (isLoading) return <div>loading...</div>
 
   return (
     <Section>
       <SectionTitle>{title}</SectionTitle>
       {data.length > 0 ? (
         <>
-          <TopContainer className={'top'}>
-            {getThumbnails(data, [0, 3])}
+          <TopContainer>
+            <ThumbnailsList data={data} sliceArgs={[0, 3]} categoryItems={categoryItems} />
             {isShowMoreVisible && <ShowMore onClick={toggleShowMore} nameIsShow />}
           </TopContainer>
-          <BottomContainer className={'bottom'}>
-            {!isShowMoreVisible && getThumbnails(data, [3])}
+          <BottomContainer>
+            {!isShowMoreVisible && (
+              <ThumbnailsList data={data} sliceArgs={[3]} categoryItems={categoryItems} />
+            )}
             {!isShowMoreVisible && data.length > 3 && <ShowMore onClick={toggleShowMore} />}
           </BottomContainer>
         </>
@@ -132,11 +68,4 @@ const SectionItemNoData = styled.div`
   display: grid;
   grid-gap: 1rem;
   padding-top: 1rem;
-`
-
-const ThumbnailContainer = styled.div`
-  display: grid;
-  grid-gap: 1rem;
-  padding-top: 1rem;
-  grid-template-columns: repeat(3, 1fr);
 `
