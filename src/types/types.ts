@@ -177,3 +177,9 @@ export type CategoryCardT = {
   categoryItem: CategoryT
   category: string
 }
+
+export type ThumbnailsListT = {
+  data: string[]
+  sliceArgs: number[]
+  categoryItems: { [key: string]: string[] }
+}
