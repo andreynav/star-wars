@@ -183,3 +183,10 @@ export type ThumbnailsListT = {
   sliceArgs: number[]
   categoryItems: { [key: string]: string[] }
 }
+
+export type DetailedCardSectionDataT = {
+  data: string[]
+  categoryItems: { [key: string]: string[] }
+  toggleShowMore: () => void
+  isShowMoreVisible: boolean
+}
