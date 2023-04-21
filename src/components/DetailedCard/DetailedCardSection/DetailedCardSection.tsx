@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 
-import { useDetailedCardSection } from '../../hooks/useDetailedCardSection'
-import { DetailedCardSectionT } from '../../types/types'
+import { useDetailedCardSection } from '../../../hooks/useDetailedCardSection'
+import { DetailedCardSectionT } from '../../../types/types'
 import { DetailedCardSectionData } from './DetailedCardSectionData'
 
 export const DetailedCardSection = ({ title, data }: DetailedCardSectionT) => {

@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, ReactElement, ReactNode, SetStateAction } from 'react'
 
 import { Categories } from '../data/data'
 
@@ -147,8 +147,7 @@ export type DetailedCardSectionT = {
 }
 
 export type ShowMoreT = {
-  onClick: () => void
-  nameIsShow?: boolean
+  children: ReactNode
 }
 
 export type DetailedCardContainerBottomT = {
@@ -180,7 +179,6 @@ export type CategoryCardT = {
 
 export type ThumbnailsListT = {
   data: string[]
-  sliceArgs: number[]
   categoryItems: { [key: string]: string[] }
 }
 
@@ -189,4 +187,17 @@ export type DetailedCardSectionDataT = {
   categoryItems: { [key: string]: string[] }
   toggleShowMore: () => void
   isShowMoreVisible: boolean
+}
+
+export type SectionContextT = {
+  collapse?: () => void
+  expand?: () => void
+  isDataExists?: boolean
+  isCollapsed: boolean
+  limit: number
+  data: string[]
+}
+
+export type CollapseExpandT = {
+  children: ReactElement
 }
