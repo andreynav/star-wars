@@ -1,16 +1,15 @@
-import { useContext } from 'react'
 import styled from 'styled-components'
 
 import { imageBaseApi } from '../../../api/api'
-import { SectionContextT, ThumbnailsListT } from '../../../types/types'
+import { useSectionContext } from '../../../hooks/useSectionContext'
+import { ThumbnailsListT } from '../../../types/types'
 import { getCategoryFromUrl } from '../../../utils/getCategoryFromUrl'
 import { getIdFromUrl } from '../../../utils/getIdFromUrl'
 import { getImgPathCategory } from '../../../utils/getImgPathCategory'
 import { Card } from '../../Card/Card'
-import { SectionContext } from './DetailedCardSectionData'
 
 export const ThumbnailsList = ({ data, categoryItems }: ThumbnailsListT) => {
-  const { isCollapsed, limit } = useContext<SectionContextT>(SectionContext)
+  const { isCollapsed, limit } = useSectionContext()
 
   return (
     <ThumbnailContainer>

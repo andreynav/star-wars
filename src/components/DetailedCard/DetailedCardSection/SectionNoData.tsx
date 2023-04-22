@@ -1,11 +1,9 @@
-import { useContext } from 'react'
 import styled from 'styled-components'
 
-import { SectionContextT } from '../../../types/types'
-import { SectionContext } from './DetailedCardSectionData'
+import { useSectionContext } from '../../../hooks/useSectionContext'
 
 export const SectionNoData = () => {
-  const { isDataExists } = useContext<SectionContextT>(SectionContext)
+  const { isDataExists } = useSectionContext()
   return isDataExists ? null : (
     <SectionItemNoData>There is no data in the Jedi archives</SectionItemNoData>
   )
