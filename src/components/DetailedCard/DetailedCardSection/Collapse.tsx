@@ -1,9 +1,9 @@
-import { cloneElement, useContext } from 'react'
+import { cloneElement } from 'react'
 
-import { CollapseExpandT, SectionContextT } from '../../../types/types'
-import { SectionContext } from './DetailedCardSectionData'
+import { useSectionContext } from '../../../hooks/useSectionContext'
+import { CollapseExpandT } from '../../../types/types'
 
 export const Collapse = ({ children }: CollapseExpandT) => {
-  const { collapse, isCollapsed } = useContext<SectionContextT>(SectionContext)
+  const { collapse, isCollapsed } = useSectionContext()
   return !isCollapsed ? cloneElement(children, { onClick: collapse }) : <></>
 }

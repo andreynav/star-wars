@@ -1,11 +1,10 @@
-import { cloneElement, useContext } from 'react'
+import { cloneElement } from 'react'
 
-import { CollapseExpandT, SectionContextT } from '../../../types/types'
-import { SectionContext } from './DetailedCardSectionData'
+import { useSectionContext } from '../../../hooks/useSectionContext'
+import { CollapseExpandT } from '../../../types/types'
 
 export const Expand = ({ children }: CollapseExpandT) => {
-  const { isDataExists, expand, isCollapsed, data, limit } =
-    useContext<SectionContextT>(SectionContext)
+  const { isDataExists, expand, isCollapsed, data, limit } = useSectionContext()
   return isDataExists && isCollapsed && data?.length > limit ? (
     cloneElement(children, { onClick: expand })
   ) : (
