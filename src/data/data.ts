@@ -18,7 +18,7 @@ export const bottomDataCategoryProps: { [key: string]: string[] } = {
   [Categories.SPECIES]: [Categories.PEOPLE, Categories.FILMS],
   [Categories.PLANETS]: [Categories.FILMS, 'residents'],
   [Categories.STARSHIPS]: [Categories.FILMS, 'pilots'],
-  // [Categories.VEHICLES]: [Categories.FILMS],
+  [Categories.VEHICLES]: [Categories.FILMS, 'pilots'],
   [Categories.FILMS]: [
     Categories.PLANETS,
     Categories.CHARACTERS,
@@ -79,7 +79,19 @@ export const CardInfoCategoryData: { [K in Categories]: string[] } = {
     'cargo_capacity',
     'consumables'
   ],
-  [Categories.VEHICLES]: [],
+  [Categories.VEHICLES]: [
+    'name',
+    'model',
+    'vehicle_class',
+    'manufacturer',
+    'cost_in_credits',
+    'length',
+    'crew',
+    'passengers',
+    'max_atmosphering_speed',
+    'cargo_capacity',
+    'consumables'
+  ],
   [Categories.FILMS]: [
     'title',
     'episode_id',
