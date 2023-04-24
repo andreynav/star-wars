@@ -37,5 +37,16 @@ export const swAPI = {
       response.data.image = `${imagePaths[category as keyof ImagePaths]}${id}.jpg`
       return response.data
     })
+  },
+  searchItems: (category: string, searchValue: string, pageNumber: number) => {
+    return swApi
+      .get<SectionListT<CategoryT>>(`${category}/?search=${searchValue}&page=${pageNumber}`)
+      .then(async (response) => {
+        const imgPath = imagePaths[category as keyof ImagePaths]
+        response.data.images = response.data.results.map(
+          (item) => `${imgPath}${getIdFromUrl(item.url)}.jpg`
+        )
+        return response.data
+      })
   }
 }

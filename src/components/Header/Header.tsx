@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { starWars } from '../../assets'
 import { StyledNavLink } from '../common/StyledNavLink'
 import { Navigation } from './Navigation'
-import { Search } from './Search'
 import { Toggle } from './Toggle'
 
 export const Header = () => {
@@ -21,9 +20,6 @@ export const Header = () => {
   return (
     <StyledHeaderContainer>
       <TopHeader>
-        <SearchWrapper>
-          <Search />
-        </SearchWrapper>
         <LogoWrapper>
           <StyledNavLink to={`/`}>
             <Logo src={starWars} alt={'logo'} />
@@ -68,11 +64,6 @@ const TopHeader = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
   }
-`
-
-const SearchWrapper = styled.div`
-  display: grid;
-  justify-content: stretch;
 `
 
 const LogoWrapper = styled.div`
