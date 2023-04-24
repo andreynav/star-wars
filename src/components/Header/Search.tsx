@@ -28,10 +28,6 @@ const InputContainer = styled.label`
   align-content: center;
   border-radius: 24px;
   cursor: pointer;
-
-  @media (max-width: 480px) {
-    //margin-bottom: 2rem;
-  }
 `
 
 const Input = styled.input.attrs({
