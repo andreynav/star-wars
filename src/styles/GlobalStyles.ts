@@ -17,7 +17,7 @@ export const GlobalStyles = createGlobalStyle`
     /* Other */
     --radii: 0.5rem;
     --colors-link: #26a4f5;
-    
+    --colors-active-link: #ffc401;
   }
 
   body[data-theme='dark'] {
