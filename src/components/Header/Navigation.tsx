@@ -42,6 +42,10 @@ const NavigationWrapper = styled.div`
     height: 48px;
   }
 
+  & ${StyledNavLink}.active {
+    color: var(--colors-active-link);
+  }
+
   & div {
     display: grid;
     align-content: center;
