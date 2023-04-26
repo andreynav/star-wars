@@ -213,3 +213,9 @@ export type SectionContextT = {
 export type CollapseExpandT = {
   children: ReactElement
 }
+
+export type SetSearchT = (search: string) => void
+export type SearchT = {
+  search: string
+  setSearch: SetSearchT
+}
