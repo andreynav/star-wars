@@ -34,7 +34,7 @@ export const CategoriesList = ({ category }: CategoryPropT) => {
             {isPaginatorVisible && (
               <Paginator page={page} setPage={setPage} next={next} previous={previous} />
             )}
-            <Search search={search} setSearch={setSearch} />
+            {isPaginatorVisible && <Search search={search} setSearch={setSearch} />}
           </SearchPaginateWrapper>
           <CategoryCardsList
             categoryItems={categoryItems}

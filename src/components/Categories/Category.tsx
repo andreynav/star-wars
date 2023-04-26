@@ -7,7 +7,7 @@ import { CategoryCard } from './CategoryCard'
 export const Category = ({ category }: CategoryPropT) => {
   const { categoryItem, error } = useCategory(category)
 
-  if (!categoryItem) return <div>loading...</div>
+  if (!categoryItem && !error) return <div>loading...</div>
 
   return (
     <Container>
@@ -16,7 +16,7 @@ export const Category = ({ category }: CategoryPropT) => {
       ) : (
         <>
           <BackButton />
-          <CategoryCard categoryItem={categoryItem} category={category} />
+          {categoryItem && <CategoryCard categoryItem={categoryItem} category={category} />}
         </>
       )}
     </Container>

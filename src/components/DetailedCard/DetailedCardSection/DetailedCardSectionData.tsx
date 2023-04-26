@@ -2,12 +2,15 @@ import { createContext, useMemo, useState } from 'react'
 import styled from 'styled-components'
 
 import { DetailedCardSectionDataT, SectionContextT } from '../../../types/types'
-import { Collapse, Expand, SectionNoData, ShowMore, ThumbnailsList } from '../DetailedCardSection/'
+import { Collapse } from './Collapse'
+import { Expand } from './Expand'
+import { SectionNoData } from './SectionNoData'
+import { ThumbnailsList } from './ThumbnailsList'
 
 export const SectionContext = createContext<SectionContextT>({} as SectionContextT)
 const limit = 3
 
-export const DetailedCardSectionData = ({ data, categoryItems }: DetailedCardSectionDataT) => {
+const DetailedCardSectionData = ({ data, children }: DetailedCardSectionDataT) => {
   const isDataExists = data.length > 0
   const [isCollapsed, setIsCollapsed] = useState(true)
 
@@ -26,19 +29,17 @@ export const DetailedCardSectionData = ({ data, categoryItems }: DetailedCardSec
 
   return (
     <SectionContext.Provider value={value}>
-      <SectionContainer>
-        <ThumbnailsList data={data} categoryItems={categoryItems} />
-        <Collapse>
-          <ShowMore>Show Less</ShowMore>
-        </Collapse>
-        <Expand>
-          <ShowMore>Show More</ShowMore>
-        </Expand>
-      </SectionContainer>
-      <SectionNoData />
+      <SectionContainer>{children}</SectionContainer>
     </SectionContext.Provider>
   )
 }
+
+DetailedCardSectionData.Collapse = Collapse
+DetailedCardSectionData.Expand = Expand
+DetailedCardSectionData.ThumbnailsList = ThumbnailsList
+DetailedCardSectionData.SectionNoData = SectionNoData
+
+export { DetailedCardSectionData }
 
 const SectionContainer = styled.div`
   display: grid;

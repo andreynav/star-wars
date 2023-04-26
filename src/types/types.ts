@@ -1,4 +1,4 @@
-import { Dispatch, ReactElement, ReactNode, SetStateAction } from 'react'
+import { Dispatch, ReactNode, SetStateAction } from 'react'
 
 import { Categories } from '../data/data'
 
@@ -159,6 +159,7 @@ export type DetailedCardSectionT = {
 }
 
 export type ShowMoreT = {
+  onClick?: () => void
   children: ReactNode
 }
 
@@ -196,9 +197,7 @@ export type ThumbnailsListT = {
 
 export type DetailedCardSectionDataT = {
   data: string[]
-  categoryItems: { [key: string]: string[] }
-  toggleShowMore: () => void
-  isShowMoreVisible: boolean
+  children: ReactNode
 }
 
 export type SectionContextT = {
@@ -211,7 +210,7 @@ export type SectionContextT = {
 }
 
 export type CollapseExpandT = {
-  children: ReactElement
+  children: ReactNode
 }
 
 export type SetSearchT = (search: string) => void
