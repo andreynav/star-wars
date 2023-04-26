@@ -2,9 +2,9 @@ import { ChangeEvent } from 'react'
 import { IoCloseCircleOutline, IoSearch } from 'react-icons/io5'
 import styled from 'styled-components'
 
-// import { SearchT } from '../../types/types'
+import { SearchT } from '../../types/types'
 
-export const Search = ({ search, setSearch }: any) => {
+export const Search = ({ search, setSearch }: SearchT) => {
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)
 
   return (
