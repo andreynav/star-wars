@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import { BottomDataT, DetailedCardContainerBottomT } from '../../types/types'
-import { DetailedCardSection } from './DetailedCardSection/'
+import { DetailedCardSection } from './DetailedCardSection/DetailedCardSection'
 
 export const DetailedCardContainerBottom = ({ bottomData }: BottomDataT) => {
   return (
