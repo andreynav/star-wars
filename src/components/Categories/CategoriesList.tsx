@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import { useCategoryItems } from '../../hooks/useCategoryItems'
 import { CategoryPropT } from '../../types/types'
+import { getProperErrorComponent } from '../../utils/getProperErrorComponent'
 import { Search } from '../Header/Search'
 import { Container } from '../common/Container'
 import { Paginator } from '../common/Paginator'
@@ -22,26 +23,26 @@ export const CategoriesList = ({ category }: CategoryPropT) => {
   } = useCategoryItems(category)
   const isPaginatorVisible = next || previous
 
-  if (isLoading || !categoryItems) return <div>loading...</div>
+  if (error) {
+    return <Container>{getProperErrorComponent(error)}</Container>
+  }
 
   return (
     <Container>
-      {error ? (
-        <div className="error">{error.message}</div>
+      <SearchPaginateWrapper>
+        {isPaginatorVisible && (
+          <Paginator page={page} setPage={setPage} next={next} previous={previous} />
+        )}
+        <Search search={search} setSearch={setSearch} />
+      </SearchPaginateWrapper>
+      {isLoading ? (
+        <div>loading...</div>
       ) : (
-        <>
-          <SearchPaginateWrapper>
-            {isPaginatorVisible && (
-              <Paginator page={page} setPage={setPage} next={next} previous={previous} />
-            )}
-            {isPaginatorVisible && <Search search={search} setSearch={setSearch} />}
-          </SearchPaginateWrapper>
-          <CategoryCardsList
-            categoryItems={categoryItems}
-            imagesSrc={imagesSrc}
-            category={category}
-          />
-        </>
+        <CategoryCardsList
+          categoryItems={categoryItems}
+          imagesSrc={imagesSrc}
+          category={category}
+        />
       )}
     </Container>
   )
