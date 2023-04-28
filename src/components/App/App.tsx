@@ -5,6 +5,7 @@ import { CategoriesList } from '../Categories/CategoriesList'
 import { Category } from '../Categories/Category'
 import { Header } from '../Header/Header'
 import { Home } from '../Home/Home'
+import { NotFound } from '../common/NotFound'
 
 export const App = () => {
   return (
@@ -24,7 +25,7 @@ export const App = () => {
         <Route path="/vehicles/:id" element={<Category category="vehicles" />} />
         <Route path="/films/" element={<CategoriesList category="films" />} />
         <Route path="/films/:id" element={<Category category="films" />} />
-        {/*<Route path="/*" element={<NotFound />} />*/}
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </StyledApp>
   )

@@ -4,7 +4,7 @@ import { swAPI } from '../api/api'
 import { CategoryT } from '../types/types'
 
 export const useCategoryItems = (category: string) => {
-  const [categoryItems, setCategoryItems] = useState<CategoryT[] | null>(null)
+  const [categoryItems, setCategoryItems] = useState<CategoryT[]>([])
   const [imagesSrc, setImagesSrc] = useState<string[] | null>(null)
   const [error, setError] = useState<{ message: string; status?: number } | null>(null)
   const [page, setPage] = useState(1)

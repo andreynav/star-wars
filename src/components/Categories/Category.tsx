@@ -1,23 +1,24 @@
 import { useCategory } from '../../hooks/useCategory'
 import { CategoryPropT } from '../../types/types'
+import { getProperErrorComponent } from '../../utils/getProperErrorComponent'
 import { BackButton } from '../Card/BackButton'
 import { Container } from '../common/Container'
 import { CategoryCard } from './CategoryCard'
 
 export const Category = ({ category }: CategoryPropT) => {
-  const { categoryItem, error } = useCategory(category)
+  const { categoryItem, error, isLoading } = useCategory(category)
 
-  if (!categoryItem && !error) return <div>loading...</div>
+  if (error) {
+    return <Container>{getProperErrorComponent(error)}</Container>
+  }
 
   return (
     <Container>
-      {error ? (
-        <div className="error">{error.message}</div>
+      <BackButton />
+      {isLoading ? (
+        <div>loading...</div>
       ) : (
-        <>
-          <BackButton />
-          {categoryItem && <CategoryCard categoryItem={categoryItem} category={category} />}
-        </>
+        <CategoryCard categoryItem={categoryItem} category={category} />
       )}
     </Container>
   )
