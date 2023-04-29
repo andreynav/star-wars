@@ -217,4 +217,5 @@ export type SetSearchT = (search: string) => void
 export type SearchT = {
   search: string
   setSearch: SetSearchT
+  category: string
 }

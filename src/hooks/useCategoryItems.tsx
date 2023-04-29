@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { swAPI } from '../api/api'
 import { CategoryT } from '../types/types'
 
-export const useCategoryItems = (category: string) => {
+export const useCategoryItems = (category: string, search: string) => {
   const [categoryItems, setCategoryItems] = useState<CategoryT[]>([])
   const [imagesSrc, setImagesSrc] = useState<string[] | null>(null)
   const [error, setError] = useState<{ message: string; status?: number } | null>(null)
@@ -12,8 +12,7 @@ export const useCategoryItems = (category: string) => {
   const [previous, setPrevious] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [oldCategory, setOldCategory] = useState<string | null>(null)
-  const [search, setSearch] = useState('')
-  const [resetPageOnFirstSearch, setResetPageOnFirstSearch] = useState(false)
+  const [resetPageForFirstSearch, setResetPageForFirstSearch] = useState(false)
 
   useEffect(() => {
     let active = true
@@ -27,12 +26,13 @@ export const useCategoryItems = (category: string) => {
         }
         let results, images, next, previous
         if (search) {
-          if (!resetPageOnFirstSearch) {
-            setResetPageOnFirstSearch(true)
+          if (!resetPageForFirstSearch) {
+            setResetPageForFirstSearch(true)
             setPage(1)
           }
           ;({ results, images, next, previous } = await swAPI.searchItems(category, search, page))
         } else {
+          setResetPageForFirstSearch(false)
           ;({ results, images, next, previous } = await swAPI.getCategoryItemsList(category, page))
         }
         if (active) {
@@ -54,7 +54,7 @@ export const useCategoryItems = (category: string) => {
     return () => {
       active = false
     }
-  }, [category, page, search, oldCategory, resetPageOnFirstSearch])
+  }, [category, page, search, oldCategory, resetPageForFirstSearch])
 
   return {
     categoryItems,
@@ -65,7 +65,6 @@ export const useCategoryItems = (category: string) => {
     next,
     previous,
     isLoading,
-    search,
-    setSearch
+    search
   }
 }
