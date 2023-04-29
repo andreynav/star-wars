@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
 
+import { EnumCategoriesT } from '../../types/types'
 import { CategoriesList } from '../Categories/CategoriesList'
 import { Category } from '../Categories/Category'
 import { Header } from '../Header/Header'
@@ -12,7 +13,7 @@ export const App = () => {
   const [search, setSearch] = useState('')
   const [category, setCategory] = useState('people')
 
-  const setSearchCategory = (value: string) => {
+  const setSearchCategory = (value: EnumCategoriesT) => {
     setCategory(value)
   }
 

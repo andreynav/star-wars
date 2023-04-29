@@ -179,6 +179,12 @@ export type PaginatorT = {
   setPage: Dispatch<SetStateAction<number>>
 }
 
+export type CategoriesListT = {
+  category: EnumCategoriesT
+  setSearchCategory: (value: EnumCategoriesT) => void
+  search: string
+}
+
 export type CategoryCardsListT = {
   categoryItems: CategoryT[]
   imagesSrc: string[] | null
