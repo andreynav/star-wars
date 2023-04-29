@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -8,22 +9,83 @@ import { Home } from '../Home/Home'
 import { NotFound } from '../common/NotFound'
 
 export const App = () => {
+  const [search, setSearch] = useState('')
+  const [category, setCategory] = useState('people')
+
+  const setSearchCategory = (value: string) => {
+    setCategory(value)
+  }
+
   return (
     <StyledApp>
-      <Header />
+      <Header search={search} setSearch={setSearch} category={category} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/people/" element={<CategoriesList category="people" />} />
+        <Route
+          path="/people/"
+          element={
+            <CategoriesList
+              category="people"
+              setSearchCategory={setSearchCategory}
+              search={search}
+            />
+          }
+        />
         <Route path="/people/:id" element={<Category category="people" />} />
-        <Route path="/species/" element={<CategoriesList category="species" />} />
+        <Route
+          path="/species/"
+          element={
+            <CategoriesList
+              category="species"
+              setSearchCategory={setSearchCategory}
+              search={search}
+            />
+          }
+        />
         <Route path="/species/:id" element={<Category category="species" />} />
-        <Route path="/planets/" element={<CategoriesList category="planets" />} />
+        <Route
+          path="/planets/"
+          element={
+            <CategoriesList
+              category="planets"
+              setSearchCategory={setSearchCategory}
+              search={search}
+            />
+          }
+        />
         <Route path="/planets/:id" element={<Category category="planets" />} />
-        <Route path="/starships/" element={<CategoriesList category="starships" />} />
+        <Route
+          path="/starships/"
+          element={
+            <CategoriesList
+              category="starships"
+              setSearchCategory={setSearchCategory}
+              search={search}
+            />
+          }
+        />
         <Route path="/starships/:id" element={<Category category="starships" />} />
-        <Route path="/vehicles/" element={<CategoriesList category="vehicles" />} />
+        <Route
+          path="/vehicles/"
+          element={
+            <CategoriesList
+              category="vehicles"
+              setSearchCategory={setSearchCategory}
+              search={search}
+            />
+          }
+        />
         <Route path="/vehicles/:id" element={<Category category="vehicles" />} />
-        <Route path="/films/" element={<CategoriesList category="films" />} />
+        <Route
+          path="/films/"
+          element={
+            <CategoriesList
+              category="films"
+              setSearchCategory={setSearchCategory}
+              search={search}
+            />
+          }
+        />
         <Route path="/films/:id" element={<Category category="films" />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>

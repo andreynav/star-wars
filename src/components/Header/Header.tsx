@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import { starWars } from '../../assets'
+import { SearchT } from '../../types/types'
 import { StyledNavLink } from '../common/StyledNavLink'
 import { Navigation } from './Navigation'
+import { Search } from './Search'
 import { Toggle } from './Toggle'
 
-export const Header = () => {
+export const Header = ({ search, setSearch, category }: SearchT) => {
   const [theme, setTheme] = useState('light')
 
   const onSwitchTheme = () => {
@@ -20,6 +22,9 @@ export const Header = () => {
   return (
     <StyledHeaderContainer>
       <TopHeader>
+        <SearchWrapper>
+          <Search search={search} setSearch={setSearch} category={category} />
+        </SearchWrapper>
         <LogoWrapper>
           <StyledNavLink to={`/`}>
             <Logo src={starWars} alt={'logo'} />
@@ -64,6 +69,11 @@ const TopHeader = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
   }
+`
+
+const SearchWrapper = styled.div`
+  display: grid;
+  justify-content: stretch;
 `
 
 const LogoWrapper = styled.div`

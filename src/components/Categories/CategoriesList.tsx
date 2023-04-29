@@ -1,27 +1,20 @@
+import { useEffect } from 'react'
 import styled from 'styled-components'
 
 import { useCategoryItems } from '../../hooks/useCategoryItems'
-import { CategoryPropT } from '../../types/types'
 import { getProperErrorComponent } from '../../utils/getProperErrorComponent'
-import { Search } from '../Header/Search'
 import { Container } from '../common/Container'
 import { Paginator } from '../common/Paginator'
 import { CategoryCardsList } from './CategoryCardsList'
 
-export const CategoriesList = ({ category }: CategoryPropT) => {
-  const {
-    categoryItems,
-    imagesSrc,
-    error,
-    page,
-    setPage,
-    next,
-    previous,
-    isLoading,
-    search,
-    setSearch
-  } = useCategoryItems(category)
+export const CategoriesList = ({ category, setSearchCategory, search }: any) => {
+  const { categoryItems, imagesSrc, error, page, setPage, next, previous, isLoading } =
+    useCategoryItems(category, search)
   const isPaginatorVisible = next || previous
+
+  useEffect(() => {
+    setSearchCategory(category)
+  }, [category])
 
   if (error) {
     return <Container>{getProperErrorComponent(error)}</Container>
@@ -29,12 +22,11 @@ export const CategoriesList = ({ category }: CategoryPropT) => {
 
   return (
     <Container>
-      <SearchPaginateWrapper>
+      <PaginateWrapper>
         {isPaginatorVisible && (
           <Paginator page={page} setPage={setPage} next={next} previous={previous} />
         )}
-        <Search search={search} setSearch={setSearch} />
-      </SearchPaginateWrapper>
+      </PaginateWrapper>
       {isLoading ? (
         <div>loading...</div>
       ) : (
@@ -48,14 +40,14 @@ export const CategoriesList = ({ category }: CategoryPropT) => {
   )
 }
 
-const SearchPaginateWrapper = styled.div`
+const PaginateWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 1rem;
   padding-top: 2rem;
 
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
   }
 `

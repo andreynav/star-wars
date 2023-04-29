@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { SearchT } from '../../types/types'
 
-export const Search = ({ search, setSearch }: SearchT) => {
+export const Search = ({ search, setSearch, category }: SearchT) => {
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)
 
   return (
@@ -12,13 +12,14 @@ export const Search = ({ search, setSearch }: SearchT) => {
       <IoSearch size={20} />
       <Input value={search} onChange={onInputChange} />
       <IoCloseCircleOutline size={20} onClick={() => setSearch('')} />
+      <div>{category}</div>
     </InputContainer>
   )
 }
 
 const InputContainer = styled.label`
   display: grid;
-  grid-template-columns: 20px auto 20px;
+  grid-template-columns: 20px auto 20px auto;
   align-items: center;
   background-color: var(--colors-ui-base);
   border: 1px solid var(--colors-placeholder);
