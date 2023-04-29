@@ -6,6 +6,7 @@ export const GlobalStyles = createGlobalStyle`
   :root {
     /* Typography */
     --family: 'Montserrat', sans-serif;
+    --fs-eesm: 10px;
     --fs-esm: 12px;
     --fs-sm: 14px;
     --fs-md: 16px;
@@ -17,18 +18,19 @@ export const GlobalStyles = createGlobalStyle`
     /* Other */
     --radii: 0.5rem;
     --colors-link: #26a4f5;
-    --colors-active-link: #ffc401;
   }
 
   body[data-theme='dark'] {
     --colors-text: #FFFFFF;
     --color-title-text: red;
     --colors-bg: #202C37;
-    --colors-ui-base: hsl(209, 23%, 22%);
-    --colors-placeholder: hsl(0,0%,50%);
+    --colors-ui-base: #2b3945;
+    --colors-placeholder: #999;
+    --colors-controls-border: #808080;
     --color-toggle: #fff;
     --color-data-title: #c8c8ca;
     --colors-image-border: #FFFFFF;
+    --colors-active-link: #ffc812;
 
     --shadow: rgba(245, 245, 245, 0.2) 0 0 8px;
     --card-shadow: 5px -4px 17px 9px rgba(238, 59, 8, 0.3);
@@ -38,11 +40,13 @@ export const GlobalStyles = createGlobalStyle`
     --colors-text: #111517;
     --color-title-text: blue;
     --colors-bg: #fafafa;
-    --colors-ui-base: hsl(0, 0%, 100%);
-    --colors-placeholder: hsl(0, 0%, 41%);
+    --colors-ui-base: #ffffff;
+    --colors-placeholder: #666;
+    --colors-controls-border: #696969;
     --color-toggle: transparent;
     --color-data-title: #373737;
     --colors-image-border: #1f2c37;
+    --colors-active-link: #896900;
 
     --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     --card-shadow: 5px -4px 17px 9px rgba(8, 96, 238, 0.3);

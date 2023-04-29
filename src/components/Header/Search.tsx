@@ -11,24 +11,28 @@ export const Search = ({ search, setSearch, category }: SearchT) => {
     <InputContainer>
       <IoSearch size={20} />
       <Input value={search} onChange={onInputChange} />
-      <IoCloseCircleOutline size={20} onClick={() => setSearch('')} />
-      <div>{category}</div>
+      <IoCloseCircleOutline size={18} onClick={() => setSearch('')} />
+      <InputCategory>{category.toUpperCase()}</InputCategory>
     </InputContainer>
   )
 }
 
 const InputContainer = styled.label`
   display: grid;
-  grid-template-columns: 20px auto 20px auto;
+  grid-template-columns: 20px auto 20px min-content;
   align-items: center;
   background-color: var(--colors-ui-base);
-  border: 1px solid var(--colors-placeholder);
+  border: 1px solid var(--colors-controls-border);
   margin-bottom: 0;
   padding: 1rem;
   height: 2rem;
   align-content: center;
   border-radius: 24px;
   cursor: pointer;
+
+  &:hover {
+    box-shadow: var(--shadow);
+  }
 `
 
 const Input = styled.input.attrs({
@@ -36,6 +40,7 @@ const Input = styled.input.attrs({
   placeholder: 'Search'
 })`
   display: grid;
+  padding-left: 0.5rem;
   color: var(--colors-text);
   background-color: var(--colors-ui-base);
   min-width: 128px;
@@ -43,10 +48,18 @@ const Input = styled.input.attrs({
   outline: none;
 
   &::placeholder {
-    color: var(--colors-text);
+    color: var(--colors-placeholder);
   }
 
   @media (max-width: 768px) {
     font-size: var(--fs-sm);
   }
+`
+
+const InputCategory = styled.div`
+  display: grid;
+  padding-left: 0.5rem;
+  width: fit-content;
+  color: var(--colors-active-link);
+  font-size: var(--fs-eesm);
 `
