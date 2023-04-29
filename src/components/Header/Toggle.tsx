@@ -60,7 +60,7 @@ const ToggleSpan = styled.span<StyledToggleSpanT>`
   background: transparent;
   transition: 0.3s;
   border-radius: ${({ height = 32 }) => `${height / 2}px`};
-  border: 1px solid var(--colors-placeholder);
+  border: 1px solid var(--colors-controls-border);
 
   &:before {
     position: absolute;
@@ -75,5 +75,9 @@ const ToggleSpan = styled.span<StyledToggleSpanT>`
     background-size: contain;
     border-radius: 50%;
     transition: 0.6s;
+  }
+
+  &:hover {
+    box-shadow: var(--shadow);
   }
 `

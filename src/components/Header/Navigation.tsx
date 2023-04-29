@@ -42,6 +42,10 @@ const NavigationWrapper = styled.div`
     height: 48px;
   }
 
+  & ${StyledNavLink}:hover {
+    box-shadow: var(--shadow);
+  }
+
   & ${StyledNavLink}.active {
     color: var(--colors-active-link);
   }
