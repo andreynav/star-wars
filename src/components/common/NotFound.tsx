@@ -5,9 +5,9 @@ export const NotFound = () => {
   return (
     <NotFoundWrapper>
       <IconContainer>
-        <div>THERE IS NO DATA IN</div>
+        <div>NO DATA IN THE</div>
         <FaJediOrder size={48} />
-        <div>THE JEDI ARCHIVES</div>
+        <div>JEDI ARCHIVES</div>
       </IconContainer>
     </NotFoundWrapper>
   )
@@ -20,7 +20,7 @@ const NotFoundWrapper = styled.div`
   align-items: center;
   background-color: var(--colors-bg);
   color: var(--color-text);
-  height: calc(100vh - 204px);
+  height: calc(100vh - 350px);
 `
 
 const IconContainer = styled.div`
