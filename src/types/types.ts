@@ -185,6 +185,8 @@ export type CategoriesListT = {
   search: string
 }
 
+export type RouterT = Omit<CategoriesListT, 'category'>
+
 export type CategoryCardsListT = {
   categoryItems: CategoryT[]
   imagesSrc: string[] | null
@@ -224,4 +226,11 @@ export type SearchT = {
   search: string
   setSearch: SetSearchT
   category: string
+}
+
+export type RouteT = {
+  path: string
+  element?: JSX.Element
+  category?: string
+  title: string
 }
