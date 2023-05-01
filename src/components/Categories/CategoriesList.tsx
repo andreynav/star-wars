@@ -5,6 +5,7 @@ import { useCategoryItems } from '../../hooks/useCategoryItems'
 import { CategoriesListT } from '../../types/types'
 import { getProperErrorComponent } from '../../utils/getProperErrorComponent'
 import { Container } from '../common/Container'
+import { Loader } from '../common/Loader'
 import { NotFound } from '../common/NotFound'
 import { Paginator } from '../common/Paginator'
 import { CategoryCardsList } from './CategoryCardsList'
@@ -31,7 +32,7 @@ export const CategoriesList = ({ category, setSearchCategory, search }: Categori
         )}
       </PaginateWrapper>
       {isLoading ? (
-        <div>loading...</div>
+        <Loader />
       ) : !isCategoryItemsEmpty ? (
         <CategoryCardsList
           categoryItems={categoryItems}
