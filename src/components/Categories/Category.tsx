@@ -3,6 +3,7 @@ import { CategoryPropT } from '../../types/types'
 import { getProperErrorComponent } from '../../utils/getProperErrorComponent'
 import { BackButton } from '../Card/BackButton'
 import { Container } from '../common/Container'
+import { Loader } from '../common/Loader'
 import { CategoryCard } from './CategoryCard'
 
 export const Category = ({ category }: CategoryPropT) => {
@@ -15,11 +16,7 @@ export const Category = ({ category }: CategoryPropT) => {
   return (
     <Container>
       <BackButton />
-      {isLoading ? (
-        <div>loading...</div>
-      ) : (
-        <CategoryCard categoryItem={categoryItem} category={category} />
-      )}
+      {isLoading ? <Loader /> : <CategoryCard categoryItem={categoryItem} category={category} />}
     </Container>
   )
 }
