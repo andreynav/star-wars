@@ -3,15 +3,15 @@ import styled from 'styled-components'
 
 import { useCategoryItems } from '../../hooks/useCategoryItems'
 import { CategoriesListT } from '../../types/types'
-import { getProperErrorComponent } from '../../utils/getProperErrorComponent'
 import { Container } from '../common/Container'
+import { Error } from '../common/Error'
 import { Loader } from '../common/Loader'
 import { NotFound } from '../common/NotFound'
 import { Paginator } from '../common/Paginator'
 import { CategoryCardsList } from './CategoryCardsList'
 
 export const CategoriesList = ({ category, setSearchCategory, search }: CategoriesListT) => {
-  const { categoryItems, imagesSrc, error, page, setPage, next, previous, isLoading } =
+  const { categoryItems, imagesSrc, error, isError, page, setPage, next, previous, isLoading } =
     useCategoryItems(category, search)
   const isPaginatorVisible = next || previous
   const isCategoryItemsEmpty = categoryItems.length === 0
@@ -20,8 +20,12 @@ export const CategoriesList = ({ category, setSearchCategory, search }: Categori
     setSearchCategory(category)
   }, [category])
 
-  if (error) {
-    return <Container>{getProperErrorComponent(error)}</Container>
+  if (isLoading) {
+    return <Loader />
+  }
+
+  if (isError) {
+    return <Error>{error}</Error>
   }
 
   return (
@@ -31,9 +35,7 @@ export const CategoriesList = ({ category, setSearchCategory, search }: Categori
           <Paginator page={page} setPage={setPage} next={next} previous={previous} />
         )}
       </PaginateWrapper>
-      {isLoading ? (
-        <Loader />
-      ) : !isCategoryItemsEmpty ? (
+      {!isCategoryItemsEmpty ? (
         <CategoryCardsList
           categoryItems={categoryItems}
           imagesSrc={imagesSrc}
