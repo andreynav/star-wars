@@ -1,7 +1,7 @@
-import { PropsWithChildren } from 'react'
+import { ReactNode } from 'react'
 import styled from 'styled-components'
 
-export const Error = ({ children }: PropsWithChildren) => {
+export const Error = ({ children }: { children: ReactNode }) => {
   return (
     <ErrorWrapper>
       <ErrorContainer>{children}</ErrorContainer>

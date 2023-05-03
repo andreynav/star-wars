@@ -1,70 +1,57 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { useQuery } from 'react-query'
 
 import { swAPI } from '../api/api'
-import { CategoryT } from '../types/types'
 
 export const useCategoryItems = (category: string, search: string) => {
-  const [categoryItems, setCategoryItems] = useState<CategoryT[]>([])
-  const [imagesSrc, setImagesSrc] = useState<string[] | null>(null)
-  const [error, setError] = useState<{ message: string; status?: number } | null>(null)
+  const [prevCategory, setPrevCategory] = useState<string | null>(null)
   const [page, setPage] = useState(1)
-  const [next, setNext] = useState(false)
-  const [previous, setPrevious] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const [oldCategory, setOldCategory] = useState<string | null>(null)
-  const [resetPageForFirstSearch, setResetPageForFirstSearch] = useState(false)
+  const [resetToFirstPage, setResetToFirstPage] = useState(false)
 
-  useEffect(() => {
-    let active = true
-
-    const fetchCategoryItems = async () => {
-      setIsLoading(true)
-      try {
-        if (category !== oldCategory) {
-          setOldCategory(category)
+  const categoryError = 'Failed to fetch category items'
+  const categoryKeys = ['categoryItems', category, search, page]
+  const fetchCategoryItems = async () => {
+    try {
+      if (category !== prevCategory) {
+        setPrevCategory(category)
+        setPage(1)
+      }
+      if (search) {
+        if (!resetToFirstPage) {
+          setResetToFirstPage(true)
           setPage(1)
         }
-        let results, images, next, previous
-        if (search) {
-          if (!resetPageForFirstSearch) {
-            setResetPageForFirstSearch(true)
-            setPage(1)
-          }
-          ;({ results, images, next, previous } = await swAPI.searchItems(category, search, page))
-        } else {
-          setResetPageForFirstSearch(false)
-          ;({ results, images, next, previous } = await swAPI.getCategoryItemsList(category, page))
-        }
-        if (active) {
-          setCategoryItems(results)
-          setImagesSrc(images)
-          setNext(!!next)
-          setPrevious(!!previous)
-          setError(null)
-        }
-      } catch (error: any) {
-        setError(error.message)
-      } finally {
-        setIsLoading(false)
+        return await swAPI.searchItems(category, search, page)
+      } else {
+        setResetToFirstPage(false)
+        return await swAPI.getCategoryItemsList(category, page)
       }
+    } catch (error: unknown) {
+      throw new Error(categoryError)
     }
+  }
 
-    fetchCategoryItems().then()
+  const { data, isError, error, isFetched, isLoading, ...rest } = useQuery({
+    queryKey: categoryKeys,
+    queryFn: fetchCategoryItems,
+    refetchOnWindowFocus: false
+  })
 
-    return () => {
-      active = false
-    }
-  }, [category, page, search, oldCategory, resetPageForFirstSearch])
+  const categoryItems = data?.results || []
+  const imagesSrc = data?.images || []
+  const next = !!data?.next
+  const previous = !!data?.previous
 
   return {
     categoryItems,
     imagesSrc,
-    error,
+    error: isError ? categoryError : null,
+    isError,
     page,
     setPage,
     next,
     previous,
     isLoading,
-    search
+    rest
   }
 }
