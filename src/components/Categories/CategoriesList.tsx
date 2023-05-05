@@ -13,6 +13,7 @@ import { CategoryCardsList } from './CategoryCardsList'
 export const CategoriesList = ({ category, setSearchCategory, search }: CategoriesListT) => {
   const { categoryItems, imagesSrc, error, isError, page, setPage, next, previous, isLoading } =
     useCategoryItems(category, search)
+
   const isPaginatorVisible = next || previous
   const isCategoryItemsEmpty = categoryItems.length === 0
 
