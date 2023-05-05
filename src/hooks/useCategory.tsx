@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useQuery } from 'react-query'
 import { useParams } from 'react-router-dom'
 
 import { swAPI } from '../api/api'
@@ -6,35 +6,26 @@ import { CategoryT } from '../types/types'
 
 export const useCategory = (category: string) => {
   const { id } = useParams<{ id: string }>()
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<{ message: string; status?: number } | null>(null)
-  const [categoryItem, setCategoryItem] = useState<CategoryT>({} as CategoryT)
 
-  useEffect(() => {
-    let active = true
-
-    const fetchCategory = async () => {
-      setIsLoading(true)
-      try {
-        if (id) {
-          const data = await swAPI.getCategoryItem(category, id)
-          if (active) {
-            setError(null)
-            setCategoryItem(data)
-          }
-        }
-      } catch (error: any) {
-        setError({ message: error.message })
-      } finally {
-        setIsLoading(false)
+  const categoryError = 'Failed to fetch category item'
+  const categoryKeys = ['categoryItem', category, id]
+  const fetchCategory = async () => {
+    try {
+      if (id) {
+        return await swAPI.getCategoryItem(category, id)
       }
+    } catch (error: unknown) {
+      throw new Error(categoryError)
     }
-    fetchCategory().then()
+  }
 
-    return () => {
-      active = false
-    }
-  }, [id, category])
+  const { data, error, isError, isLoading, ...rest } = useQuery({
+    queryKey: categoryKeys,
+    queryFn: fetchCategory,
+    refetchOnWindowFocus: false
+  })
 
-  return { categoryItem, error, isLoading }
+  const categoryItem = data || ({} as CategoryT)
+
+  return { categoryItem, error: isError ? categoryError : null, isError, isLoading, rest }
 }
