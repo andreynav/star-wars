@@ -3,9 +3,7 @@ import styled from 'styled-components'
 import { imageBaseApi } from '../../../api/api'
 import { useSectionContext } from '../../../hooks/useSectionContext'
 import { ThumbnailsListT } from '../../../types/types'
-import { getCategoryFromUrl } from '../../../utils/getCategoryFromUrl'
-import { getIdFromUrl } from '../../../utils/getIdFromUrl'
-import { getImgPathCategory } from '../../../utils/getImgPathCategory'
+import { getCategoryFromUrl, getIdFromUrl, getImgPathCategory } from '../../../utils'
 import { Card } from '../../Card/Card'
 
 export const ThumbnailsList = ({ data, categoryItems }: ThumbnailsListT) => {

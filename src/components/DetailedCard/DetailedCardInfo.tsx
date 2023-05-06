@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import { CardInfoCategoryData } from '../../data/data'
 import { CategoryCardT, CategoryT, EnumCategoriesT } from '../../types/types'
-import { convertToTitleCase } from '../../utils/convertToTitleCase'
+import { convertToTitleCase } from '../../utils'
 
 export const DetailedCardInfo = ({ categoryItem, category }: CategoryCardT) => {
   return (

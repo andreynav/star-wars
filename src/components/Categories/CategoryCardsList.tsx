@@ -1,5 +1,5 @@
 import { CategoryCardsListT } from '../../types/types'
-import { getIdFromUrl } from '../../utils/getIdFromUrl'
+import { getIdFromUrl } from '../../utils'
 import { Card } from '../Card/Card'
 import { CardListContainer } from '../common/CardListContainer'
 

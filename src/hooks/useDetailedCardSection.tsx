@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { swAPI } from '../api/api'
-import { getCategoryFromUrl } from '../utils/getCategoryFromUrl'
-import { getIdFromUrl } from '../utils/getIdFromUrl'
+import { getCategoryFromUrl, getIdFromUrl } from '../utils'
 
 export const useDetailedCardSection = (data: string[]) => {
   const [categoryItems, setCategoryItems] = useState<{ [key: string]: string[] }>({})
