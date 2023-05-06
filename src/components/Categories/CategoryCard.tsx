@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import { CategoryCardT } from '../../types/types'
-import { getBottomData } from '../../utils/getBottomData'
+import { getBottomData } from '../../utils'
 import { DetailedCardContainerBottom } from '../DetailedCard/DetailedCardContainerBottom'
 import { DetailedCardContainerTop } from '../DetailedCard/DetailedCardContainerTop'
 
