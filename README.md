@@ -1,46 +1,57 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# General Notes
 
-In the project directory, you can run:
+The project is a web application with information about Star Wars universe. You can select an available characters, species, planets, starships, vehicles and films or search for the specific query. The project is made using React, React Query, React Router,  and Styled components and Typescript.
+The project use [REST Star Wars API](https://swapi.dev/).
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Current project status
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/last-commit/andreynav/star-wars?label=in%20progress%3A%20last%20commit&style=for-the-badge)
 
-### `yarn test`
+## Dependencies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The project has the next dependencies in the [package.json](package.json) file.
 
-### `yarn build`
+<div align="center">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/andreynav/star-wars/react?style=for-the-badge)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/andreynav/star-wars/react-query?style=for-the-badge)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/andreynav/star-wars/axios?style=for-the-badge)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/andreynav/star-wars/react-router-dom?style=for-the-badge)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/andreynav/star-wars/react-icons?style=for-the-badge)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/andreynav/star-wars/styled-components?style=for-the-badge)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/andreynav/star-wars/typescript?style=for-the-badge)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+</div>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Installation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone project to your PC by the following command:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```console
+  git clone https://github.com/andreynav/countries-wiki.git
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+2. Open the root directory and enter the following command:
 
-## Learn More
+```console
+  yarn
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. In the root directory create `.env` file and add inside it a row `PORT=3003` (or any desired port).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Running project
+
+To run project, open the root directory and enter the following command:
+
+```console
+  yarn start
+```
+
+The command runs the app in the development mode.
+Open [http://localhost:3002](http://localhost:3003) to view it in your browser.
