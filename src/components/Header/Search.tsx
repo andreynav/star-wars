@@ -3,6 +3,7 @@ import { IoCloseCircleOutline, IoSearch } from 'react-icons/io5'
 import styled from 'styled-components'
 
 import { SearchT } from '../../types/types'
+import { getImgPathCategory } from '../../utils'
 
 export const Search = ({ search, setSearch, category }: SearchT) => {
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)
@@ -12,7 +13,7 @@ export const Search = ({ search, setSearch, category }: SearchT) => {
       <IoSearch size={20} />
       <Input value={search} onChange={onInputChange} />
       <IoCloseCircleOutline size={18} onClick={() => setSearch('')} />
-      <InputCategory>{category.toUpperCase()}</InputCategory>
+      <InputCategory>{getImgPathCategory(category).toUpperCase()}</InputCategory>
     </InputContainer>
   )
 }
